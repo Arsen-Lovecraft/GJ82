@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c05ux4ga1jtti" path="res://scenes/settings/setting_windows/graphic_settings_ui.tscn" id="2_x0p48"]
 [ext_resource type="PackedScene" uid="uid://d0dqam4dmmdh4" path="res://scenes/settings/setting_windows/sound_settings_ui.tscn" id="3_cwu4w"]
 [ext_resource type="PackedScene" uid="uid://cohscvcbckpo0" path="res://scenes/settings/setting_windows/controls_settings_ui.tscn" id="3_vktl3"]
-[ext_resource type="Theme" uid="uid://ckmc2uhafvgvk" path="res://assets/Resources/Button/button.tres" id="6_vktl3"]
+[ext_resource type="Theme" uid="uid://ckmc2uhafvgvk" path="res://assets/ui_resources/button/button.tres" id="6_vktl3"]
 
 [node name="settingsMenu" type="CanvasLayer"]
 process_mode = 3
