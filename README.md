@@ -1,5 +1,5 @@
-# GODOT TEMPLATE
-A Godot Template for using when trying to template data
+# GAME JAM 
+GODOT WILD JAM #82
 
 # Usage
 Use it at your leisure. Fork and use. I am constantly trying to improve it so keep your forks updated.
