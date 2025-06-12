@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://j116pphbgpoc"
-path="res://.godot/imported/Pixel Game Extrude.otf-a9adb0b9da89d9cf006d4e7b303cbfb0.fontdata"
+uid="uid://c322bulsaw8fv"
+path="res://.godot/imported/pixel_game.otf-af83d7b4e8aa8b53727448db612f5ec0.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/pixel-game/Pixel Game Extrude.otf"
-dest_files=["res://.godot/imported/Pixel Game Extrude.otf-a9adb0b9da89d9cf006d4e7b303cbfb0.fontdata"]
+source_file="res://assets/fonts/pixel_game/pixel_game.otf"
+dest_files=["res://.godot/imported/pixel_game.otf-af83d7b4e8aa8b53727448db612f5ec0.fontdata"]
 
 [params]
 

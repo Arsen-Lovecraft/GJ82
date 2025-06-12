@@ -15,7 +15,7 @@ config/version="0.0.1"
 run/main_scene="uid://dhyx7njorpgav"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="uid://liwxv083jv8i"
+config/icon="uid://celhauthido0h"
 
 [audio]
 
