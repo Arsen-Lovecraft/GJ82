@@ -4,6 +4,10 @@ class_name MainGameTree
 @onready var pause_menu: CanvasLayer = %pauseMenu
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
-		pass
+		EventBus.generalPause = !EventBus.generalPause
+		print(EventBus.generalPause)
+
+	get_tree().paused = EventBus.generalPause
+	get_tree().paused = EventBus.fromMenuPause

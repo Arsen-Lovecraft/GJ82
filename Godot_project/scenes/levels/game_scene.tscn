@@ -1,12 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://q2dw023h4pea"]
+[gd_scene load_steps=2 format=3 uid="uid://q2dw023h4pea"]
 
 [ext_resource type="PackedScene" uid="uid://ctgcnn0vj0h85" path="res://scenes/ui/pause_menu.tscn" id="1_iuucx"]
-[ext_resource type="Script" uid="uid://bpkpcy5a1scw1" path="res://scenes/ui/pause_menu.gd" id="2_tcqdt"]
 
 [node name="GameScene" type="Node"]
 
 [node name="pauseMenu" parent="." instance=ExtResource("1_iuucx")]
-script = ExtResource("2_tcqdt")
 
 [node name="Players" type="Node" parent="."]
 

@@ -8,7 +8,7 @@ signal settings_changed()
 @export_storage var LANGUAGES: Dictionary[String,String] = {
 	"English" = "en", 
 	"Русский" = "ru",
-	"Nerd Mode" = "nm",
+	"Pirate" = "nm",
 	"Nerd Mode Long" = "nml"
 	}:
 		get():

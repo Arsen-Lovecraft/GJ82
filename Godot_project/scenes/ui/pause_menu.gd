@@ -27,7 +27,8 @@ func _on_reset_press() -> void:
 	current_scene_path = get_tree().current_scene.scene_file_path
 	current_scene_packed = load(current_scene_path)
 	get_tree().change_scene_to_packed(current_scene_packed)
-	printt(current_scene_path,current_scene_packed)
+	EventBus.generalPause = false
+	EventBus.fromMenuPause = false
 	
 func _on_play_press() -> void:
 	EventBus.generalPause = !EventBus.generalPause
