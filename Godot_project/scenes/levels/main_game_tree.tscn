@@ -13,6 +13,7 @@ unique_name_in_owner = true
 
 [node name="pauseMenu" parent="." instance=ExtResource("3_jebpb")]
 unique_name_in_owner = true
+visible = false
 
 [node name="Game" type="Node" parent="."]
 process_mode = 1
