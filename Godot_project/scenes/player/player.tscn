@@ -141,10 +141,19 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("22_hdvrm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_hdvrm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_5xbmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_hir57")
 }],
 "loop": false,
 "name": &"jumpend",
-"speed": 6.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,

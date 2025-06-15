@@ -25,6 +25,7 @@ var regen_rate : float
 var mp_regen_rate : float 
 var now_regen : bool = true
 var damage_taken : bool = false
+var jumping : bool = false
 
 
 var puncfreq : bool = true
@@ -58,11 +59,18 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += _player_data.gravity * delta
 
+	#fall animation if player is not jumping and on air
+	if !jumping and !is_on_floor():
+		play_animation("fall")
+	elif jumping and is_on_floor():
+		jumping = false
+		
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		jumping = true
 		jump_sound.play()
-		
+
 	if Input.is_action_just_pressed("down") and is_on_floor():
 		position.y += 1
 
@@ -90,8 +98,9 @@ func _physics_process(delta: float) -> void:
 				play_animation("walk")
 			elif velocity.y < 0.00:
 				play_animation("jump")
-			else:
+			elif jumping:
 				play_animation("jumpend")
+
 			
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -99,8 +108,9 @@ func _physics_process(delta: float) -> void:
 				play_animation("idle")
 			elif velocity.y < 0.00:
 				play_animation("jump")
-			else:
+			elif jumping:
 				play_animation("jumpend")
+
 	
 	if Input.is_action_just_pressed("primaryAction") and is_on_floor() and not anim_locked and puncfreq:
 		anim_locked = true
