@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b76212mcar6o2"]
+
+[ext_resource type="Script" uid="uid://5gli5mwbygij" path="res://scenes/interactive_objects/interactive_door.gd" id="1_a2c6x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jagx2"]
+radius = 36.0
+height = 100.0
+
+[node name="InteractiveDoor" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+monitorable = false
+script = ExtResource("1_a2c6x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_jagx2")
+debug_color = Color(0.796078, 0.423529, 0, 0.419608)
