@@ -28,7 +28,7 @@ func _ready() -> void:
 	_init_data()
 
 func _connect_signals()->void:
-	_player_data.connect("dead", _on_dead)
+	pass
 
 func _init_data() -> void:
 	speed = _player_data.speed

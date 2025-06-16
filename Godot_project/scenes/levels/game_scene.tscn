@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://q2dw023h4pea"]
+[gd_scene load_steps=3 format=3 uid="uid://q2dw023h4pea"]
 
 [ext_resource type="PackedScene" uid="uid://ctgcnn0vj0h85" path="res://scenes/ui/pause_menu.tscn" id="1_iuucx"]
+[ext_resource type="Script" uid="uid://upd6yxqtsjvf" path="res://scenes/levels/game_scene.gd" id="1_tcqdt"]
 
 [node name="GameScene" type="Node"]
+script = ExtResource("1_tcqdt")
 
 [node name="pauseMenu" parent="." instance=ExtResource("1_iuucx")]
+unique_name_in_owner = true
+process_mode = 3
 
 [node name="Players" type="Node" parent="."]
 
