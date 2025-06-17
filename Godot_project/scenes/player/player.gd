@@ -3,6 +3,8 @@ class_name Player
 
 signal gameOver
 
+var echoScene : PackedScene = preload("uid://jpwvu7g48if4")
+
 @onready var player_sprite: AnimatedSprite2D = %playerSprite
 @onready var player_collision: CollisionShape2D = %playerCollision
 @onready var echo_sound: AudioStreamPlayer = %echoSound
@@ -38,6 +40,8 @@ func _on_body_entered(_body: Variant) -> void:
 	pass
 	
 func _physics_process(delta: float) -> void:
+	Global.PlayerPos = global_position
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += _player_data.gravity * delta
@@ -94,6 +98,11 @@ func _physics_process(delta: float) -> void:
 			elif jumping:
 				play_animation("jumpend")	
 	
+	if Input.is_action_just_pressed("sonar"):
+		##ECHO EMMISION
+		_echo_emit(position,$echoPos.global_position)
+	
+	
 	if not direction:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	move_and_slide()
@@ -106,13 +115,8 @@ func play_animation(anim_name: String) -> void:
 		player_sprite.play(anim_name)
 
 
-func _on_dead()->void:
-	anim_locked = true
-	%deathSound.play()
-	#%gameOverSound.play()
-
-	play_animation("death")
-	await player_sprite.animation_finished
-	anim_locked = false
-	queue_free()
-	gameOver.emit()
+func _echo_emit(_playerPos: Vector2, echoPos: Vector2) -> void:
+	var echo_emit := echoScene.instantiate()
+	echo_emit.echoOrigin = echoPos
+	add_child(echo_emit)
+	

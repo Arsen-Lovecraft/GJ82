@@ -227,3 +227,6 @@ unique_name_in_owner = true
 
 [node name="jumpSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+
+[node name="echoPos" type="Marker2D" parent="."]
+position = Vector2(298, -461)
