@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0d8qlhogli8h"]
+
+[ext_resource type="Script" uid="uid://bcrv2wq7qm5b2" path="res://scenes/interactive_objects/emerging_platform.gd" id="1_0xh5m"]
+[ext_resource type="Material" uid="uid://cifiuepets4eq" path="res://shaders/echo.tres" id="2_0hfhk"]
+
+[sub_resource type="Gradient" id="Gradient_ss2rw"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0xh5m"]
+gradient = SubResource("Gradient_ss2rw")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ss2rw"]
+size = Vector2(64, 64)
+
+[node name="EmergingPlatform" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_0xh5m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_0hfhk")
+texture = SubResource("GradientTexture2D_0xh5m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ss2rw")
+
+[node name="SeenTimer" type="Timer" parent="."]
+unique_name_in_owner = true
