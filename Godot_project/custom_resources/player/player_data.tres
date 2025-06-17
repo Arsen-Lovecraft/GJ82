@@ -4,15 +4,7 @@
 
 [resource]
 script = ExtResource("1_2j1i3")
-playerLevel = 1
-playerMprate = 100.0
-SPEED = 3000.0
-JUMP_VELOCITY = -300.0
-regen_rate = 1.0
-mp_regen_rate = 2.0
+speed = 2000.0
+jump_velocity = -400.0
 gravity = Vector2(0, 500)
-hp = 100.0
-mp = 0.0
-damage = 200.0
-attack_cooldown = 1.0
 metadata/_custom_type_script = "uid://ccukyj44t4tjo"

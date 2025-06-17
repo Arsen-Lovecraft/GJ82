@@ -225,9 +225,6 @@ shape = SubResource("RectangleShape2D_7obkq")
 [node name="echoSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 
-[node name="jumpPunchSound" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-
 [node name="jumpSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 
