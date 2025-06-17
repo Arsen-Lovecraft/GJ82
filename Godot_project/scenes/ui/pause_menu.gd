@@ -1,11 +1,12 @@
 extends CanvasLayer
 class_name pauseMenu
 
-signal pause_menu_reset
+signal pause_menu_reset()
 
 @onready var reset: Button = %reset
 @onready var play: Button = %play
 @onready var menu: Button = %menu
+
 
 var current_scene_packed: PackedScene
 var current_scene_path: String
@@ -19,7 +20,7 @@ func _process(_delta: float) -> void:
 		visible = true
 	else:
 		visible = false
-	#printt(EventBus.generalPause,EventBus.fromMenuPause, visible)
+	
 func connect_signals() -> void:
 	reset.connect("pressed",_on_reset_press)
 	play.connect("pressed",_on_play_press)

@@ -15,4 +15,3 @@ unique_name_in_owner = true
 process_mode = 1
 
 [node name="level1" parent="Game" instance=ExtResource("4_mmnts")]
-script = null
