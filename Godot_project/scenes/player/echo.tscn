@@ -7,4 +7,4 @@ script = ExtResource("1_a2csm")
 
 [node name="echoTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 2.0
+wait_time = 5.0
