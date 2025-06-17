@@ -41,12 +41,14 @@ layout_mode = 2
 theme_override_constants/separation = 50
 
 [node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_apb86")
 text = "Start_Game"
 
 [node name="EndGame" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_apb86")

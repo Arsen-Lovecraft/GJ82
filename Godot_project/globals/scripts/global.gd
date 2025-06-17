@@ -3,6 +3,7 @@ extends Node
 
 var settings: RSettings
 var settings_file_path: String = "user://settings.tres"
+var PlayerPos: Vector2
 
 func _ready() -> void:
 	_load_settings()

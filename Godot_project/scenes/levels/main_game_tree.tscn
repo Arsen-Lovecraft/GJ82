@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ldg2jq7gg87x" path="res://scenes/settings/settings_ui.tscn" id="1_2ujrn"]
 [ext_resource type="Script" uid="uid://c8nmuqlf0fdpe" path="res://scenes/levels/main_game_tree.gd" id="1_ffl66"]
-[ext_resource type="PackedScene" uid="uid://ctgcnn0vj0h85" path="res://scenes/ui/pause_menu.tscn" id="3_jebpb"]
+[ext_resource type="PackedScene" uid="uid://bfi8vsutkgs1y" path="res://scenes/levels/level_1.tscn" id="4_mmnts"]
 
 [node name="MainGameTree" type="Node"]
 process_mode = 3
@@ -11,8 +11,7 @@ script = ExtResource("1_ffl66")
 [node name="settingsMenu" parent="." instance=ExtResource("1_2ujrn")]
 unique_name_in_owner = true
 
-[node name="pauseMenu" parent="." instance=ExtResource("3_jebpb")]
-unique_name_in_owner = true
-
 [node name="Game" type="Node" parent="."]
 process_mode = 1
+
+[node name="level1" parent="Game" instance=ExtResource("4_mmnts")]

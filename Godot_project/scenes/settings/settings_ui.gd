@@ -8,7 +8,15 @@ func _ready() -> void:
 	_connect_signals()
 	_prev_mouse_capture_mode = Input.mouse_mode
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	get_tree().paused = true
+	EventBus.fromMenuPause = true
+	
+func _process(_delta: float) -> void:
+	if EventBus.fromMenuPause:
+		visible = true
+	else:
+		visible = false
+		
+	
 
 func _connect_signals() -> void:
 	if _exit_button.pressed.connect(_on_pressed_exited): printerr("Fail: ",get_stack())
