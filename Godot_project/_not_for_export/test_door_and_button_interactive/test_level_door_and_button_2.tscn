@@ -1,0 +1,115 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3kdj24in5ucf"]
+
+[ext_resource type="Script" uid="uid://c86ebdqnoalgu" path="res://_not_for_export/test_door_and_button_interactive/main_test_level_door_and_button_1.gd" id="1_b6p1e"]
+[ext_resource type="Script" uid="uid://cyf6hcvtn0lac" path="res://_not_for_export/test_door_and_button_interactive/test_character.gd" id="1_wc1qe"]
+[ext_resource type="Script" uid="uid://38e8upkqw3kr" path="res://_not_for_export/test_door_and_button_interactive/test_button_label.gd" id="2_avhca"]
+[ext_resource type="Script" uid="uid://dejophbfm3k03" path="res://_not_for_export/test_door_and_button_interactive/test_door_label.gd" id="3_b6p1e"]
+[ext_resource type="PackedScene" uid="uid://dfqjxthp6ml5d" path="res://scenes/interactive_objects/interactive_button.tscn" id="4_yf64p"]
+[ext_resource type="PackedScene" uid="uid://b76212mcar6o2" path="res://scenes/interactive_objects/interactive_door.tscn" id="5_ktrs5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_86svo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kuogi"]
+size = Vector2(23.5102, 35.2703)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_44g3h"]
+
+[node name="TestLevelDoorAndButton" type="Node2D"]
+script = ExtResource("1_b6p1e")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(157, 537)
+scale = Vector2(3.0625, 3.82759)
+collision_mask = 2
+script = ExtResource("1_wc1qe")
+
+[node name="Label" type="Label" parent="CharacterBody2D"]
+offset_left = -15.3469
+offset_top = -12.2793
+offset_right = 75.6531
+offset_bottom = 8.72072
+scale = Vector2(0.32574, 0.408581)
+text = "Test Player"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_86svo")
+
+[node name="InteractionArea" type="Area2D" parent="CharacterBody2D"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/InteractionArea"]
+position = Vector2(0, -0.391891)
+shape = SubResource("RectangleShape2D_kuogi")
+debug_color = Color(0.761275, 0.451523, 1.15514e-06, 0.42)
+
+[node name="Env" type="Node2D" parent="."]
+
+[node name="Floor" type="StaticBody2D" parent="Env"]
+position = Vector2(576, 628)
+scale = Vector2(56.6031, 1.72039)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Floor"]
+shape = SubResource("RectangleShape2D_44g3h")
+
+[node name="Wall" type="StaticBody2D" parent="Env"]
+position = Vector2(71, 380)
+rotation = 1.5708
+scale = Vector2(56.6031, 1.72039)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Wall"]
+shape = SubResource("RectangleShape2D_44g3h")
+
+[node name="Wall2" type="StaticBody2D" parent="Env"]
+position = Vector2(1085, 486)
+rotation = 1.5708
+scale = Vector2(56.6031, 1.72039)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Wall2"]
+shape = SubResource("RectangleShape2D_44g3h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 377)
+
+[node name="ButtonLabel" type="Label" parent="."]
+offset_left = 884.0
+offset_top = 418.0
+offset_right = 1021.0
+offset_bottom = 439.0
+text = "Button is inactive"
+script = ExtResource("2_avhca")
+
+[node name="DoorLabel" type="Label" parent="."]
+offset_left = 222.0
+offset_top = 476.0
+offset_right = 327.0
+offset_bottom = 497.0
+text = "door is closed"
+script = ExtResource("3_b6p1e")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 338.0
+offset_top = 137.0
+offset_right = 408.0
+offset_bottom = 158.0
+scale = Vector2(6.87838, 6.21424)
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+text = "LEVEL 2"
+
+[node name="TestingSubjects" type="Node" parent="."]
+
+[node name="Button" parent="TestingSubjects" node_paths=PackedStringArray("door") instance=ExtResource("4_yf64p")]
+unique_name_in_owner = true
+position = Vector2(951, 525)
+door = NodePath("../InteractiveDoor")
+
+[node name="InteractiveDoor" parent="TestingSubjects" instance=ExtResource("5_ktrs5")]
+unique_name_in_owner = true
+position = Vector2(270, 552)
+level_to_load = "uid://bsv107sor8kuc"
