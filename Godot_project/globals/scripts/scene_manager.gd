@@ -16,12 +16,13 @@ func _start_load_scene()-> void:
 		return
 	loading_screen = _loading_screen_scene.instantiate() as LoadingScreen
 	get_tree().root.add_child(loading_screen)
+	loading_screen.start_transition()
 	if(!loading_screen.transition_in_ended.is_connected(_on_transition_in_ended)):
 		if loading_screen.transition_in_ended.connect(_on_transition_in_ended): printerr("Fail: ",get_path()) 
 	
 func _end_load_scene()-> void:
 	@warning_ignore("return_value_discarded")
-	get_tree().change_scene_to_packed(_load_scene)
+	await get_tree().change_scene_to_packed(_load_scene)
 	transition_finished.emit()
 	await loading_screen.finish_transition()
 	get_tree().root.remove_child(loading_screen)

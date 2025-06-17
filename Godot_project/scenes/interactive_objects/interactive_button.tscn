@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfqjxthp6ml5d"]
+
+[ext_resource type="Script" uid="uid://cgboh61ucwdsd" path="res://scenes/interactive_objects/interactive_button.gd" id="1_wry5t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ey4g0"]
+radius = 78.0
+
+[node name="InteractiveButton" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_wry5t")
+
+[node name="ButtonCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ey4g0")
+debug_color = Color(0.794663, 0.425313, 1.92523e-07, 0.42)
+
+[node name="ButtonTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="ClickButtonSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = &"SFX"
