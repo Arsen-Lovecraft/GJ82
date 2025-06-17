@@ -9,4 +9,4 @@ shader_parameter/direction = Vector2(1, 0)
 shader_parameter/radius = 0.0
 shader_parameter/softness = 20.0
 shader_parameter/angle = 45.0
-shader_parameter/hide = 0.0
+shader_parameter/fade = 1.0

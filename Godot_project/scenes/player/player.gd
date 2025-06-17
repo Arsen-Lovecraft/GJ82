@@ -98,16 +98,6 @@ func _physics_process(delta: float) -> void:
 			elif jumping:
 				play_animation("jumpend")	
 	
-	if Input.is_action_just_pressed("primaryAction") and is_on_floor() and not anim_locked and puncfreq:
-		anim_locked = true
-		#echo
-		anim_locked = false
-		
-	elif Input.is_action_just_pressed("primaryAction") and not is_on_floor() and not anim_locked and puncfreq:
-		anim_locked = true
-		#echo
-		anim_locked = false
-
 	if Input.is_action_just_pressed("sonar"):
 		##ECHO EMMISION
 		_echo_emit(position,$echoPos.global_position)
@@ -130,14 +120,3 @@ func _echo_emit(_playerPos: Vector2, echoPos: Vector2) -> void:
 	echo_emit.echoOrigin = echoPos
 	add_child(echo_emit)
 	
-	
-func _on_dead()->void:
-	anim_locked = true
-	%deathSound.play()
-	#%gameOverSound.play()
-
-	play_animation("death")
-	await player_sprite.animation_finished
-	anim_locked = false
-	queue_free()
-	gameOver.emit()
