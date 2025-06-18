@@ -212,7 +212,7 @@ size = Vector2(56, 96)
 radius = 69.0
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("1_7obkq")
 
 [node name="playerSprite" type="AnimatedSprite2D" parent="."]
@@ -226,6 +226,7 @@ offset = Vector2(0, -500)
 unique_name_in_owner = true
 position = Vector2(-1, -13)
 shape = SubResource("RectangleShape2D_7obkq")
+metadata/_edit_lock_ = true
 
 [node name="echoSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
@@ -235,7 +236,7 @@ unique_name_in_owner = true
 
 [node name="echoPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1, -14)
+position = Vector2(23, -58)
 
 [node name="InteractionArea" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -246,3 +247,4 @@ collision_mask = 32
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_7obkq")
 debug_color = Color(0.859844, 0.362462, 3.85046e-07, 0.42)
+metadata/_edit_lock_ = true

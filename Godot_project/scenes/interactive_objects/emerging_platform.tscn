@@ -1,22 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0d8qlhogli8h"]
+[gd_scene load_steps=5 format=3 uid="uid://d0d8qlhogli8h"]
 
 [ext_resource type="Script" uid="uid://bcrv2wq7qm5b2" path="res://scenes/interactive_objects/emerging_platform.gd" id="1_0xh5m"]
-[ext_resource type="Material" uid="uid://cifiuepets4eq" path="res://shaders/echo.tres" id="2_0hfhk"]
 
 [sub_resource type="Gradient" id="Gradient_ss2rw"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0xh5m"]
 gradient = SubResource("Gradient_ss2rw")
+fill_from = Vector2(0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ss2rw"]
 size = Vector2(64, 64)
 
 [node name="EmergingPlatform" type="StaticBody2D"]
-collision_mask = 0
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_0xh5m")
+metadata/_edit_horizontal_guides_ = [-32.0, 32.0]
+metadata/_edit_vertical_guides_ = [-32.0, 32.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = ExtResource("2_0hfhk")
 texture = SubResource("GradientTexture2D_0xh5m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
