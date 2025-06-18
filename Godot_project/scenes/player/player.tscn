@@ -205,18 +205,20 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7obkq"]
-size = Vector2(56, 96)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7obkq"]
+radius = 25.0
+height = 102.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7obkq"]
 radius = 69.0
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_7obkq")
 
 [node name="playerSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 scale = Vector2(0.128386, 0.133241)
 sprite_frames = SubResource("SpriteFrames_0y4ya")
 animation = &"fall"
@@ -236,7 +238,11 @@ unique_name_in_owner = true
 
 [node name="echoPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(23, -58)
+position = Vector2(1, -14)
+
+[node name="StepsEmitterCooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
 
 [node name="InteractionArea" type="Area2D" parent="."]
 unique_name_in_owner = true

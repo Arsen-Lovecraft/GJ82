@@ -4,13 +4,22 @@ class_name Player
 signal gameOver
 
 @export_group("Sonar")
-@export var reveal_time: float = 1.0
-@export var disappear_time: float = 1.0
-@export var revealing_time: float = 1.0
-@export var size_relative_to_radius: float = 1000
+@export_range(0.1,20) var reveal_time: float = 1.0
+@export_range(0.1,20) var disappear_time: float = 1.0
+@export_range(0.1,1000) var revealing_time: float = 1.0
+@export_range(10,1000) var size_relative_to_radius: float = 500
+@export_group("Steps")
+@export_range(0.5,20) var emit_capacity: int = 12.0
+@export_range(0,100) var max_size: float = 90.0
+@export_range(0,100) var min_size: float = 42.0
+@export_range(0.1,20) var time_to_vanish: float = 0.7
+@export_range(0,2) var emit_cooldown: float = 0.075
+@export_range(1,15) var emit_count_on_landing: int = 12
 @export_group("Other")
 
 var _sonar_scene_ps: PackedScene = preload("uid://1yg762auekjc")
+var _step_scene_ps: PackedScene = preload("uid://boxukbufy1aj7")
+var _steps_pool: Array[Step]
 
 @onready var player_sprite: AnimatedSprite2D = %playerSprite
 @onready var player_collision: CollisionShape2D = %playerCollision
@@ -18,7 +27,7 @@ var _sonar_scene_ps: PackedScene = preload("uid://1yg762auekjc")
 @onready var jump_sound: AudioStreamPlayer = %jumpSound
 @onready var _echo_pos: Marker2D = %echoPos
 @onready var _interaction_area: Area2D = %InteractionArea
-
+@onready var _steps_emitter_cooldown: Timer = %StepsEmitterCooldown
 
 @export var _player_data : RplayerData = preload("uid://byrd0re6gadg6")
 
@@ -30,6 +39,7 @@ var speed : float
 var jump_velocity : float
 var jumping : bool = false
 
+var _was_in_air: bool = false
 
 func _ready() -> void:
 	if(_player_data == null):
@@ -44,13 +54,13 @@ func _connect_signals()->void:
 func _init_data() -> void:
 	speed = _player_data.speed
 	jump_velocity = _player_data.jump_velocity
+	_steps_emitter_cooldown.wait_time = emit_cooldown
 
 func _on_body_entered(_body: Variant) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
 	Global.PlayerPos = global_position
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += _player_data.gravity * delta
@@ -105,7 +115,7 @@ func _physics_process(delta: float) -> void:
 			elif velocity.y < 0.00:
 				play_animation("jump")
 			elif jumping:
-				play_animation("jumpend")
+				play_animation("jumpend")	
 	
 	if Input.is_action_just_pressed("sonar"):
 		var sonar: Sonar = _sonar_scene_ps.instantiate()
@@ -120,7 +130,10 @@ func _physics_process(delta: float) -> void:
 	
 	if not direction:
 		velocity.x = move_toward(velocity.x, 0, speed)
+	_emit_steps(get_last_slide_collision())
 	move_and_slide()
+	if(_is_landed()):
+		_burst_lights()
 ## _physics_process END
 
 func _try_to_activate_button() -> void:
@@ -131,6 +144,38 @@ func _try_to_activate_button() -> void:
 func _on_interaction_area_entered(area: Area2D) -> void:
 	if(area is InteractiveDoor):
 		SceneManager.load_scene((area as InteractiveDoor).level_to_load)
+
+func _emit_steps(collision_data: KinematicCollision2D) -> void:
+	if(_steps_emitter_cooldown.is_stopped() and collision_data != null and velocity.length() != 0):
+		_steps_emitter_cooldown.start()
+	else:
+		return
+	var j: int = 0
+	for i: Step in _steps_pool:
+		if(i != Step):
+			_steps_pool.pop_at(j)	
+		j+=1
+	if(_steps_pool.size() < emit_capacity):
+		var step: Step = _step_scene_ps.instantiate()
+		get_tree().current_scene.add_child(step)
+		var random_circle_emition: Vector2 = Vector2(randf_range(-15.0,15.0),randf_range(-15.0,15.0))
+		step.emit_step(collision_data.get_position() + random_circle_emition, max_size, min_size, time_to_vanish)
+		_steps_pool.push_front(step)
+
+func _is_landed() -> bool:
+	var just_landed: bool = (_was_in_air and is_on_floor())
+	_was_in_air = !is_on_floor()
+	return just_landed
+
+func _burst_lights() -> void:
+	for i: int in range(emit_count_on_landing):
+		var step: Step = _step_scene_ps.instantiate()
+		get_tree().current_scene.add_child(step)
+		var random_circle_emition: Vector2 = Vector2(randf_range(-15.0,15.0),randf_range(-15.0,15.0))
+		var centre: Vector2 =Vector2(player_collision.global_position.x, 
+		player_collision.global_position.y + (player_collision.shape as CapsuleShape2D).height/2)
+		
+		step.emit_step(centre + random_circle_emition, max_size, min_size, time_to_vanish)
 
 func play_animation(anim_name: String) -> void:
 	if player_sprite.animation != anim_name:
