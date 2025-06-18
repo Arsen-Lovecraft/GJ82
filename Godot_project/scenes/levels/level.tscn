@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://bgxu354jspybh"]
+
+[ext_resource type="Script" uid="uid://b4xkcli5xagl0" path="res://scripts/level.gd" id="1_377w7"]
+[ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="2_bovvr"]
+[ext_resource type="PackedScene" uid="uid://i67ta36lf2qp" path="res://scenes/static_environment/static_environment.tscn" id="3_b2cq8"]
+[ext_resource type="Texture2D" uid="uid://ba35hs4l4ejnm" path="res://_not_for_export/1000_F_994285793_S4vOI5tAEUa7hKzoBPcbTxG267VznEQB.jpg" id="4_d4w6o"]
+[ext_resource type="PackedScene" uid="uid://dfqjxthp6ml5d" path="res://scenes/interactive_objects/interactive_button.tscn" id="4_xb4v1"]
+[ext_resource type="PackedScene" uid="uid://b76212mcar6o2" path="res://scenes/interactive_objects/interactive_door.tscn" id="5_urvlt"]
+
+[sub_resource type="Gradient" id="Gradient_bovvr"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b2cq8"]
+gradient = SubResource("Gradient_bovvr")
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_377w7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(13.2587, 5.96699)
+texture = SubResource("GradientTexture2D_b2cq8")
+
+[node name="BackGround" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment"]
+texture = ExtResource("4_d4w6o")
+
+[node name="StaticEnvironment" parent="Environment" instance=ExtResource("3_b2cq8")]
+position = Vector2(1, 190)
+scale = Vector2(42, 1.72)
+
+[node name="StaticEnvironment2" parent="Environment" instance=ExtResource("3_b2cq8")]
+position = Vector2(424, 3)
+rotation = 1.57079
+scale = Vector2(22.03, 1.72)
+
+[node name="StaticEnvironment3" parent="Environment" instance=ExtResource("3_b2cq8")]
+position = Vector2(17, -191)
+scale = Vector2(42, 1.72)
+
+[node name="StaticEnvironment4" parent="Environment" instance=ExtResource("3_b2cq8")]
+position = Vector2(-422, 3)
+rotation = -1.57079
+scale = Vector2(22.03, 1.72)
+
+[node name="InteractiveObjects" type="Node2D" parent="."]
+
+[node name="InteractiveButton" parent="InteractiveObjects" node_paths=PackedStringArray("door") instance=ExtResource("4_xb4v1")]
+position = Vector2(-167, 95)
+door = NodePath("../InteractiveDoor")
+
+[node name="InteractiveDoor" parent="InteractiveObjects" instance=ExtResource("5_urvlt")]
+position = Vector2(357, 114)
+level_to_load = "uid://ldg2jq7gg87x"
+
+[node name="Player" parent="." instance=ExtResource("2_bovvr")]
+position = Vector2(-324, 127)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(9.53674e-07, 3)
+scale = Vector2(0.866667, 0.949045)
+zoom = Vector2(1.425, 1.83)
