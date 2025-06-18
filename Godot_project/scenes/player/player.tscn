@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ca5gokbym2sbx"]
+[gd_scene load_steps=44 format=3 uid="uid://ca5gokbym2sbx"]
 
 [ext_resource type="Script" uid="uid://dut1cbqn20u2r" path="res://scenes/player/player.gd" id="1_7obkq"]
 [ext_resource type="Texture2D" uid="uid://yrycqhlcaicd" path="res://assets/players/player1/death_0.png" id="1_wva7c"]
@@ -206,20 +206,25 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7obkq"]
-size = Vector2(549, 705)
+size = Vector2(56, 96)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7obkq"]
+radius = 69.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_7obkq")
 
 [node name="playerSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+scale = Vector2(0.128386, 0.133241)
 sprite_frames = SubResource("SpriteFrames_0y4ya")
 animation = &"fall"
 offset = Vector2(0, -500)
 
 [node name="playerCollision" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(2.5, -94.5)
+position = Vector2(-1, -13)
 shape = SubResource("RectangleShape2D_7obkq")
 
 [node name="echoSound" type="AudioStreamPlayer" parent="."]
@@ -229,4 +234,15 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="echoPos" type="Marker2D" parent="."]
-position = Vector2(298, -461)
+unique_name_in_owner = true
+position = Vector2(1, -14)
+
+[node name="InteractionArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_7obkq")
+debug_color = Color(0.859844, 0.362462, 3.85046e-07, 0.42)

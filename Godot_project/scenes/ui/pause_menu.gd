@@ -7,7 +7,6 @@ signal pause_menu_reset()
 @onready var play: Button = %play
 @onready var menu: Button = %menu
 
-
 var current_scene_packed: PackedScene
 var current_scene_path: String
 

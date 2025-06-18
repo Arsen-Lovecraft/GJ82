@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://1yg762auekjc"]
+
+[ext_resource type="Texture2D" uid="uid://dkih501mxauw" path="res://_not_for_export/conw.png" id="1_6nb35"]
+[ext_resource type="Script" uid="uid://ydj60yg4bb3b" path="res://scenes/player/sonar.gd" id="2_ek8sk"]
+
+[sub_resource type="Shader" id="Shader_ek8sk"]
+code = "shader_type canvas_item;
+
+uniform float speed = 2.0;
+uniform float strength = 0.5;
+
+void fragment() {
+    // Pulsing brightness effect
+    float pulse = sin(TIME * speed) * strength + 1.0;
+    COLOR = texture(TEXTURE, UV) * vec4(pulse, pulse, pulse, 1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nps6e"]
+shader = SubResource("Shader_ek8sk")
+shader_parameter/speed = 2.0
+shader_parameter/strength = 0.5
+
+[sub_resource type="Animation" id="Animation_nps6e"]
+resource_name = "reveal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.005, 0.005), Vector2(0.275, 0.275)]
+}
+
+[sub_resource type="Animation" id="Animation_ibnof"]
+resource_name = "disappear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.275, 0.275), Vector2(0.025, 0.025)]
+}
+
+[sub_resource type="Animation" id="Animation_k1prn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.275, 0.275)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nps6e"]
+_data = {
+&"RESET": SubResource("Animation_k1prn"),
+&"disappear": SubResource("Animation_ibnof"),
+&"reveal": SubResource("Animation_nps6e")
+}
+
+[node name="Sonar" type="PointLight2D"]
+top_level = true
+material = SubResource("ShaderMaterial_nps6e")
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("1_6nb35")
+offset = Vector2(2.685, -102)
+texture_scale = 0.2
+script = ExtResource("2_ek8sk")
+
+[node name="SonarAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_nps6e")
+}
+
+[node name="RevealingTimer" type="Timer" parent="."]
+unique_name_in_owner = true

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://1bmc45p2gryd"]
+
+[ext_resource type="PackedScene" uid="uid://1yg762auekjc" path="res://scenes/player/sonar.tscn" id="1_dswsi"]
+
+[sub_resource type="Gradient" id="Gradient_5plph"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dswsi"]
+gradient = SubResource("Gradient_5plph")
+
+[node name="TestSonarScene" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(19.9566, 12.5757)
+texture = SubResource("GradientTexture2D_dswsi")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
+blend_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sonar" parent="." instance=ExtResource("1_dswsi")]
+position = Vector2(-72, 45)
