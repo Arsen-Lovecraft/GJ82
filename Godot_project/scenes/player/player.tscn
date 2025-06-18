@@ -206,20 +206,21 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7obkq"]
-size = Vector2(549, 705)
+size = Vector2(33, 55)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_7obkq")
 
 [node name="playerSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+scale = Vector2(0.075, 0.075)
 sprite_frames = SubResource("SpriteFrames_0y4ya")
 animation = &"fall"
 offset = Vector2(0, -500)
 
 [node name="playerCollision" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(2.5, -94.5)
+position = Vector2(-0.5, -7.5)
 shape = SubResource("RectangleShape2D_7obkq")
 
 [node name="echoSound" type="AudioStreamPlayer" parent="."]
@@ -229,4 +230,5 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="echoPos" type="Marker2D" parent="."]
-position = Vector2(298, -461)
+unique_name_in_owner = true
+position = Vector2(0, -14)

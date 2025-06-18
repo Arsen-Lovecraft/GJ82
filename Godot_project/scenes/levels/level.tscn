@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgxu354jspybh"]
+
+[ext_resource type="Script" uid="uid://b4xkcli5xagl0" path="res://scripts/level.gd" id="1_377w7"]
+[ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="2_bovvr"]
+[ext_resource type="Texture2D" uid="uid://ba35hs4l4ejnm" path="res://_not_for_export/1000_F_994285793_S4vOI5tAEUa7hKzoBPcbTxG267VznEQB.jpg" id="3_b2cq8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2cq8"]
+size = Vector2(400, 20)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_377w7")
+
+[node name="BackGround" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_b2cq8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, 48)
+shape = SubResource("RectangleShape2D_b2cq8")
+
+[node name="Player" parent="." instance=ExtResource("2_bovvr")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(14, 17)

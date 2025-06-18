@@ -3,12 +3,13 @@ class_name Player
 
 signal gameOver
 
-var echoScene : PackedScene = preload("uid://jpwvu7g48if4")
+var _sonar_scene_ps: PackedScene = preload("uid://1yg762auekjc")
 
 @onready var player_sprite: AnimatedSprite2D = %playerSprite
 @onready var player_collision: CollisionShape2D = %playerCollision
 @onready var echo_sound: AudioStreamPlayer = %echoSound
 @onready var jump_sound: AudioStreamPlayer = %jumpSound
+@onready var _echo_pos: Marker2D = %echoPos
 
 
 @export var _player_data : RplayerData = preload("uid://byrd0re6gadg6")
@@ -99,8 +100,10 @@ func _physics_process(delta: float) -> void:
 				play_animation("jumpend")	
 	
 	if Input.is_action_just_pressed("sonar"):
-		##ECHO EMMISION
-		_echo_emit(position,$echoPos.global_position)
+		var sonar: Sonar = _sonar_scene_ps.instantiate()
+		get_tree().current_scene.add_child(sonar)
+		sonar.set_sonar_parametres(1.0,1.0)
+		sonar.emit_sonar(_echo_pos.global_position, get_global_mouse_position().angle() + PI/2)
 	
 	
 	if not direction:
@@ -113,10 +116,3 @@ func _physics_process(delta: float) -> void:
 func play_animation(anim_name: String) -> void:
 	if player_sprite.animation != anim_name:
 		player_sprite.play(anim_name)
-
-
-func _echo_emit(_playerPos: Vector2, echoPos: Vector2) -> void:
-	var echo_emit := echoScene.instantiate()
-	echo_emit.echoOrigin = echoPos
-	add_child(echo_emit)
-	
