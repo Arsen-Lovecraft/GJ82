@@ -237,6 +237,10 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 position = Vector2(1, -14)
 
+[node name="StepsPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1, 35)
+
 [node name="InteractionArea" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 0

@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://boxukbufy1aj7"]
+
+[ext_resource type="Script" uid="uid://cicoqapjbes4h" path="res://scenes/player/step.gd" id="2_ord2v"]
+
+[sub_resource type="Shader" id="Shader_ek8sk"]
+code = "shader_type canvas_item;
+
+uniform float speed = 2.0;
+uniform float strength = 0.5;
+
+void fragment() {
+    // Pulsing brightness effect
+    float pulse = sin(TIME * speed) * strength + 1.0;
+    COLOR = texture(TEXTURE, UV) * vec4(pulse, pulse, pulse, 1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nps6e"]
+shader = SubResource("Shader_ek8sk")
+shader_parameter/speed = 2.0
+shader_parameter/strength = 0.5
+
+[sub_resource type="Gradient" id="Gradient_yoece"]
+offsets = PackedFloat32Array(0, 0.722772)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ord2v"]
+gradient = SubResource("Gradient_yoece")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Animation" id="Animation_ord2v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.275, 0.275)]
+}
+
+[sub_resource type="Animation" id="Animation_x5vyo"]
+resource_name = "vanish"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.05, 0.05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7g2g2"]
+_data = {
+&"RESET": SubResource("Animation_ord2v"),
+&"vanish": SubResource("Animation_x5vyo")
+}
+
+[node name="Step" type="PointLight2D"]
+top_level = true
+material = SubResource("ShaderMaterial_nps6e")
+scale = Vector2(0.275, 0.275)
+texture = SubResource("GradientTexture2D_ord2v")
+texture_scale = 0.2
+script = ExtResource("2_ord2v")
+
+[node name="StepAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_7g2g2")
+}

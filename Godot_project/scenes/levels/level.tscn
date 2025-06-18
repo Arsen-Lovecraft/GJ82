@@ -21,6 +21,7 @@ scale = Vector2(13.2587, 5.96699)
 texture = SubResource("GradientTexture2D_b2cq8")
 
 [node name="BackGround" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Environment" type="Node2D" parent="."]
@@ -62,4 +63,4 @@ position = Vector2(-324, 127)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(9.53674e-07, 3)
 scale = Vector2(0.866667, 0.949045)
-zoom = Vector2(1.425, 1.83)
+zoom = Vector2(1.315, 1.615)

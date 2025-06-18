@@ -4,21 +4,29 @@ class_name Player
 signal gameOver
 
 @export_group("Sonar")
-@export var reveal_time: float = 1.0
-@export var disappear_time: float = 1.0
-@export var revealing_time: float = 1.0
-@export var size_relative_to_radius: float = 500
+@export_range(0.1,20) var reveal_time: float = 1.0
+@export_range(0.1,20) var disappear_time: float = 1.0
+@export_range(0.1,1000) var revealing_time: float = 1.0
+@export_range(10,1000) var size_relative_to_radius: float = 500
+@export_group("Steps")
+@export_range(0.5,20) var emit_capacity: int = 12.0
+@export_range(0,100) var max_size: float = 62.0
+@export_range(0,100) var min_size: float = 25.0
+@export_range(0.1,20) var time_to_vanish: float = 0.7
+@export_range(0,2) var emit_cooldown: float = 0.15
 @export_group("Other")
 
 var _sonar_scene_ps: PackedScene = preload("uid://1yg762auekjc")
+var _step_scene_ps: PackedScene = preload("uid://boxukbufy1aj7")
+var _steps_pool: Array[Step]
 
 @onready var player_sprite: AnimatedSprite2D = %playerSprite
 @onready var player_collision: CollisionShape2D = %playerCollision
 @onready var echo_sound: AudioStreamPlayer = %echoSound
 @onready var jump_sound: AudioStreamPlayer = %jumpSound
 @onready var _echo_pos: Marker2D = %echoPos
+@onready var _steps_pos: Marker2D = %StepsPos
 @onready var _interaction_area: Area2D = %InteractionArea
-
 
 @export var _player_data : RplayerData = preload("uid://byrd0re6gadg6")
 
@@ -118,6 +126,7 @@ func _physics_process(delta: float) -> void:
 	if not direction:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	move_and_slide()
+	_emit_steps(get_last_slide_collision())
 ## _physics_process END
 
 func _try_to_activate_button() -> void:
@@ -128,6 +137,20 @@ func _try_to_activate_button() -> void:
 func _on_interaction_area_entered(area: Area2D) -> void:
 	if(area is InteractiveDoor):
 		SceneManager.load_scene((area as InteractiveDoor).level_to_load)
+
+func _emit_steps(collision_data: KinematicCollision2D) -> void:
+	await get_tree().create_timer(emit_cooldown).timeout
+	var j: int = 0
+	for i: Step in _steps_pool:
+		if(i == null):
+			_steps_pool.remove_at(j)
+		j+=1
+	if(collision_data != null and _steps_pool.size() < emit_capacity and get_last_motion() != Vector2(0,0)):
+		var step: Step = _step_scene_ps.instantiate()
+		get_tree().current_scene.add_child(step)
+		var random_circle_emition: Vector2 = Vector2(randf_range(-25.0,25.0),randf_range(-25.0,25.0))
+		step.emit_step(collision_data.get_position() + random_circle_emition, max_size, min_size, time_to_vanish)
+		_steps_pool.push_front(step)
 
 func play_animation(anim_name: String) -> void:
 	if player_sprite.animation != anim_name:
