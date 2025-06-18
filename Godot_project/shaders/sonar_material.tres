@@ -1,8 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://tbbcibgm26iy"]
-
-[ext_resource type="Shader" uid="uid://ctkqwvdmlfurs" path="res://shaders/sonar_shader.gdshader" id="1_qerge"]
-
-[resource]
-shader = ExtResource("1_qerge")
-shader_parameter/speed = 2.0
-shader_parameter/strength = 0.5

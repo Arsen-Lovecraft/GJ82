@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Godot Game JAM 82"
 config/version="0.0.1"
+run/main_scene="uid://bgxu354jspybh"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://celhauthido0h"
@@ -110,6 +111,7 @@ locale/translations_pot_files=PackedStringArray("res://scenes/settings/settings_
 
 [layer_names]
 
+2d_physics/layer_2="static_environment"
 2d_physics/layer_6="button and door"
 
 [rendering]

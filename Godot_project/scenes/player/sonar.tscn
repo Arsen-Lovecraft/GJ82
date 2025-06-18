@@ -1,8 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://1yg762auekjc"]
+[gd_scene load_steps=9 format=3 uid="uid://1yg762auekjc"]
 
 [ext_resource type="Texture2D" uid="uid://dkih501mxauw" path="res://_not_for_export/conw.png" id="1_6nb35"]
-[ext_resource type="Material" uid="uid://tbbcibgm26iy" path="res://shaders/sonar_material.tres" id="1_nps6e"]
 [ext_resource type="Script" uid="uid://ydj60yg4bb3b" path="res://scenes/player/sonar.gd" id="2_ek8sk"]
+
+[sub_resource type="Shader" id="Shader_ek8sk"]
+code = "shader_type canvas_item;
+
+uniform float speed = 2.0;
+uniform float strength = 0.5;
+
+void fragment() {
+    // Pulsing brightness effect
+    float pulse = sin(TIME * speed) * strength + 1.0;
+    COLOR = texture(TEXTURE, UV) * vec4(pulse, pulse, pulse, 1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nps6e"]
+shader = SubResource("Shader_ek8sk")
+shader_parameter/speed = 2.0
+shader_parameter/strength = 0.5
 
 [sub_resource type="Animation" id="Animation_nps6e"]
 resource_name = "reveal"
@@ -57,7 +73,8 @@ _data = {
 }
 
 [node name="Sonar" type="PointLight2D"]
-material = ExtResource("1_nps6e")
+top_level = true
+material = SubResource("ShaderMaterial_nps6e")
 scale = Vector2(0.275, 0.275)
 texture = ExtResource("1_6nb35")
 offset = Vector2(2.685, -102)
