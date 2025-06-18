@@ -218,7 +218,6 @@ script = ExtResource("1_7obkq")
 
 [node name="playerSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 scale = Vector2(0.128386, 0.133241)
 sprite_frames = SubResource("SpriteFrames_0y4ya")
 animation = &"fall"
@@ -227,8 +226,7 @@ offset = Vector2(0, -500)
 [node name="playerCollision" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-1, -13)
-shape = SubResource("RectangleShape2D_7obkq")
-metadata/_edit_lock_ = true
+shape = SubResource("CapsuleShape2D_7obkq")
 
 [node name="echoSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
@@ -253,4 +251,3 @@ collision_mask = 32
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_7obkq")
 debug_color = Color(0.859844, 0.362462, 3.85046e-07, 0.42)
-metadata/_edit_lock_ = true
