@@ -14,6 +14,7 @@ signal gameOver
 @export_range(0,100) var min_size: float = 42.0
 @export_range(0.1,20) var time_to_vanish: float = 0.7
 @export_range(0,2) var emit_cooldown: float = 0.075
+@export_range(1,15) var emit_count_on_landing: int = 12
 @export_group("Other")
 
 var _sonar_scene_ps: PackedScene = preload("uid://1yg762auekjc")
@@ -38,6 +39,7 @@ var speed : float
 var jump_velocity : float
 var jumping : bool = false
 
+var _was_in_air: bool = false
 
 func _ready() -> void:
 	if(_player_data == null):
@@ -127,6 +129,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	_emit_steps(get_last_slide_collision())
 	move_and_slide()
+	if(_is_landed()):
+		_burst_lights()
 ## _physics_process END
 
 func _try_to_activate_button() -> void:
@@ -154,6 +158,21 @@ func _emit_steps(collision_data: KinematicCollision2D) -> void:
 		var random_circle_emition: Vector2 = Vector2(randf_range(-15.0,15.0),randf_range(-15.0,15.0))
 		step.emit_step(collision_data.get_position() + random_circle_emition, max_size, min_size, time_to_vanish)
 		_steps_pool.push_front(step)
+
+func _is_landed() -> bool:
+	var just_landed: bool = (_was_in_air and is_on_floor())
+	_was_in_air = !is_on_floor()
+	return just_landed
+
+func _burst_lights() -> void:
+	for i: int in range(emit_count_on_landing):
+		var step: Step = _step_scene_ps.instantiate()
+		get_tree().current_scene.add_child(step)
+		var random_circle_emition: Vector2 = Vector2(randf_range(-15.0,15.0),randf_range(-15.0,15.0))
+		var centre: Vector2 =Vector2(player_collision.global_position.x, 
+		player_collision.global_position.y + (player_collision.shape as CapsuleShape2D).height/2)
+		
+		step.emit_step(centre + random_circle_emition, max_size, min_size, time_to_vanish)
 
 func play_animation(anim_name: String) -> void:
 	if player_sprite.animation != anim_name:
