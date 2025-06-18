@@ -5,11 +5,11 @@ extends PointLight2D
 @onready var _sonar_animation_player: AnimationPlayer = %SonarAnimationPlayer
 @onready var _revealing_timer: Timer = %RevealingTimer
 
-@export var _revealing_time: float = 1.0
-@export var _reveal_time_speed_scale: float = 1.0
-@export var _disappear_time_speed_scale:float = 1.0
+var _revealing_time: float = 1.0
+var _reveal_time_speed_scale: float = 1.0
+var _disappear_time_speed_scale:float = 1.0
 #1.0 is 205.0 radius -> so 2.0 would be 410.0
-@export var _default_radius: float = 1.0
+var _default_radius: float = 1.0
 
 func _ready() -> void:
 	_connect_signals()

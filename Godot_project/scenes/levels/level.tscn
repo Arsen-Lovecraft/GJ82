@@ -34,16 +34,17 @@ scale = Vector2(42, 1.72)
 
 [node name="StaticEnvironment2" parent="Environment" instance=ExtResource("3_b2cq8")]
 position = Vector2(424, 3)
-rotation = 1.57079
+rotation = 4.71238
 scale = Vector2(22.03, 1.72)
 
 [node name="StaticEnvironment3" parent="Environment" instance=ExtResource("3_b2cq8")]
 position = Vector2(17, -191)
+rotation = 3.14159
 scale = Vector2(42, 1.72)
 
 [node name="StaticEnvironment4" parent="Environment" instance=ExtResource("3_b2cq8")]
 position = Vector2(-422, 3)
-rotation = -1.57079
+rotation = -4.71238
 scale = Vector2(22.03, 1.72)
 
 [node name="InteractiveObjects" type="Node2D" parent="."]
@@ -62,4 +63,4 @@ position = Vector2(-324, 127)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(9.53674e-07, 3)
 scale = Vector2(0.866667, 0.949045)
-zoom = Vector2(1.425, 1.83)
+zoom = Vector2(1.315, 1.615)
