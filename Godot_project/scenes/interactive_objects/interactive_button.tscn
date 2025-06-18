@@ -1,11 +1,39 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfqjxthp6ml5d"]
+[gd_scene load_steps=9 format=3 uid="uid://dfqjxthp6ml5d"]
 
 [ext_resource type="Script" uid="uid://cgboh61ucwdsd" path="res://scenes/interactive_objects/interactive_button.gd" id="1_wry5t"]
 [ext_resource type="AudioStream" uid="uid://dgimi4tn8ofq8" path="res://assets/sounds/interactive_objecs/button_activated.wav" id="2_p1di6"]
 [ext_resource type="AudioStream" uid="uid://cghyw4ql35aot" path="res://assets/sounds/interactive_objecs/button_tick.wav" id="3_ncje2"]
+[ext_resource type="Texture2D" uid="uid://clluwlsn1v1ng" path="res://assets/standard_circle_texture_for_light.tres" id="4_y0eqr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ey4g0"]
 radius = 78.0
+
+[sub_resource type="Animation" id="Animation_y0eqr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_ncje2"]
 resource_name = "light_scale_up_scale_down"
@@ -35,49 +63,11 @@ tracks/1/keys = {
 "values": [0.2, 2.0, 0.2]
 }
 
-[sub_resource type="Animation" id="Animation_y0eqr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PointLight2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PointLight2D:energy")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y0eqr"]
 _data = {
 &"RESET": SubResource("Animation_y0eqr"),
 &"light_scale_up_scale_down": SubResource("Animation_ncje2")
 }
-
-[sub_resource type="Gradient" id="Gradient_ncje2"]
-offsets = PackedFloat32Array(0, 0.227723, 0.686469)
-colors = PackedColorArray(1, 1, 1, 1, 0.478548, 0.478548, 0.478548, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_y0eqr"]
-gradient = SubResource("Gradient_ncje2")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0, 0)
-metadata/_snap_enabled = true
 
 [node name="InteractiveButton" type="Area2D"]
 collision_layer = 32
@@ -111,4 +101,4 @@ libraries = {
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(1e-05, 1e-05)
 energy = 0.0
-texture = SubResource("GradientTexture2D_y0eqr")
+texture = ExtResource("4_y0eqr")
