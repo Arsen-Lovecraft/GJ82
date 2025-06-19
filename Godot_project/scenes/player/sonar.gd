@@ -42,3 +42,7 @@ func _on_animation_finished(anim_name: String) -> void:
 func _on_reveling_timer_timeout() -> void:
 	_sonar_animation_player.speed_scale = _disappear_time_speed_scale
 	_sonar_animation_player.play("disappear")
+
+func _process(_delta: float) -> void:
+	EventBus._sonar_scale.emit(scale)
+	

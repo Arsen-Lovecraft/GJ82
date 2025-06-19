@@ -218,7 +218,6 @@ script = ExtResource("1_7obkq")
 
 [node name="playerSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 scale = Vector2(0.128386, 0.133241)
 sprite_frames = SubResource("SpriteFrames_0y4ya")
 animation = &"fall"

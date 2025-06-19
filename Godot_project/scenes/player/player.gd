@@ -120,6 +120,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("sonar"):
 		var sonar: Sonar = _sonar_scene_ps.instantiate()
 		get_tree().current_scene.add_child(sonar)
+		
+		EventBus._sonar_emitted.emit(_echo_pos.global_position, size_relative_to_radius, revealing_time, _echo_pos.get_angle_to(get_global_mouse_position()) + PI/2)
+		
 		sonar.set_sonar_parametres(reveal_time,disappear_time,revealing_time,size_relative_to_radius)
 		sonar.emit_sonar(_echo_pos.global_position, _echo_pos.get_angle_to(get_global_mouse_position()) + PI/2 )
 	if(Input.is_action_just_pressed("interact")):
