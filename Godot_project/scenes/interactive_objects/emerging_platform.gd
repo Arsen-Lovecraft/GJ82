@@ -90,7 +90,6 @@ _sonar_scale.x >= _emit_to_platform_verti_distances[2] or _sonar_scale.x >= _emi
 		_emerge()
 		_emerge_success_sonar = true
 
-
 func _process(_delta: float) -> void:
 	if _emerging_sound and _emerge_success and !_emerged_sound:
 		platform_emerge.play()
@@ -106,7 +105,9 @@ func _emerge() -> void:
 	_emerging_sound = true
 	collision_shape.disabled = 0
 	plat_texture.self_modulate.a = 1.0
-	_seen_timer.start()
+	if _seen_timer.is_stopped():
+		_seen_timer.start()
+		
 
 
 func _disappear() -> void:
@@ -124,4 +125,3 @@ func _disappear() -> void:
 
 func _timer_stopped() -> void:
 	_disappear()
-	print("stopped")
