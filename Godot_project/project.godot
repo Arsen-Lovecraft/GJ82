@@ -15,6 +15,7 @@ config/version="0.0.1"
 run/main_scene="uid://ldg2jq7gg87x"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/image="uid://dkih501mxauw"
 config/icon="uid://celhauthido0h"
 
 [audio]
@@ -69,7 +70,7 @@ limbo_auto_complete_reverse={
 }
 limbo_console_toggle={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":81,"physical_keycode":0,"key_label":0,"unicode":81,"location":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":96,"physical_keycode":0,"key_label":0,"unicode":96,"location":0,"echo":false,"script":null)
 ]
 }
 left={
