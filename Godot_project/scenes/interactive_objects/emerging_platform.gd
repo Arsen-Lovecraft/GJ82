@@ -8,10 +8,7 @@ extends StaticBody2D
 
 var _emit_to_platform_verti_distances: Array
 var _emit_to_platform_verti_angles: Array
-var _emit_to_platform_angle_deg: float
-var _platform_reveal_duration : float
-var _reveal_time_speed_scale: float = 1.0
-var _disappear_time_speed_scale:float = 1.0
+var _sonar_scale : Vector2
 
 
 
@@ -26,14 +23,14 @@ func _init_platform() -> void:
 func _connect_signals() -> void:
 	_seen_timer.timeout.connect(_disappear)
 	EventBus.connect("_sonar_emitted",_on_sonar_emmission)
+	EventBus.connect("_sonar_scale", _sonar_scale_every_frame)
 
-func _on_sonar_emmission (_emit_position:Vector2, size_relative_to_radius:float, reveal_time: float, disappear_time: float, angle_in_rad: float) -> void:
+func _on_sonar_emmission (_emit_position:Vector2, size_relative_to_radius:float, reveal_time: float, angle_in_rad: float) -> void:
 	#printt(_emit_position,size_relative_to_radius,reveal_time,disappear_time,angle_in_rad)
-	_sonar_vs_platform_calculations(_emit_position, size_relative_to_radius, reveal_time, disappear_time, angle_in_rad)
+	_sonar_vs_platform_calculations(_emit_position, size_relative_to_radius, reveal_time, angle_in_rad)
 	
 	
-	
-func _sonar_vs_platform_calculations(_emit_position:Vector2, size_relative_to_radius:float, revealing_time: float, disappear_time: float, angle_in_rad: float) -> void:
+func _sonar_vs_platform_calculations(_emit_position:Vector2, size_relative_to_radius:float, revealing_time: float, angle_in_rad: float) -> void:
 	get_platform_global_data(_emit_position)
 	angle_in_rad = angle_in_rad - PI/2
 	var sonar_cone_rad := deg_to_rad(sonar_cone_deg)
@@ -42,26 +39,7 @@ func _sonar_vs_platform_calculations(_emit_position:Vector2, size_relative_to_ra
 	var max_sonar_size: float = size_relative_to_radius
 	_seen_timer.wait_time = revealing_time + seen_time
 
-	#if angle_in_rad_left >= _emit_to_platform_verti_angles[0] and angle_in_rad_left <= _emit_to_platform_verti_angles[1]:
-		#_emerge()
-	#elif angle_in_rad_left >= _emit_to_platform_verti_angles[1] and angle_in_rad_left <= _emit_to_platform_verti_angles[2]:
-		#_emerge()
-	#elif angle_in_rad_left >= _emit_to_platform_verti_angles[2] and angle_in_rad_left <= _emit_to_platform_verti_angles[3]:
-		#_emerge()
-	#elif angle_in_rad_left >= _emit_to_platform_verti_angles[3] and angle_in_rad_left <= _emit_to_platform_verti_angles[0]:
-		#_emerge()
-	#elif angle_in_rad_right >= _emit_to_platform_verti_angles[0] and angle_in_rad_right <= _emit_to_platform_verti_angles[1]:
-		#_emerge()
-	#elif angle_in_rad_right >= _emit_to_platform_verti_angles[1] and angle_in_rad_right <= _emit_to_platform_verti_angles[2]:
-		#_emerge()
-	#elif angle_in_rad_right >= _emit_to_platform_verti_angles[2] and angle_in_rad_right <= _emit_to_platform_verti_angles[3]:
-		#_emerge()
-	#elif angle_in_rad_right >= _emit_to_platform_verti_angles[3] and angle_in_rad_right <= _emit_to_platform_verti_angles[0]:
-		#_emerge()
-	#else:
-		##pass
-		#_disappear()
-		
+
 	## If the platform and echoPoint angle is between the angles made by both arms of the cone the emerge will trigger
 	if ((angle_in_rad_right <= _emit_to_platform_verti_angles[0] and angle_in_rad_left >= _emit_to_platform_verti_angles[0]) or \
 	(angle_in_rad_right <= _emit_to_platform_verti_angles[1] and angle_in_rad_left >= _emit_to_platform_verti_angles[1]) or \
@@ -93,6 +71,9 @@ func get_platform_global_data(_emit_position: Vector2) -> void:
 		_emit_to_platform_verti_distances.append(_emit_position.distance_to(collision_shape.to_global(p)))
 		_emit_to_platform_verti_angles.append(_emit_position.angle_to_point(collision_shape.to_global(p)))
 
+func _sonar_scale_every_frame(sonar_scale: Vector2) -> void:
+	_sonar_scale = sonar_scale
+	print(_sonar_scale)
 
 func _emerge() -> void:
 	collision_shape.disabled = 0
