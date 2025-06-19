@@ -1,10 +1,70 @@
-[gd_scene load_steps=3 format=3 uid="uid://b76212mcar6o2"]
+[gd_scene load_steps=9 format=3 uid="uid://b76212mcar6o2"]
 
 [ext_resource type="Script" uid="uid://5gli5mwbygij" path="res://scenes/interactive_objects/interactive_door.gd" id="1_a2c6x"]
+[ext_resource type="AudioStream" uid="uid://wpi4dorcyvxl" path="res://assets/sounds/interactive_objecs/door_open.wav" id="2_yp7sh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jagx2"]
 radius = 36.0
 height = 100.0
+
+[sub_resource type="Animation" id="Animation_yp7sh"]
+resource_name = "door_open_light"
+length = 2.76
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.38, 2.76),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(3.125, 2.09375), Vector2(0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.76),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_2xjdn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2xjdn"]
+_data = {
+&"RESET": SubResource("Animation_2xjdn"),
+&"door_open_light": SubResource("Animation_yp7sh")
+}
+
+[sub_resource type="Gradient" id="Gradient_yp7sh"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2xjdn"]
+gradient = SubResource("Gradient_yp7sh")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+metadata/_snap_enabled = true
 
 [node name="InteractiveDoor" type="Area2D"]
 collision_layer = 32
@@ -15,3 +75,19 @@ script = ExtResource("1_a2c6x")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_jagx2")
 debug_color = Color(0.796078, 0.423529, 0, 0.419608)
+
+[node name="DoorOpenSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_yp7sh")
+
+[node name="DoorAnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_2xjdn")
+}
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(3.8147e-06, 3.21865e-06)
+scale = Vector2(0.1, 0.1)
+texture = SubResource("GradientTexture2D_2xjdn")
