@@ -1,48 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsv107sor8kuc"]
+[gd_scene load_steps=9 format=3 uid="uid://bsv107sor8kuc"]
 
 [ext_resource type="Script" uid="uid://c86ebdqnoalgu" path="res://_not_for_export/test_door_and_button_interactive/main_test_level_door_and_button_1.gd" id="1_1uofp"]
-[ext_resource type="Script" uid="uid://cyf6hcvtn0lac" path="res://_not_for_export/test_door_and_button_interactive/test_character.gd" id="1_cmgnq"]
 [ext_resource type="Script" uid="uid://38e8upkqw3kr" path="res://_not_for_export/test_door_and_button_interactive/test_button_label.gd" id="2_1uofp"]
+[ext_resource type="Texture2D" uid="uid://ba35hs4l4ejnm" path="res://_not_for_export/1000_F_994285793_S4vOI5tAEUa7hKzoBPcbTxG267VznEQB.jpg" id="2_hyxm4"]
 [ext_resource type="Script" uid="uid://dejophbfm3k03" path="res://_not_for_export/test_door_and_button_interactive/test_door_label.gd" id="3_unlr7"]
 [ext_resource type="PackedScene" uid="uid://dfqjxthp6ml5d" path="res://scenes/interactive_objects/interactive_button.tscn" id="4_yak0a"]
 [ext_resource type="PackedScene" uid="uid://b76212mcar6o2" path="res://scenes/interactive_objects/interactive_door.tscn" id="5_5gglj"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_86svo"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kuogi"]
-size = Vector2(23.5102, 35.2703)
+[ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="6_fki5v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_44g3h"]
 
 [node name="TestLevelDoorAndButton" type="Node2D"]
 script = ExtResource("1_1uofp")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(157, 537)
-scale = Vector2(3.0625, 3.82759)
-collision_mask = 34
-script = ExtResource("1_cmgnq")
-
-[node name="Label" type="Label" parent="CharacterBody2D"]
-offset_left = -15.3469
-offset_top = -12.2793
-offset_right = 75.6531
-offset_bottom = 8.72072
-scale = Vector2(0.32574, 0.408581)
-text = "Test Player"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CapsuleShape2D_86svo")
-
-[node name="InteractionArea" type="Area2D" parent="CharacterBody2D"]
-unique_name_in_owner = true
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/InteractionArea"]
-position = Vector2(0, -0.391891)
-shape = SubResource("RectangleShape2D_kuogi")
-debug_color = Color(0.761275, 0.451523, 1.15514e-06, 0.42)
 
 [node name="Env" type="Node2D" parent="."]
 
@@ -73,6 +42,9 @@ collision_layer = 2
 shape = SubResource("RectangleShape2D_44g3h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(474, 263)
+scale = Vector2(2.0061, 2.32514)
+texture = ExtResource("2_hyxm4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 377)
@@ -113,3 +85,9 @@ door = NodePath("../InteractiveDoor")
 unique_name_in_owner = true
 position = Vector2(270, 552)
 level_to_load = "uid://c3kdj24in5ucf"
+
+[node name="Player" parent="." instance=ExtResource("6_fki5v")]
+position = Vector2(171, 497)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
