@@ -17,6 +17,8 @@ var _sonar_scale : Vector2
 var _emerge_success: bool = false
 var _emerging_sound: bool = false
 var _emerged_sound: bool = false
+var _emerge_success_sonar : bool = false
+
 
 
 
@@ -25,11 +27,12 @@ func _ready() -> void:
 	_connect_signals()
 
 func _init_platform() -> void:
-	visible = false
+	plat_texture.self_modulate.a = 0
 	collision_shape.disabled = 1
 	
 func _connect_signals() -> void:
-	_seen_timer.timeout.connect(_timer_stopped)
+	if not _seen_timer.timeout.is_connected(_timer_stopped):
+		_seen_timer.timeout.connect(_timer_stopped)
 	EventBus.connect("_sonar_emitted",_on_sonar_emmission)
 	EventBus.connect("_sonar_scale", _sonar_scale_every_frame)
 
@@ -85,7 +88,8 @@ func _sonar_scale_every_frame(sonar_scale: Vector2) -> void:
 	if ((_sonar_scale.x >= _emit_to_platform_verti_distances[0] or _sonar_scale.x >= _emit_to_platform_verti_distances[1] or \
 _sonar_scale.x >= _emit_to_platform_verti_distances[2] or _sonar_scale.x >= _emit_to_platform_verti_distances[3])) and _emerge_success:
 		_emerge()
-	else:
+		_emerge_success_sonar = true
+	elif _emerge_success and _seen_timer.is_stopped() and _emerge_success_sonar:
 		_seen_timer.start()
 
 func _process(_delta: float) -> void:
@@ -101,18 +105,19 @@ func _process(_delta: float) -> void:
 func _emerge() -> void:
 	_emerging_sound = true
 	collision_shape.disabled = 0
-	self.visible = 1
+	plat_texture.self_modulate.a = 1.0
+
 
 func _disappear() -> void:
 	platform_disapper.play()
 	var _vis_tween : = create_tween()
 	_vis_tween.tween_property(plat_texture,"self_modulate:a",0.0,1).from(1.0)
-	await _vis_tween.finished
 	collision_shape.disabled = 1
-	visible = false
 	_emerging_sound = false
 	_emerge_success = false
 	_emerged_sound = false
+	_emerge_success_sonar = false
 
 func _timer_stopped() -> void:
 	_disappear()
+	print("stopped")

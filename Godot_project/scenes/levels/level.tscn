@@ -52,6 +52,18 @@ scale = Vector2(22.03, 1.72)
 position = Vector2(203, 80)
 scale = Vector2(3.31, 0.885)
 
+[node name="EmergingPlatform2" parent="Environment" instance=ExtResource("4_mbbpy")]
+position = Vector2(202, -51)
+scale = Vector2(3.31, 0.885)
+
+[node name="EmergingPlatform3" parent="Environment" instance=ExtResource("4_mbbpy")]
+position = Vector2(201, 187)
+scale = Vector2(3.31, 0.885)
+
+[node name="EmergingPlatform4" parent="Environment" instance=ExtResource("4_mbbpy")]
+position = Vector2(-234, -63)
+scale = Vector2(3.31, 0.885)
+
 [node name="InteractiveObjects" type="Node2D" parent="."]
 
 [node name="InteractiveButton" parent="InteractiveObjects" node_paths=PackedStringArray("door") instance=ExtResource("4_xb4v1")]

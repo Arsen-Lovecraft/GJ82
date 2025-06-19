@@ -35,6 +35,7 @@ one_way_collision = true
 
 [node name="SeenTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+one_shot = true
 
 [node name="platformEmerge" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
