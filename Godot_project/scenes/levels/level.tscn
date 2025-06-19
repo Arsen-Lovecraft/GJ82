@@ -51,7 +51,7 @@ rotation = -4.71238
 scale = Vector2(22.03, 1.72)
 
 [node name="EmergingPlatform" parent="Environment" instance=ExtResource("4_mbbpy")]
-position = Vector2(66, 42)
+position = Vector2(203, 80)
 scale = Vector2(3.31, 0.885)
 
 [node name="InteractiveObjects" type="Node2D" parent="."]

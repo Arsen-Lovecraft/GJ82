@@ -25,6 +25,7 @@ texture = SubResource("GradientTexture2D_0xh5m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ss2rw")
+one_way_collision = true
 
 [node name="SeenTimer" type="Timer" parent="."]
 unique_name_in_owner = true
