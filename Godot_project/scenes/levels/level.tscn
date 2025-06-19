@@ -21,6 +21,7 @@ scale = Vector2(13.2587, 5.96699)
 texture = SubResource("GradientTexture2D_b2cq8")
 
 [node name="BackGround" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Environment" type="Node2D" parent="."]
