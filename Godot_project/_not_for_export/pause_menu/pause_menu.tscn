@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctgcnn0vj0h85"]
+[gd_scene load_steps=7 format=3 uid="uid://ctgcnn0vj0h85"]
 
 [ext_resource type="Script" uid="uid://bpkpcy5a1scw1" path="res://_not_for_export/pause_menu/pause_menu.gd" id="1_0lmf7"]
 [ext_resource type="Theme" uid="uid://ckmc2uhafvgvk" path="res://assets/ui_resources/button/button.tres" id="1_unqsy"]
+[ext_resource type="Texture2D" uid="uid://cajj0qlyw0dnh" path="res://scenes/ui/pixil-frame-0 (3).png" id="3_f6eus"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uki6"]
+bg_color = Color(7.12335e-06, 0.873192, 0.782302, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0bnpd"]
+bg_color = Color(8.66354e-07, 0.511802, 0.65385, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4inpj"]
+texture = ExtResource("3_f6eus")
 
 [node name="pauseMenu" type="CanvasLayer"]
 script = ExtResource("1_0lmf7")
@@ -27,7 +37,7 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
@@ -37,7 +47,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_unqsy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8uki6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0bnpd")
 text = "menu"
+flat = true
 expand_icon = true
 
 [node name="reset" type="Button" parent="MarginContainer/HBoxContainer"]
@@ -45,7 +58,11 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_unqsy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8uki6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0bnpd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_4inpj")
 text = "reset"
+flat = true
 expand_icon = true
 
 [node name="play" type="Button" parent="MarginContainer/HBoxContainer"]
@@ -53,5 +70,9 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_unqsy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8uki6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0bnpd")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_4inpj")
 text = "play"
+flat = true
 expand_icon = true

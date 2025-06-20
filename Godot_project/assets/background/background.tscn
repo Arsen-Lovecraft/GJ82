@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ccktnrcppwh5h"]
+
+[node name="Background" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(0, 0.835294, 0.894118, 1)
+amount = 5000
+emission_shape = 3
+emission_rect_extents = Vector2(750, 500)
+gravity = Vector2(0, 0)
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.1
+radial_accel_min = 20.0
+radial_accel_max = 20.0
