@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://d0d8qlhogli8h"]
 
-[ext_resource type="Script" path="res://scenes/interactive_objects/emerging_platform.gd" id="1_0xh5m"]
+[ext_resource type="Script" uid="uid://bcrv2wq7qm5b2" path="res://scenes/interactive_objects/emerging_platform.gd" id="1_0xh5m"]
 [ext_resource type="AudioStream" uid="uid://cunsri3qbw3o1" path="res://assets/sounds/emerging_platform/PlatEmergy.wav" id="2_6irwq"]
 [ext_resource type="AudioStream" uid="uid://dq1ytkk18cfmx" path="res://assets/sounds/emerging_platform/PlatActivated.wav" id="3_i27d1"]
 [ext_resource type="AudioStream" uid="uid://chpq8ukdd0v2s" path="res://assets/sounds/emerging_platform/PlatDisappearing.wav" id="4_756po"]

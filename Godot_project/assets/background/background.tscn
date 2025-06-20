@@ -1,6 +1,17 @@
-[gd_scene format=3 uid="uid://ccktnrcppwh5h"]
+[gd_scene load_steps=3 format=3 uid="uid://ccktnrcppwh5h"]
+
+[sub_resource type="Gradient" id="Gradient_idvyx"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p8rh5"]
+gradient = SubResource("Gradient_idvyx")
 
 [node name="Background" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(31.6736, 15.8519)
+texture = SubResource("GradientTexture2D_p8rh5")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 modulate = Color(0, 0.835294, 0.894118, 1)
