@@ -28,6 +28,7 @@ var _steps_pool: Array[Step]
 @onready var _echo_pos: Marker2D = %echoPos
 @onready var _interaction_area: Area2D = %InteractionArea
 @onready var _steps_emitter_cooldown: Timer = %StepsEmitterCooldown
+@onready var _sonar_cooldown: Timer = %sonarCooldown
 
 @export var _player_data : RplayerData = preload("uid://byrd0re6gadg6")
 
@@ -38,7 +39,7 @@ var anim_locked: bool = false
 var speed : float
 var jump_velocity : float
 var jumping : bool = false
-
+var _sonar_emit : bool = true
 var _was_in_air: bool = false
 
 func _ready() -> void:
@@ -50,11 +51,13 @@ func _ready() -> void:
 
 func _connect_signals()->void:
 	_interaction_area.area_entered.connect(_on_interaction_area_entered)
+	_sonar_cooldown.timeout.connect(_on_sonar_cooldown)
 
 func _init_data() -> void:
 	speed = _player_data.speed
 	jump_velocity = _player_data.jump_velocity
 	_steps_emitter_cooldown.wait_time = emit_cooldown
+	_sonar_cooldown.wait_time = disappear_time + revealing_time + reveal_time
 
 func _on_body_entered(_body: Variant) -> void:
 	pass
@@ -116,14 +119,15 @@ func _physics_process(delta: float) -> void:
 			elif jumping:
 				play_animation("jumpend")	
 	
-	if Input.is_action_just_pressed("sonar"):
+	if Input.is_action_just_pressed("sonar") and _sonar_emit:
 		var sonar: Sonar = _sonar_scene_ps.instantiate()
 		get_tree().current_scene.add_child(sonar)
-		
+		_sonar_emit = false
 		EventBus._sonar_emitted.emit(_echo_pos.global_position, size_relative_to_radius, revealing_time, _echo_pos.get_angle_to(get_global_mouse_position()) + PI/2)
-		
+		_sonar_cooldown.start()
 		sonar.set_sonar_parametres(reveal_time,disappear_time,revealing_time,size_relative_to_radius)
 		sonar.emit_sonar(_echo_pos.global_position, _echo_pos.get_angle_to(get_global_mouse_position()) + PI/2 )
+		
 	if(Input.is_action_just_pressed("interact")):
 		_try_to_activate_button()
 	
@@ -180,3 +184,7 @@ func _burst_lights() -> void:
 func play_animation(anim_name: String) -> void:
 	if player_sprite.animation != anim_name:
 		player_sprite.play(anim_name)
+
+func _on_sonar_cooldown() -> void:
+	_sonar_emit = true
+	print(_sonar_emit)

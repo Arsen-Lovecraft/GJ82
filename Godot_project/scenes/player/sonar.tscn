@@ -90,3 +90,6 @@ libraries = {
 [node name="RevealingTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 20.0
+
+[node name="cooldownTimer" type="Timer" parent="."]
+unique_name_in_owner = true
