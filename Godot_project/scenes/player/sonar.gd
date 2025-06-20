@@ -4,6 +4,7 @@ extends PointLight2D
 
 @onready var _sonar_animation_player: AnimationPlayer = %SonarAnimationPlayer
 @onready var _revealing_timer: Timer = %RevealingTimer
+@onready var _sonar_sfx_stream_player: AudioStreamPlayer = %SonarSFXStreamPlayer
 @onready var _cooldown_timer: Timer = %cooldownTimer
 
 var _revealing_time: float = 1.0
@@ -23,6 +24,7 @@ func emit_sonar(pos: Vector2, angle: float) -> void:
 	global_position = pos
 	global_rotation = angle
 	_sonar_animation_player.play("reveal")
+	_sonar_sfx_stream_player.play()
 
 func set_sonar_parametres(reveal_time: float, disappear_time: float, \
 revealing_time: float = 1.0, size_relative_to_radius: float = 80.0) -> void:
