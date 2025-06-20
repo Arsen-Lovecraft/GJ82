@@ -32,10 +32,12 @@ func activate_button() -> void:
 		_click_button_sound.play()
 		door.open()
 		_button_timer.start()
+		EventBus.door_timer_started.emit()
 
 ##AKA deactivate_button
 func _on_button_timer_timeout() -> void:
 	door.close()
+	EventBus.door_timer_ended.emit()
 	_light_animation_player.play("light_scale_up_scale_down")
 	_button_tick_sound.play()
 
