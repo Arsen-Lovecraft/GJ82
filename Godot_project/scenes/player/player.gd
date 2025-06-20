@@ -1,17 +1,15 @@
 extends CharacterBody2D
 class_name Player
 
-signal gameOver
-
 @export_group("Sonar")
 @export_range(0.1,20) var reveal_time: float = 1.0
 @export_range(0.1,20) var disappear_time: float = 1.0
 @export_range(0.1,1000) var revealing_time: float = 1.0
 @export_range(10,1000) var size_relative_to_radius: float = 500
 @export_group("Steps")
-@export_range(0.5,20) var emit_capacity: int = 12.0
-@export_range(0,100) var max_size: float = 90.0
-@export_range(0,100) var min_size: float = 42.0
+@export_range(1,20) var emit_capacity: int = 12
+@export_range(0,200) var max_size: float = 180.0
+@export_range(0,100) var min_size: float = 100.0
 @export_range(0.1,20) var time_to_vanish: float = 0.7
 @export_range(0,2) var emit_cooldown: float = 0.075
 @export_range(1,15) var emit_count_on_landing: int = 12
@@ -23,11 +21,14 @@ var _steps_pool: Array[Step]
 
 @onready var player_sprite: AnimatedSprite2D = %playerSprite
 @onready var player_collision: CollisionShape2D = %playerCollision
-@onready var echo_sound: AudioStreamPlayer = %echoSound
 @onready var jump_sound: AudioStreamPlayer = %jumpSound
 @onready var _echo_pos: Marker2D = %echoPos
 @onready var _interaction_area: Area2D = %InteractionArea
 @onready var _steps_emitter_cooldown: Timer = %StepsEmitterCooldown
+@onready var _sonar_cooldown: Timer = %sonarCooldown
+@onready var _step_player: AudioStreamPlayer = %StepPlayer
+@onready var _collide_with_walls_roofs_player: AudioStreamPlayer = %CollideWithWallsRoofsPlayer
+
 
 @export var _player_data : RplayerData = preload("uid://byrd0re6gadg6")
 
@@ -38,7 +39,7 @@ var anim_locked: bool = false
 var speed : float
 var jump_velocity : float
 var jumping : bool = false
-
+var _sonar_emit : bool = true
 var _was_in_air: bool = false
 
 func _ready() -> void:
@@ -50,17 +51,18 @@ func _ready() -> void:
 
 func _connect_signals()->void:
 	_interaction_area.area_entered.connect(_on_interaction_area_entered)
+	_sonar_cooldown.timeout.connect(_on_sonar_cooldown)
 
 func _init_data() -> void:
 	speed = _player_data.speed
 	jump_velocity = _player_data.jump_velocity
 	_steps_emitter_cooldown.wait_time = emit_cooldown
+	_sonar_cooldown.wait_time = disappear_time + revealing_time + reveal_time
 
 func _on_body_entered(_body: Variant) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	Global.PlayerPos = global_position
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += _player_data.gravity * delta
@@ -117,14 +119,15 @@ func _physics_process(delta: float) -> void:
 			elif jumping:
 				play_animation("jumpend")	
 	
-	if Input.is_action_just_pressed("sonar"):
+	if Input.is_action_just_pressed("sonar") and _sonar_emit:
 		var sonar: Sonar = _sonar_scene_ps.instantiate()
 		get_tree().current_scene.add_child(sonar)
-		
+		_sonar_emit = false
 		EventBus._sonar_emitted.emit(_echo_pos.global_position, size_relative_to_radius, revealing_time, _echo_pos.get_angle_to(get_global_mouse_position()) + PI/2)
-		
+		_sonar_cooldown.start()
 		sonar.set_sonar_parametres(reveal_time,disappear_time,revealing_time,size_relative_to_radius)
 		sonar.emit_sonar(_echo_pos.global_position, _echo_pos.get_angle_to(get_global_mouse_position()) + PI/2 )
+		
 	if(Input.is_action_just_pressed("interact")):
 		_try_to_activate_button()
 	
@@ -143,11 +146,19 @@ func _try_to_activate_button() -> void:
 
 func _on_interaction_area_entered(area: Area2D) -> void:
 	if(area is InteractiveDoor):
+		Global.scenes_layout.last_scene = (area as InteractiveDoor).level_to_load
 		SceneManager.load_scene((area as InteractiveDoor).level_to_load)
 
 func _emit_steps(collision_data: KinematicCollision2D) -> void:
 	if(_steps_emitter_cooldown.is_stopped() and collision_data != null and velocity.length() != 0):
 		_steps_emitter_cooldown.start()
+		print(str(collision_data.get_angle()) + " ! " + str(deg_to_rad(self.floor_max_angle))) 
+		if(!_step_player.playing and 
+		abs(collision_data.get_angle()) < self.floor_max_angle):
+			_step_player.play()
+		elif(!_collide_with_walls_roofs_player.playing and 
+		abs(collision_data.get_angle()) > self.floor_max_angle):
+			_collide_with_walls_roofs_player.play()
 	else:
 		return
 	var j: int = 0
@@ -176,7 +187,11 @@ func _burst_lights() -> void:
 		player_collision.global_position.y + (player_collision.shape as CapsuleShape2D).height/2)
 		
 		step.emit_step(centre + random_circle_emition, max_size, min_size, time_to_vanish)
+		jump_sound.play()
 
 func play_animation(anim_name: String) -> void:
 	if player_sprite.animation != anim_name:
 		player_sprite.play(anim_name)
+
+func _on_sonar_cooldown() -> void:
+	_sonar_emit = true

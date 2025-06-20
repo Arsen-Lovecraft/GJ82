@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://ca5gokbym2sbx"]
+[gd_scene load_steps=46 format=3 uid="uid://ca5gokbym2sbx"]
 
 [ext_resource type="Script" uid="uid://dut1cbqn20u2r" path="res://scenes/player/player.gd" id="1_7obkq"]
 [ext_resource type="Texture2D" uid="uid://yrycqhlcaicd" path="res://assets/players/player1/death_0.png" id="1_wva7c"]
@@ -40,6 +40,8 @@
 [ext_resource type="Texture2D" uid="uid://b0ubl6vv55yb8" path="res://assets/players/player1/walk_5.png" id="37_ymths"]
 [ext_resource type="Texture2D" uid="uid://bn56vplvb4tj2" path="res://assets/players/player1/walk_6.png" id="38_3p0jd"]
 [ext_resource type="Texture2D" uid="uid://dqhj8e8o2v7hl" path="res://assets/players/player1/walk_7.png" id="39_7nf13"]
+[ext_resource type="AudioStream" uid="uid://co7fmgvqrg81" path="res://assets/sounds/colliding/collide.wav" id="41_vo27k"]
+[ext_resource type="AudioStream" uid="uid://yvd2pydnwov8" path="res://assets/sounds/colliding/footstep.wav" id="42_genst"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0y4ya"]
 animations = [{
@@ -218,6 +220,7 @@ script = ExtResource("1_7obkq")
 
 [node name="playerSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 scale = Vector2(0.128386, 0.133241)
 sprite_frames = SubResource("SpriteFrames_0y4ya")
 animation = &"fall"
@@ -228,11 +231,22 @@ unique_name_in_owner = true
 position = Vector2(-1, -13)
 shape = SubResource("CapsuleShape2D_7obkq")
 
-[node name="echoSound" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-
 [node name="jumpSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+stream = ExtResource("41_vo27k")
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="StepPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("42_genst")
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="CollideWithWallsRoofsPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("41_vo27k")
+bus = &"SFX"
 
 [node name="echoPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
@@ -251,3 +265,7 @@ collision_mask = 32
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_7obkq")
 debug_color = Color(0.859844, 0.362462, 3.85046e-07, 0.42)
+
+[node name="sonarCooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2bpvf7d0teg6"]
+
+[ext_resource type="PackedScene" uid="uid://qj51ib3ob0f" path="res://globals/theme/world_environment.tscn" id="1_2k5yy"]
+[ext_resource type="PackedScene" uid="uid://ccktnrcppwh5h" path="res://assets/background/background.tscn" id="2_o7kfo"]
+
+[node name="ArtNodes" type="Node2D"]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_2k5yy")]
+
+[node name="Background" parent="." instance=ExtResource("2_o7kfo")]

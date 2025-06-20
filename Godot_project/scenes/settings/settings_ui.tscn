@@ -30,6 +30,7 @@ current_tab = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="GAME" parent="Panel/SettingsWindows" instance=ExtResource("2_cwu4w")]
+unique_name_in_owner = true
 layout_mode = 2
 metadata/_tab_index = 0
 

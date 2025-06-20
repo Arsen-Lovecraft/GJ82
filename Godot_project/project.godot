@@ -12,10 +12,9 @@ config_version=5
 
 config/name="Godot Game JAM 82"
 config/version="0.0.1"
-run/main_scene="uid://bgxu354jspybh"
+run/main_scene="uid://ldg2jq7gg87x"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.4", "GL Compatibility")
-boot_splash/image="uid://dkih501mxauw"
 config/icon="uid://celhauthido0h"
 
 [audio]
@@ -28,6 +27,9 @@ EventBus="*res://globals/scripts/event_bus.gd"
 Global="*res://globals/scripts/global.gd"
 SceneManager="*res://globals/scripts/scene_manager.gd"
 LimboConsole="*res://addons/limbo_console/limbo_console.gd"
+Audio="*res://addons/easy_audio/audio.gd"
+Music="*res://addons/easy_audio/music.gd"
+GMusicController="*res://globals/scripts/music_controller.gd"
 
 [debug]
 
@@ -47,7 +49,7 @@ naming/script_name_casing=2
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/limbo_console/plugin.cfg")
+enabled=PackedStringArray("res://addons/easy_audio/plugin.cfg", "res://addons/limbo_console/plugin.cfg")
 
 [gui]
 
@@ -70,7 +72,7 @@ limbo_auto_complete_reverse={
 }
 limbo_console_toggle={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":96,"physical_keycode":0,"key_label":0,"unicode":96,"location":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":81,"physical_keycode":0,"key_label":0,"unicode":81,"location":0,"echo":false,"script":null)
 ]
 }
 left={
@@ -95,7 +97,8 @@ jump={
 }
 primaryAction={
 "deadzone": 0.2,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(188, 11),"global_position":Vector2(197, 59),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":true,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
 interact={
@@ -105,7 +108,7 @@ interact={
 }
 sonar={
 "deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"location":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
 ]
 }
 
