@@ -4,7 +4,6 @@
 
 [resource]
 script = ExtResource("1_6qxil")
-levels_sequence_uids = Array[String](["uid://cra0887wqyq40", "uid://d1cbqqqqycprd"])
 menu = "uid://ldg2jq7gg87x"
-last_level = "uid://cra0887wqyq40"
+last_scene = ""
 metadata/_custom_type_script = "uid://b8nuvgpe2yxff"

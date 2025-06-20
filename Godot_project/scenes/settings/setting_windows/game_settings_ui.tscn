@@ -47,6 +47,13 @@ size_flags_vertical = 3
 theme = ExtResource("3_apb86")
 text = "START_GAME"
 
+[node name="GoToStart" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_apb86")
+text = "BACK_TO_START"
+
 [node name="EndGame" type="Button" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2

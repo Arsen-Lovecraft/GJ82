@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://5uf3ulwfkjnl" path="res://scenes/ui/win_scene.gd" id="1_gucgk"]
 [ext_resource type="Material" uid="uid://dseapks3kvvhm" path="res://assets/materials/no_light_unshaded.tres" id="2_m14gf"]
 [ext_resource type="Texture2D" uid="uid://b5ji6yfl3r31c" path="res://assets/thank_you_vance.png" id="3_7h6kg"]
-[ext_resource type="Theme" uid="uid://12mr6wnl67v2" path="res://globals/theme/global.tres" id="4_7h6kg"]
+[ext_resource type="Theme" uid="uid://12mr6wnl67v2" path="res://globals/Theme/Global.tres" id="4_7h6kg"]
 
 [node name="WinScene" type="CanvasLayer"]
 script = ExtResource("1_gucgk")
