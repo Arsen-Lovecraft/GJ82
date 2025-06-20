@@ -11,7 +11,6 @@ func _init_easy_music_addon() -> void:
 	_music_settings = Music.MusicSettings.new()
 	_music_settings.set_bus("Music")
 	_music_settings.transition = Music.Transitions.CROSS_FADE
-	print(AudioServer.get_bus_index("Music"))
 	_music_settings.set_volume(db_to_linear(AudioServer.get_bus_volume_db(\
 	AudioServer.get_bus_index("Music"))))
 	

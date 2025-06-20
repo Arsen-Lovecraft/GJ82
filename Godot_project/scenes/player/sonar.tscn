@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://1yg762auekjc"]
+[gd_scene load_steps=10 format=3 uid="uid://1yg762auekjc"]
 
 [ext_resource type="Texture2D" uid="uid://dkih501mxauw" path="res://_not_for_export/conw.png" id="1_6nb35"]
 [ext_resource type="Script" uid="uid://ydj60yg4bb3b" path="res://scenes/player/sonar.gd" id="2_ek8sk"]
+[ext_resource type="AudioStream" uid="uid://bue6trco2731" path="res://assets/sounds/echolocator.wav" id="3_nps6e"]
 
 [sub_resource type="Shader" id="Shader_ek8sk"]
 code = "shader_type canvas_item;
@@ -90,3 +91,8 @@ libraries = {
 [node name="RevealingTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 20.0
+
+[node name="SonarSFXStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_nps6e")
+bus = &"SFX"
