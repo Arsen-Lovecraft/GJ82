@@ -1,15 +1,13 @@
 extends CharacterBody2D
 class_name Player
 
-signal gameOver
-
 @export_group("Sonar")
 @export_range(0.1,20) var reveal_time: float = 1.0
 @export_range(0.1,20) var disappear_time: float = 1.0
 @export_range(0.1,1000) var revealing_time: float = 1.0
 @export_range(10,1000) var size_relative_to_radius: float = 500
 @export_group("Steps")
-@export_range(0.5,20) var emit_capacity: int = 12.0
+@export_range(1,20) var emit_capacity: int = 12
 @export_range(0,200) var max_size: float = 180.0
 @export_range(0,100) var min_size: float = 100.0
 @export_range(0.1,20) var time_to_vanish: float = 0.7

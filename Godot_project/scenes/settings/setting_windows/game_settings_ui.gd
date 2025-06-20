@@ -7,6 +7,7 @@ signal game_continued()
 @onready var _options_settings_ui: OptionsSettingsUI = %OptionsSettingsUi
 @onready var start_game: Button = %StartGame
 @onready var end_game: Button = %EndGame
+@onready var go_to_start: Button = %GoToStart
 
 
 func _ready() -> void:
@@ -20,6 +21,7 @@ func _connect_signals() -> void:
 	if _options_settings_ui.new_value_selected.connect(_on_language_selected): printerr("Fail: ",get_stack()) 
 	start_game.connect("pressed",_on_start_game)
 	end_game.connect("pressed",_on_end_game)
+	go_to_start.connect("pressed",_on_goto_start)
 
 func _init_languages_list() -> void:
 	_options_settings_ui.init_option_button(settings.LANGUAGES.keys(), settings.LANGUAGES.find_key(settings.language) as String)
@@ -40,3 +42,7 @@ func _on_start_game() -> void:
 	
 func _on_end_game() -> void:
 	get_tree().quit()
+
+func _on_goto_start() ->void:
+	Global.scenes_layout.last_scene = "uid://ldg2jq7gg87x"
+	SceneManager.load_scene(Global.scenes_layout.last_scene)

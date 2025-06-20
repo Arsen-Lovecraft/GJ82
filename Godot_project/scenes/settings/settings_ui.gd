@@ -1,7 +1,7 @@
 class_name SettingsWindows
 extends CanvasLayer
 
-@onready var _game: GameSettingsUI = $Panel/SettingsWindows/GAME
+@onready var _game: GameSettingsUI = %GAME
 @onready var _exit_button: Button = %ExitButton
 var _prev_mouse_capture_mode: Input.MouseMode
 
