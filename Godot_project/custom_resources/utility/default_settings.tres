@@ -4,4 +4,27 @@
 
 [resource]
 script = ExtResource("1_rga4q")
+LANGUAGES = Dictionary[String, String]({
+"English": "en",
+"Nerd Mode Long": "nml",
+"Pirate": "nm",
+"Русский": "ru"
+})
+language = "en"
+master_sound_level = 75
+sfx_sound_level = 75
+music_sound_level = 75
+FRAME_RATES = Dictionary[String, int]({
+"120": 120,
+"144": 144,
+"244": 244,
+"30": 30,
+"60": 60,
+"75": 75,
+"NO_LIMIT": 0
+})
+frame_rate = 0
+default_action_map = Dictionary[String, InputEvent]({})
+action_map = Dictionary[String, InputEvent]({})
+is_first_launch = true
 metadata/_custom_type_script = "uid://don5jnahn303"
