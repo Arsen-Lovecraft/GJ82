@@ -60,7 +60,6 @@ func _on_body_entered(_body: Variant) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	Global.PlayerPos = global_position
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += _player_data.gravity * delta
@@ -143,6 +142,7 @@ func _try_to_activate_button() -> void:
 
 func _on_interaction_area_entered(area: Area2D) -> void:
 	if(area is InteractiveDoor):
+		Global.scenes_layout.last_scene = (area as InteractiveDoor).level_to_load
 		SceneManager.load_scene((area as InteractiveDoor).level_to_load)
 
 func _emit_steps(collision_data: KinematicCollision2D) -> void:

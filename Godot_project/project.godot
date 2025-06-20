@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Godot Game JAM 82"
 config/version="0.0.1"
-run/main_scene="uid://bgxu354jspybh"
+run/main_scene="uid://ldg2jq7gg87x"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/image="uid://dkih501mxauw"

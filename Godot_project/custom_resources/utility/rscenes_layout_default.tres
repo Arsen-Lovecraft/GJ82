@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RScenesLayout" load_steps=2 format=3 uid="uid://ca8v6c6oayqum"]
+
+[ext_resource type="Script" uid="uid://b8nuvgpe2yxff" path="res://custom_resources/utility/scenes_layout.gd" id="1_6qxil"]
+
+[resource]
+script = ExtResource("1_6qxil")
+levels_sequence_uids = Array[String](["uid://cra0887wqyq40", "uid://d1cbqqqqycprd"])
+menu = "uid://ldg2jq7gg87x"
+last_level = "uid://cra0887wqyq40"
+metadata/_custom_type_script = "uid://b8nuvgpe2yxff"
