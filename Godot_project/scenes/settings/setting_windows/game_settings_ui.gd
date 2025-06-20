@@ -1,6 +1,8 @@
 class_name GameSettingsUI
 extends Control
 
+signal game_continued()
+
 @onready var settings: RSettings = Global.settings
 @onready var _options_settings_ui: OptionsSettingsUI = %OptionsSettingsUi
 @onready var start_game: Button = %StartGame
@@ -10,6 +12,9 @@ extends Control
 func _ready() -> void:
 	_connect_signals()
 	_init_languages_list()
+	if(Global.scenes_layout.last_scene != "uid://ldg2jq7gg87x" and Global.scenes_layout.last_scene != "" or \
+	get_tree().current_scene is Level):
+		start_game.text = "CONTINUE"
 
 func _connect_signals() -> void:
 	if _options_settings_ui.new_value_selected.connect(_on_language_selected): printerr("Fail: ",get_stack()) 
@@ -22,10 +27,16 @@ func _init_languages_list() -> void:
 func _on_language_selected(value: String) -> void:
 	settings.set_language(settings.LANGUAGES[value])
 
+##If last scene is menu then you loads level_1
 func _on_start_game() -> void:
-	get_owner().visible = false
-	EventBus.fromMenuPause = false
-	EventBus.generalPause = false
-
+	if(get_tree().current_scene is Level):
+		game_continued.emit()
+		return
+	##If last scene is menu then you loads level_1
+	if(Global.scenes_layout.last_scene != "uid://ldg2jq7gg87x" and Global.scenes_layout.last_scene != ""):
+		SceneManager.load_scene(Global.scenes_layout.last_scene)
+	else:
+		SceneManager.load_scene("uid://cra0887wqyq40")
+	
 func _on_end_game() -> void:
 	get_tree().quit()
