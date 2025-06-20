@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://d0d8qlhogli8h"]
 
-[ext_resource type="Script" uid="uid://bcrv2wq7qm5b2" path="res://scenes/interactive_objects/emerging_platform.gd" id="1_0xh5m"]
+[ext_resource type="Script" path="res://scenes/interactive_objects/emerging_platform.gd" id="1_0xh5m"]
 [ext_resource type="AudioStream" uid="uid://cunsri3qbw3o1" path="res://assets/sounds/emerging_platform/PlatEmergy.wav" id="2_6irwq"]
 [ext_resource type="AudioStream" uid="uid://dq1ytkk18cfmx" path="res://assets/sounds/emerging_platform/PlatActivated.wav" id="3_i27d1"]
 [ext_resource type="AudioStream" uid="uid://chpq8ukdd0v2s" path="res://assets/sounds/emerging_platform/PlatDisappearing.wav" id="4_756po"]
@@ -25,6 +25,7 @@ script = ExtResource("1_0xh5m")
 
 [node name="platTexture" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 z_index = 1
 material = SubResource("CanvasItemMaterial_6irwq")
 texture = SubResource("GradientTexture2D_i27d1")
@@ -48,3 +49,14 @@ stream = ExtResource("3_i27d1")
 [node name="platformDisapper" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("4_756po")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(6.16074e-06, 0.975859, 0.82449, 1)
+amount = 40
+emission_shape = 3
+emission_rect_extents = Vector2(32, 32)
+gravity = Vector2(0, 0)
+angular_velocity_min = 532.6
+angular_velocity_max = 532.6
+radial_accel_min = -4.0
+radial_accel_max = 2.0
