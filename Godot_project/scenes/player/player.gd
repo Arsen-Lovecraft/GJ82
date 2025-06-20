@@ -187,4 +187,3 @@ func play_animation(anim_name: String) -> void:
 
 func _on_sonar_cooldown() -> void:
 	_sonar_emit = true
-	print(_sonar_emit)
