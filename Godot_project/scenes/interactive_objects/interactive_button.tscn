@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfqjxthp6ml5d"]
+[gd_scene load_steps=10 format=3 uid="uid://dfqjxthp6ml5d"]
 
 [ext_resource type="Script" uid="uid://cgboh61ucwdsd" path="res://scenes/interactive_objects/interactive_button.gd" id="1_wry5t"]
 [ext_resource type="AudioStream" uid="uid://dgimi4tn8ofq8" path="res://assets/sounds/interactive_objecs/button_activated.wav" id="2_p1di6"]
@@ -45,7 +45,7 @@ tracks/0/path = NodePath("PointLight2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.86),
+"times": PackedFloat32Array(0, 0.1, 0.86),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0.1, 0.1), Vector2(1.6, 1.6), Vector2(0.1, 0.1)]
@@ -57,7 +57,7 @@ tracks/1/path = NodePath("PointLight2D:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.86),
+"times": PackedFloat32Array(0, 0.1, 0.86),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.2, 2.0, 0.2]
@@ -68,6 +68,11 @@ _data = {
 &"RESET": SubResource("Animation_y0eqr"),
 &"light_scale_up_scale_down": SubResource("Animation_ncje2")
 }
+
+[sub_resource type="Curve" id="Curve_y0eqr"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 38.1323), 0.0, 0.0, 0, 0, Vector2(0.236434, -42.8016), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="InteractiveButton" type="Area2D"]
 collision_layer = 32
@@ -100,5 +105,18 @@ libraries = {
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(1e-05, 1e-05)
+color = Color(3.85046e-07, 0.737189, 0.565377, 1)
 energy = 0.0
 texture = ExtResource("4_y0eqr")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(4.04298e-06, 0.871022, 0.740679, 1)
+amount = 200
+emission_shape = 1
+emission_sphere_radius = 61.54
+gravity = Vector2(0, 0)
+orbit_velocity_min = 0.1
+orbit_velocity_max = 1.0
+radial_accel_min = 48.65
+radial_accel_max = 48.65
+radial_accel_curve = SubResource("Curve_y0eqr")
