@@ -1,24 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://dttyesoq8k3q8"]
+[gd_scene load_steps=4 format=3 uid="uid://dttyesoq8k3q8"]
 
-[ext_resource type="PackedScene" uid="uid://i67ta36lf2qp" path="res://scenes/static_environment/static_environment.tscn" id="1_ck4gd"]
 [ext_resource type="Script" uid="uid://dkc36c38dj1qm" path="res://scenes/static_environment/moving_platform.gd" id="2_kdsnb"]
 
-[node name="movingPlatform" instance=ExtResource("1_ck4gd")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68vx8"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_68vx8"]
+polygon = PackedVector2Array(-10, -5, 10, -5, 10, 10, -10, 10)
+
+[node name="movingPlatform" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("2_kdsnb")
 
-[node name="CollisionShape2D" parent="." index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_68vx8")
 
-[node name="CPUParticles2D" parent="." index="2"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_68vx8")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 modulate = Color(0, 1, 0, 1)
+position = Vector2(0, 3)
 amount = 1000
+emission_shape = 3
+emission_rect_extents = Vector2(9.5, 7.5)
+gravity = Vector2(0, 0)
+angular_velocity_min = 58.91
+angular_velocity_max = 584.32
 
-[node name="top_marker" type="Marker2D" parent="." index="3"]
+[node name="top_marker" type="Marker2D" parent="."]
 position = Vector2(0, -174)
 
-[node name="bottom_marker" type="Marker2D" parent="." index="4"]
+[node name="bottom_marker" type="Marker2D" parent="."]
 position = Vector2(0, 181)
 
-[node name="moveTimer" type="Timer" parent="." index="5"]
+[node name="moveTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 5.0

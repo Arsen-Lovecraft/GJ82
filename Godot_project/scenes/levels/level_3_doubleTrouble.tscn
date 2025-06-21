@@ -129,6 +129,7 @@ scale = Vector2(3.59, 0.31)
 
 [node name="door" parent="InteractiveEnvironment" instance=ExtResource("7_t4txi")]
 position = Vector2(564, 130)
+level_to_load = "uid://ddoaje2jla0md"
 
 [node name="PointLight2D2" type="PointLight2D" parent="InteractiveEnvironment/door"]
 position = Vector2(-60, -17)

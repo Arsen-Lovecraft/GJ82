@@ -57,7 +57,7 @@ _data = {
 &"pulsing_light": SubResource("Animation_oc4kc")
 }
 
-[node name="Level_3_doubleTrouble" type="Node2D"]
+[node name="Level_4_moving_platform" type="Node2D"]
 script = ExtResource("1_xlmpo")
 
 [node name="ArtNodes" parent="." instance=ExtResource("2_aglk4")]
@@ -79,7 +79,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 position = Vector2(0, -3.05176e-05)
 color = Color(0, 0, 0, 1)
 
@@ -127,6 +126,7 @@ scale = Vector2(10.479, 1)
 
 [node name="door" parent="InteractiveEnvironment" instance=ExtResource("8_llfs5")]
 position = Vector2(237, 300)
+level_to_load = "uid://b1x1qu2t7td1d"
 
 [node name="PointLight2D2" type="PointLight2D" parent="InteractiveEnvironment/door"]
 position = Vector2(-60, -17)
