@@ -31,8 +31,10 @@ material = SubResource("CanvasItemMaterial_6irwq")
 texture = SubResource("GradientTexture2D_i27d1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 3
 shape = SubResource("RectangleShape2D_ss2rw")
 one_way_collision = true
+debug_color = Color(0.828733, 0.00148763, 0.948013, 0.42)
 
 [node name="SeenTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -51,7 +53,8 @@ unique_name_in_owner = true
 stream = ExtResource("4_756po")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-modulate = Color(6.16074e-06, 0.975859, 0.82449, 1)
+unique_name_in_owner = true
+modulate = Color(1, 0.8075, 0.45, 1)
 amount = 40
 emission_shape = 3
 emission_rect_extents = Vector2(32, 32)
@@ -60,3 +63,4 @@ angular_velocity_min = 532.6
 angular_velocity_max = 532.6
 radial_accel_min = -4.0
 radial_accel_max = 2.0
+scale_amount_max = 3.0

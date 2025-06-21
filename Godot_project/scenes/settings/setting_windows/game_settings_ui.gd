@@ -38,7 +38,7 @@ func _on_start_game() -> void:
 	if(Global.scenes_layout.last_scene != "uid://ldg2jq7gg87x" and Global.scenes_layout.last_scene != ""):
 		SceneManager.load_scene(Global.scenes_layout.last_scene)
 	else:
-		SceneManager.load_scene("uid://cra0887wqyq40")
+		SceneManager.load_scene("uid://dvt5jmc0sslnc")
 	
 func _on_end_game() -> void:
 	get_tree().quit()
