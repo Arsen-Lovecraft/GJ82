@@ -28,6 +28,7 @@ var _steps_pool: Array[Step]
 @onready var _sonar_cooldown: Timer = %sonarCooldown
 @onready var _step_player: AudioStreamPlayer = %StepPlayer
 @onready var _collide_with_walls_roofs_player: AudioStreamPlayer = %CollideWithWallsRoofsPlayer
+@onready var _air_trail: PointLight2D = %AirTrail
 
 
 @export var _player_data : RplayerData = preload("uid://byrd0re6gadg6")
@@ -41,6 +42,7 @@ var jump_velocity : float
 var jumping : bool = false
 var _sonar_emit : bool = true
 var _was_in_air: bool = false
+var _previous_global_position: Vector2
 
 func _ready() -> void:
 	if(_player_data == null):
@@ -134,7 +136,9 @@ func _physics_process(delta: float) -> void:
 	if not direction:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	_emit_steps(get_last_slide_collision())
+	_previous_global_position = self.global_position
 	move_and_slide()
+	_handle_air_trail()
 	if(_is_landed()):
 		_burst_lights()
 ## _physics_process END
@@ -171,6 +175,14 @@ func _emit_steps(collision_data: KinematicCollision2D) -> void:
 		var random_circle_emition: Vector2 = Vector2(randf_range(-15.0,15.0),randf_range(-15.0,15.0))
 		step.emit_step(collision_data.get_position() + random_circle_emition, max_size, min_size, time_to_vanish)
 		_steps_pool.push_front(step)
+
+func _handle_air_trail() -> void:
+	if(!self.is_on_floor()):
+		_air_trail.visible = true
+		_air_trail.rotation = (self.global_position - _previous_global_position).normalized().angle()
+	else: 
+		_air_trail.visible = false
+
 
 func _is_landed() -> bool:
 	var just_landed: bool = (_was_in_air and is_on_floor())
