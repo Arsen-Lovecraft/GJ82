@@ -1,0 +1,148 @@
+[gd_scene load_steps=15 format=3 uid="uid://ddoaje2jla0md"]
+
+[ext_resource type="Script" uid="uid://b4xkcli5xagl0" path="res://scripts/level.gd" id="1_xlmpo"]
+[ext_resource type="PackedScene" uid="uid://d2bpvf7d0teg6" path="res://scenes/static_environment/art_nodes.tscn" id="2_aglk4"]
+[ext_resource type="Material" uid="uid://dseapks3kvvhm" path="res://assets/materials/no_light_unshaded.tres" id="3_0blna"]
+[ext_resource type="Theme" uid="uid://12mr6wnl67v2" path="res://globals/Theme/Global.tres" id="4_ova8e"]
+[ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="5_oyl4t"]
+[ext_resource type="PackedScene" uid="uid://i67ta36lf2qp" path="res://scenes/static_environment/static_environment.tscn" id="6_x7jjw"]
+[ext_resource type="PackedScene" uid="uid://dttyesoq8k3q8" path="res://scenes/static_environment/moving_platform.tscn" id="7_xlmpo"]
+[ext_resource type="PackedScene" uid="uid://b76212mcar6o2" path="res://scenes/interactive_objects/interactive_door.tscn" id="8_llfs5"]
+[ext_resource type="PackedScene" uid="uid://dfqjxthp6ml5d" path="res://scenes/interactive_objects/interactive_button.tscn" id="9_pko7s"]
+
+[sub_resource type="Gradient" id="Gradient_oc4kc"]
+offsets = PackedFloat32Array(0, 0.577558, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.0398074, 0.0398074, 0.0398074, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s8va5"]
+gradient = SubResource("Gradient_oc4kc")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Animation" id="Animation_s8va5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.66491, 3.06887)]
+}
+
+[sub_resource type="Animation" id="Animation_oc4kc"]
+resource_name = "pulsing_light"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.66491, 3.06887), Vector2(0.785, 1.064)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s8va5"]
+_data = {
+&"RESET": SubResource("Animation_s8va5"),
+&"pulsing_light": SubResource("Animation_oc4kc")
+}
+
+[node name="Level_3_doubleTrouble" type="Node2D"]
+script = ExtResource("1_xlmpo")
+
+[node name="ArtNodes" parent="." instance=ExtResource("2_aglk4")]
+position = Vector2(528, 376)
+metadata/_edit_lock_ = true
+
+[node name="Level1Label" type="Label" parent="."]
+visible = false
+z_index = 1
+material = ExtResource("3_0blna")
+offset_left = 150.0
+offset_top = 168.0
+offset_right = 339.0
+offset_bottom = 202.0
+theme = ExtResource("4_ova8e")
+theme_override_font_sizes/font_size = 32
+text = "SECOND_LEVEL_TIP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+position = Vector2(0, -3.05176e-05)
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(571, 314)
+zoom = Vector2(0.8, 0.8)
+
+[node name="Player" parent="." instance=ExtResource("5_oyl4t")]
+position = Vector2(92, 530)
+
+[node name="StaticEnvironment" type="Node" parent="."]
+
+[node name="BotWall" parent="StaticEnvironment" instance=ExtResource("6_x7jjw")]
+position = Vector2(580, 626)
+scale = Vector2(63.3993, 0.883882)
+
+[node name="platform" parent="StaticEnvironment" instance=ExtResource("6_x7jjw")]
+position = Vector2(571, 466)
+scale = Vector2(10.4793, 0.883882)
+
+[node name="platform2" parent="StaticEnvironment" instance=ExtResource("6_x7jjw")]
+position = Vector2(236, 363)
+scale = Vector2(10.4793, 0.883882)
+
+[node name="TopWall" parent="StaticEnvironment" instance=ExtResource("6_x7jjw")]
+position = Vector2(580, 0)
+rotation = 3.14159
+scale = Vector2(63.3993, 0.883882)
+
+[node name="RightWall" parent="StaticEnvironment" instance=ExtResource("6_x7jjw")]
+position = Vector2(1165, 314)
+rotation = -1.5708
+scale = Vector2(31.2977, 1)
+
+[node name="LeftWall" parent="StaticEnvironment" instance=ExtResource("6_x7jjw")]
+position = Vector2(0, 314)
+rotation = 1.5708
+scale = Vector2(31.2977, 1)
+
+[node name="movingPlatform" parent="StaticEnvironment" instance=ExtResource("7_xlmpo")]
+position = Vector2(826, 324)
+scale = Vector2(10.479, 1)
+
+[node name="InteractiveEnvironment" type="Node" parent="."]
+
+[node name="door" parent="InteractiveEnvironment" instance=ExtResource("8_llfs5")]
+position = Vector2(237, 300)
+
+[node name="PointLight2D2" type="PointLight2D" parent="InteractiveEnvironment/door"]
+position = Vector2(-60, -17)
+scale = Vector2(1.66491, 3.06887)
+texture = SubResource("GradientTexture2D_s8va5")
+
+[node name="LightAnimationPlayer" type="AnimationPlayer" parent="InteractiveEnvironment/door"]
+libraries = {
+&"": SubResource("AnimationLibrary_s8va5")
+}
+autoplay = "pulsing_light"
+
+[node name="buttonToDoor" parent="InteractiveEnvironment" node_paths=PackedStringArray("door") instance=ExtResource("9_pko7s")]
+position = Vector2(578, 140)
+door = NodePath("../door")
+
+[node name="buttonTobutton" parent="InteractiveEnvironment" node_paths=PackedStringArray("button") instance=ExtResource("9_pko7s")]
+position = Vector2(1047, 531)
+button = NodePath("../buttonToDoor")
