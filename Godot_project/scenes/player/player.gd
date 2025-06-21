@@ -152,7 +152,6 @@ func _on_interaction_area_entered(area: Area2D) -> void:
 func _emit_steps(collision_data: KinematicCollision2D) -> void:
 	if(_steps_emitter_cooldown.is_stopped() and collision_data != null and velocity.length() != 0):
 		_steps_emitter_cooldown.start()
-		print(str(collision_data.get_angle()) + " ! " + str(deg_to_rad(self.floor_max_angle))) 
 		if(!_step_player.playing and 
 		abs(collision_data.get_angle()) < self.floor_max_angle):
 			_step_player.play()
