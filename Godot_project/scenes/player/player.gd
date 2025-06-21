@@ -14,6 +14,8 @@ class_name Player
 @export_range(0,2) var emit_cooldown: float = 0.075
 @export_range(1,15) var emit_count_on_landing: int = 12
 @export_group("Other")
+@export_range(0.01,4) var jump_pitch_min: float = 0.01
+@export_range(0.01,4) var jump_pitch_max: float = 3.0
 
 var _sonar_scene_ps: PackedScene = preload("uid://1yg762auekjc")
 var _step_scene_ps: PackedScene = preload("uid://boxukbufy1aj7")
@@ -29,6 +31,8 @@ var _steps_pool: Array[Step]
 @onready var _step_player: AudioStreamPlayer = %StepPlayer
 @onready var _collide_with_walls_roofs_player: AudioStreamPlayer = %CollideWithWallsRoofsPlayer
 @onready var _air_trail: PointLight2D = %AirTrail
+@onready var _air_trail_particles: CPUParticles2D = %AirTrailParticles
+@onready var _air_trail_sound: AudioStreamPlayer = %AirTrailSound
 
 
 @export var _player_data : RplayerData = preload("uid://byrd0re6gadg6")
@@ -178,9 +182,17 @@ func _emit_steps(collision_data: KinematicCollision2D) -> void:
 
 func _handle_air_trail() -> void:
 	if(!self.is_on_floor()):
+		if(!_air_trail_sound.playing):
+			_air_trail_sound.play()
 		_air_trail.visible = true
 		_air_trail.rotation = (self.global_position - _previous_global_position).normalized().angle()
-	else: 
+		_air_trail_particles.rotation = (self.global_position - _previous_global_position).normalized().angle()
+		var normalized_speed: float = abs(abs(velocity.y)/(_player_data.jump_velocity/100))/100
+		_air_trail_sound.pitch_scale = lerp(jump_pitch_min,jump_pitch_max,normalized_speed)
+		_air_trail_particles.emitting = true
+	else:
+		_air_trail_sound.stop()
+		_air_trail_particles.emitting = false 
 		_air_trail.visible = false
 
 

@@ -77,6 +77,7 @@ _data = {
 top_level = true
 material = SubResource("ShaderMaterial_nps6e")
 scale = Vector2(0.275, 0.275)
+shadow_enabled = true
 texture = ExtResource("1_ek8sk")
 offset = Vector2(2.685, -102)
 texture_scale = 0.2
