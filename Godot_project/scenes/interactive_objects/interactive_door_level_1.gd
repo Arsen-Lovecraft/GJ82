@@ -5,4 +5,4 @@ func _ready() -> void:
 	open()
 
 func open() -> void:
-	super()
+	pass
