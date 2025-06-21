@@ -10,6 +10,7 @@ extends StaticBody2D
 @onready var platform_stays: AudioStreamPlayer2D = %platformStays
 @onready var plat_texture: Sprite2D = %platTexture
 @onready var _cpu_particles_2d: CPUParticles2D = %CPUParticles2D
+@onready var light_over: PointLight2D = %lightOver
 
 
 var _emit_to_platform_verti_distances: Array
@@ -30,6 +31,7 @@ func _ready() -> void:
 func _init_platform() -> void:
 	plat_texture.self_modulate.a = 0
 	collision_shape.disabled = 1
+	light_over.enabled = 0
 	_cpu_particles_2d.emitting = false
 	
 func _connect_signals() -> void:
@@ -108,6 +110,7 @@ func _emerge() -> void:
 	collision_shape.disabled = 0
 	plat_texture.self_modulate.a = 1.0
 	_cpu_particles_2d.emitting = true
+	light_over.enabled = 1
 	if _seen_timer.is_stopped():
 		_seen_timer.start()
 		
@@ -126,6 +129,8 @@ func _disappear() -> void:
 	_emerged_sound = false
 	_emerge_success_sonar = false
 	_cpu_particles_2d.emitting = false
+	await get_tree().create_timer(1.0).timeout
+	light_over.enabled = 0
 
 func _timer_stopped() -> void:
 	_disappear()
