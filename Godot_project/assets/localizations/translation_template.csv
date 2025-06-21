@@ -19,6 +19,6 @@ CONTROLS, The Helm & Rudder,Controls,Управление,Because Mashing Keys R
 RESET_CONTROLS, Mutiny on the Buttons,Reset Controls,Сбросить Управление,Oops! Undo My Genius Layout ↩️🧠
 KEYS, Yer Secret Stash o' Commands,Key Configuration,Настройки Кнопок,The Button Buffet 🧂⌨️
 ENTER_NEW_KEY, Buried a New Treasure,Enter New Key,Нажмите Новую Кнопку,
-GANDU, X Marks the Spot o' Trouble,,,Launch the Chaos 🚀🎲
-Start_Game, Weigh Anchor!,,,Let It All Fade to Black 🎭🕳
-End_Game, Return to Port,,,
+START_GAME, Weigh Anchor!,START GAME,,Let It All Fade to Black 🎭🕳
+END_GAME, Return to Port,END GAME,,
+BACK_TO_START, Return To Ship, BACK TO START,,

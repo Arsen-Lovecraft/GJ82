@@ -7,13 +7,16 @@ extends Area2D
 @onready var _door_animation_player: AnimationPlayer = %DoorAnimationPlayer
 
 func _ready() -> void:
+	close()
 	if(level_to_load == null):
 		printerr("Interactive door has not a level to transit to")
 
 func open() -> void:
 	self.monitorable = true
+	self.visible = true
 	_door_open_sound.play()
 	_door_animation_player.play("door_open_light")
 
 func close() -> void:
 	self.monitorable = false
+	self.visible = false
