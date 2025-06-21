@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bdymevan0vj7i"]
+[gd_scene load_steps=15 format=3 uid="uid://bdymevan0vj7i"]
 
 [ext_resource type="Script" uid="uid://b4xkcli5xagl0" path="res://scripts/level.gd" id="1_ugcn1"]
 [ext_resource type="PackedScene" uid="uid://d2bpvf7d0teg6" path="res://scenes/static_environment/art_nodes.tscn" id="2_pimnq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://12mr6wnl67v2" path="res://globals/Theme/Global.tres" id="4_n6eey"]
 [ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="5_qi5uv"]
 [ext_resource type="PackedScene" uid="uid://i67ta36lf2qp" path="res://scenes/static_environment/static_environment.tscn" id="6_f6egh"]
+[ext_resource type="PackedScene" uid="uid://d0d8qlhogli8h" path="res://scenes/interactive_objects/emerging_platform.tscn" id="7_7a3ll"]
 [ext_resource type="PackedScene" uid="uid://b76212mcar6o2" path="res://scenes/interactive_objects/interactive_door.tscn" id="7_t4txi"]
 [ext_resource type="PackedScene" uid="uid://dfqjxthp6ml5d" path="res://scenes/interactive_objects/interactive_button.tscn" id="9_pimnq"]
 
@@ -56,7 +57,7 @@ _data = {
 &"pulsing_light": SubResource("Animation_oc4kc")
 }
 
-[node name="Level_3" type="Node2D"]
+[node name="Level_3_doubleTrouble" type="Node2D"]
 script = ExtResource("1_ugcn1")
 
 [node name="ArtNodes" parent="." instance=ExtResource("2_pimnq")]
@@ -77,7 +78,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 position = Vector2(0, -3.05176e-05)
 color = Color(0, 0, 0, 1)
 
@@ -102,10 +102,6 @@ scale = Vector2(10.4793, 0.883882)
 position = Vector2(236, 363)
 scale = Vector2(10.4793, 0.883882)
 
-[node name="platform3" parent="StaticEnvironment" instance=ExtResource("6_f6egh")]
-position = Vector2(946, 320)
-scale = Vector2(10.4793, 0.883882)
-
 [node name="platform4" parent="StaticEnvironment" instance=ExtResource("6_f6egh")]
 position = Vector2(560, 198)
 scale = Vector2(10.4793, 0.883882)
@@ -124,6 +120,10 @@ scale = Vector2(31.2977, 1)
 position = Vector2(0, 314)
 rotation = 1.5708
 scale = Vector2(31.2977, 1)
+
+[node name="EmergingPlatform" parent="StaticEnvironment" instance=ExtResource("7_7a3ll")]
+position = Vector2(898, 322)
+scale = Vector2(3.59, 0.31)
 
 [node name="InteractiveEnvironment" type="Node" parent="."]
 
@@ -146,5 +146,5 @@ position = Vector2(1061, 537)
 door = NodePath("../door")
 
 [node name="buttonTobutton" parent="InteractiveEnvironment" node_paths=PackedStringArray("button") instance=ExtResource("9_pimnq")]
-position = Vector2(945, 235)
+position = Vector2(1045, 99)
 button = NodePath("../buttonToDoor")

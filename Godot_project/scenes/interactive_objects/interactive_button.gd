@@ -19,8 +19,8 @@ func _ready() -> void:
 	_connect_signals()
 
 func _init_interactive_button() -> void:
-	if(door == null and button != null):
-		printerr("this is a button to activate button")
+	if(door == null and button == null):
+		printerr("Nothing is mapped. So button is useless")
 	_button_timer.wait_time = time_of_active_state
 	_button_tick_sound.play()
 	_light_animation_player.play("light_scale_up_scale_down")

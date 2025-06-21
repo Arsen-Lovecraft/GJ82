@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0d8qlhogli8h"]
+[gd_scene load_steps=11 format=3 uid="uid://d0d8qlhogli8h"]
 
 [ext_resource type="Script" uid="uid://bcrv2wq7qm5b2" path="res://scenes/interactive_objects/emerging_platform.gd" id="1_0xh5m"]
 [ext_resource type="AudioStream" uid="uid://cunsri3qbw3o1" path="res://assets/sounds/emerging_platform/PlatEmergy.wav" id="2_6irwq"]
@@ -17,6 +17,13 @@ gradient = SubResource("Gradient_6irwq")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ss2rw"]
 size = Vector2(64, 64)
+
+[sub_resource type="Gradient" id="Gradient_i27d1"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_756po"]
+gradient = SubResource("Gradient_i27d1")
 
 [node name="EmergingPlatform" type="StaticBody2D"]
 collision_layer = 2
@@ -55,7 +62,7 @@ stream = ExtResource("4_756po")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
 modulate = Color(1, 0.8075, 0.45, 1)
-amount = 40
+amount = 1000
 emission_shape = 3
 emission_rect_extents = Vector2(32, 32)
 gravity = Vector2(0, 0)
@@ -64,3 +71,10 @@ angular_velocity_max = 532.6
 radial_accel_min = -4.0
 radial_accel_max = 2.0
 scale_amount_max = 3.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(9.53674e-07, 9.53674e-07)
+scale = Vector2(0.736607, 0.691964)
+energy = 5.0
+texture = SubResource("GradientTexture2D_756po")
+texture_scale = 1.4
