@@ -227,6 +227,7 @@ offset = Vector2(0, -500)
 
 [node name="playerCollision" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
+z_index = 4
 position = Vector2(-1, -13)
 shape = SubResource("CapsuleShape2D_7obkq")
 

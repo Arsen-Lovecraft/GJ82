@@ -9,6 +9,7 @@ extends StaticBody2D
 @onready var platform_disapper: AudioStreamPlayer2D = %platformDisapper
 @onready var platform_stays: AudioStreamPlayer2D = %platformStays
 @onready var plat_texture: Sprite2D = %platTexture
+@onready var _cpu_particles_2d: CPUParticles2D = %CPUParticles2D
 
 
 var _emit_to_platform_verti_distances: Array
@@ -29,6 +30,7 @@ func _ready() -> void:
 func _init_platform() -> void:
 	plat_texture.self_modulate.a = 0
 	collision_shape.disabled = 1
+	_cpu_particles_2d.emitting = false
 	
 func _connect_signals() -> void:
 	if not _seen_timer.timeout.is_connected(_timer_stopped):
@@ -105,6 +107,7 @@ func _emerge() -> void:
 	_emerging_sound = true
 	collision_shape.disabled = 0
 	plat_texture.self_modulate.a = 1.0
+	_cpu_particles_2d.emitting = true
 	if _seen_timer.is_stopped():
 		_seen_timer.start()
 		
@@ -122,6 +125,7 @@ func _disappear() -> void:
 	_emerge_success = false
 	_emerged_sound = false
 	_emerge_success_sonar = false
+	_cpu_particles_2d.emitting = false
 
 func _timer_stopped() -> void:
 	_disappear()

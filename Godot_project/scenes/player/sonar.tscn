@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://1yg762auekjc"]
 
-[ext_resource type="Texture2D" uid="uid://dkih501mxauw" path="res://_not_for_export/conw.png" id="1_6nb35"]
+[ext_resource type="Texture2D" uid="uid://dc1g261t4ha30" path="res://assets/cone_texture_light.png" id="1_ek8sk"]
 [ext_resource type="Script" uid="uid://ydj60yg4bb3b" path="res://scenes/player/sonar.gd" id="2_ek8sk"]
 [ext_resource type="AudioStream" uid="uid://bue6trco2731" path="res://assets/sounds/echolocator.wav" id="3_nps6e"]
 
@@ -77,7 +77,7 @@ _data = {
 top_level = true
 material = SubResource("ShaderMaterial_nps6e")
 scale = Vector2(0.275, 0.275)
-texture = ExtResource("1_6nb35")
+texture = ExtResource("1_ek8sk")
 offset = Vector2(2.685, -102)
 texture_scale = 0.2
 script = ExtResource("2_ek8sk")

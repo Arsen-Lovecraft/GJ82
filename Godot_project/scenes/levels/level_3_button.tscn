@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhjwktyk8cfq3"]
+
+[ext_resource type="Script" uid="uid://b4xkcli5xagl0" path="res://scripts/level.gd" id="1_yesx6"]
+[ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="2_4mv12"]
+[ext_resource type="PackedScene" uid="uid://i67ta36lf2qp" path="res://scenes/static_environment/static_environment.tscn" id="3_3bb3f"]
+[ext_resource type="PackedScene" uid="uid://dfqjxthp6ml5d" path="res://scenes/interactive_objects/interactive_button.tscn" id="4_4mv12"]
+[ext_resource type="PackedScene" uid="uid://d2bpvf7d0teg6" path="res://scenes/static_environment/art_nodes.tscn" id="4_espnd"]
+[ext_resource type="PackedScene" uid="uid://b76212mcar6o2" path="res://scenes/interactive_objects/interactive_door.tscn" id="5_3bb3f"]
+[ext_resource type="Material" uid="uid://dseapks3kvvhm" path="res://assets/materials/no_light_unshaded.tres" id="7_espnd"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_yesx6")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(571, 314)
+zoom = Vector2(0.8, 0.8)
+
+[node name="Player" parent="." instance=ExtResource("2_4mv12")]
+position = Vector2(191, 551)
+
+[node name="StaticEnvironment" type="Node" parent="."]
+
+[node name="StaticEnvironment" parent="StaticEnvironment" instance=ExtResource("3_3bb3f")]
+position = Vector2(580, 626)
+scale = Vector2(63.3993, 0.883882)
+
+[node name="StaticEnvironment2" parent="StaticEnvironment" instance=ExtResource("3_3bb3f")]
+position = Vector2(580, 0)
+rotation = 3.14159
+scale = Vector2(63.3993, 0.883882)
+
+[node name="StaticEnvironment3" parent="StaticEnvironment" instance=ExtResource("3_3bb3f")]
+position = Vector2(1165, 314)
+rotation = -1.5708
+scale = Vector2(31.2977, 1)
+
+[node name="StaticEnvironment4" parent="StaticEnvironment" instance=ExtResource("3_3bb3f")]
+position = Vector2(0, 314)
+rotation = 1.5708
+scale = Vector2(31.2977, 1)
+
+[node name="ArtNodes" parent="." instance=ExtResource("4_espnd")]
+position = Vector2(554, 357)
+
+[node name="InteractiveEnv" type="Node2D" parent="."]
+
+[node name="InteractiveButton" parent="InteractiveEnv" node_paths=PackedStringArray("door") instance=ExtResource("4_4mv12")]
+position = Vector2(1030, 512)
+door = NodePath("../InteractiveDoor")
+
+[node name="InteractiveDoor" parent="InteractiveEnv" instance=ExtResource("5_3bb3f")]
+position = Vector2(94, 545)
+level_to_load = "uid://dxacbtd0sd2q1"
+
+[node name="Level3Label" type="Label" parent="."]
+material = ExtResource("7_espnd")
+offset_left = 191.0
+offset_top = 141.0
+offset_right = 311.0
+offset_bottom = 162.0
+text = "THIRD_LEVEL_TIP"

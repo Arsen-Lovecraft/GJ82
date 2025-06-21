@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1cbqqqqycprd"]
+[gd_scene load_steps=14 format=3 uid="uid://b7nrihgdcmf1v"]
 
 [ext_resource type="Script" uid="uid://b4xkcli5xagl0" path="res://scripts/level.gd" id="1_8qukl"]
 [ext_resource type="Material" uid="uid://dseapks3kvvhm" path="res://assets/materials/no_light_unshaded.tres" id="2_3p04p"]
-[ext_resource type="Theme" uid="uid://12mr6wnl67v2" path="res://globals/Theme/Global.tres" id="3_qsp8v"]
+[ext_resource type="Theme" uid="uid://12mr6wnl67v2" path="res://globals/theme/global.tres" id="3_qsp8v"]
 [ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="5_brxtv"]
 [ext_resource type="PackedScene" uid="uid://i67ta36lf2qp" path="res://scenes/static_environment/static_environment.tscn" id="6_tv7cl"]
 [ext_resource type="PackedScene" uid="uid://b76212mcar6o2" path="res://scenes/interactive_objects/interactive_door.tscn" id="7_r88tb"]
@@ -62,7 +62,7 @@ script = ExtResource("1_8qukl")
 [node name="ArtNodes" parent="." instance=ExtResource("8_8qukl")]
 position = Vector2(571, 344)
 
-[node name="Level1Label" type="Label" parent="."]
+[node name="Level2Label" type="Label" parent="."]
 z_index = 1
 material = ExtResource("2_3p04p")
 offset_left = 150.0
@@ -116,7 +116,7 @@ scale = Vector2(31.2977, 1)
 [node name="InteractiveDoor" parent="InteractiveEnvironment" instance=ExtResource("7_r88tb")]
 position = Vector2(576, 400)
 script = ExtResource("8_1yj8c")
-level_to_load = "uid://cektbubxgxja8"
+level_to_load = "uid://dhjwktyk8cfq3"
 
 [node name="PointLight2D2" type="PointLight2D" parent="InteractiveEnvironment/InteractiveDoor"]
 scale = Vector2(1.66491, 3.06887)
