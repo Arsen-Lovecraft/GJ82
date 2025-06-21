@@ -59,21 +59,23 @@ _data = {
 [node name="Level_2" type="Node2D"]
 script = ExtResource("1_7tvid")
 
-[node name="ArtNodes" parent="." instance=ExtResource("2_ocudo")]
-position = Vector2(571, 344)
+[node name="Tip" type="CanvasLayer" parent="."]
 
-[node name="Level2Label" type="Label" parent="."]
+[node name="Level2Label" type="Label" parent="Tip"]
 z_index = 1
 material = ExtResource("3_m5y3g")
 offset_left = 150.0
 offset_top = 168.0
-offset_right = 339.0
+offset_right = 360.0
 offset_bottom = 202.0
 theme = ExtResource("4_swlbk")
 theme_override_font_sizes/font_size = 32
 text = "SECOND_LEVEL_TIP"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ArtNodes" parent="." instance=ExtResource("2_ocudo")]
+position = Vector2(571, 344)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(0, -3.05176e-05)
