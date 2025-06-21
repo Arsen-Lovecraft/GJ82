@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cra0887wqyq40"]
+[gd_scene load_steps=14 format=3 uid="uid://dvt5jmc0sslnc"]
 
 [ext_resource type="Script" uid="uid://b4xkcli5xagl0" path="res://scripts/level.gd" id="1_ksju7"]
 [ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="2_6iamk"]
@@ -110,7 +110,7 @@ scale = Vector2(31.2977, 1)
 unique_name_in_owner = true
 position = Vector2(1090, 564)
 script = ExtResource("6_oc4kc")
-level_to_load = "uid://d1cbqqqqycprd"
+level_to_load = "uid://b7nrihgdcmf1v"
 
 [node name="PointLight2D2" type="PointLight2D" parent="InteractiveEnvironment/InteractiveDoor"]
 scale = Vector2(1.66491, 3.06887)
