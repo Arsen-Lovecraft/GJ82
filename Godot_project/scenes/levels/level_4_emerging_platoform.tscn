@@ -78,7 +78,7 @@ scale = Vector2(31.2977, 1)
 [node name="InteractiveDoor" parent="InteractiveEnv" instance=ExtResource("6_2fyen")]
 position = Vector2(1057, 290)
 script = ExtResource("6_ftrgg")
-level_to_load = "uid://5uf3ulwfkjnl"
+level_to_load = "uid://b1x1qu2t7td1d"
 
 [node name="EmergingPlatform" parent="InteractiveEnv" instance=ExtResource("7_edvbh")]
 position = Vector2(572, 385)

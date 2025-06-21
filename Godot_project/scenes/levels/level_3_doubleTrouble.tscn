@@ -1,9 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://bdymevan0vj7i"]
+[gd_scene load_steps=13 format=3 uid="uid://bdymevan0vj7i"]
 
 [ext_resource type="Script" uid="uid://b4xkcli5xagl0" path="res://scripts/level.gd" id="1_ugcn1"]
 [ext_resource type="PackedScene" uid="uid://d2bpvf7d0teg6" path="res://scenes/static_environment/art_nodes.tscn" id="2_pimnq"]
-[ext_resource type="Material" uid="uid://dseapks3kvvhm" path="res://assets/materials/no_light_unshaded.tres" id="3_2bnyt"]
-[ext_resource type="Theme" uid="uid://12mr6wnl67v2" path="res://globals/Theme/Global.tres" id="4_n6eey"]
 [ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="5_qi5uv"]
 [ext_resource type="PackedScene" uid="uid://i67ta36lf2qp" path="res://scenes/static_environment/static_environment.tscn" id="6_f6egh"]
 [ext_resource type="PackedScene" uid="uid://d0d8qlhogli8h" path="res://scenes/interactive_objects/emerging_platform.tscn" id="7_7a3ll"]
@@ -63,20 +61,6 @@ script = ExtResource("1_ugcn1")
 [node name="ArtNodes" parent="." instance=ExtResource("2_pimnq")]
 position = Vector2(571, 344)
 
-[node name="Level1Label" type="Label" parent="."]
-visible = false
-z_index = 1
-material = ExtResource("3_2bnyt")
-offset_left = 150.0
-offset_top = 168.0
-offset_right = 339.0
-offset_bottom = 202.0
-theme = ExtResource("4_n6eey")
-theme_override_font_sizes/font_size = 32
-text = "SECOND_LEVEL_TIP"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(0, -3.05176e-05)
 color = Color(0, 0, 0, 1)
@@ -129,7 +113,7 @@ scale = Vector2(3.59, 0.31)
 
 [node name="door" parent="InteractiveEnvironment" instance=ExtResource("7_t4txi")]
 position = Vector2(564, 130)
-level_to_load = "uid://ddoaje2jla0md"
+level_to_load = "uid://cektbubxgxja8"
 
 [node name="PointLight2D2" type="PointLight2D" parent="InteractiveEnvironment/door"]
 position = Vector2(-60, -17)

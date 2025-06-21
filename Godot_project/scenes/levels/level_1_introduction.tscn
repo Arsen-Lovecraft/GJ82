@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvt5jmc0sslnc"]
+[gd_scene load_steps=14 format=3 uid="uid://dvt5jmc0sslnc"]
 
 [ext_resource type="Script" uid="uid://b4xkcli5xagl0" path="res://scripts/level.gd" id="1_jcnb7"]
 [ext_resource type="Material" uid="uid://dseapks3kvvhm" path="res://assets/materials/no_light_unshaded.tres" id="2_32gig"]
 [ext_resource type="Theme" uid="uid://12mr6wnl67v2" path="res://globals/theme/global.tres" id="3_iuhpg"]
-[ext_resource type="Script" uid="uid://dbg40l7jjidjw" path="res://scenes/levels/level_1_label.gd" id="4_32gig"]
 [ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="4_nxkv8"]
 [ext_resource type="PackedScene" uid="uid://i67ta36lf2qp" path="res://scenes/static_environment/static_environment.tscn" id="5_erqhm"]
 [ext_resource type="PackedScene" uid="uid://b76212mcar6o2" path="res://scenes/interactive_objects/interactive_door.tscn" id="6_st4vw"]
@@ -60,6 +59,9 @@ _data = {
 [node name="Level_1" type="Node2D"]
 script = ExtResource("1_jcnb7")
 
+[node name="ArtNodes" parent="." instance=ExtResource("8_b4xsh")]
+position = Vector2(526, 318)
+
 [node name="Tip" type="CanvasLayer" parent="."]
 
 [node name="Level1Label" type="Label" parent="Tip"]
@@ -74,7 +76,6 @@ theme_override_font_sizes/font_size = 32
 text = "FIRST_LEVEL_TIP"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("4_32gig")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(0, -3.05176e-05)
@@ -125,6 +126,3 @@ libraries = {
 &"": SubResource("AnimationLibrary_s8va5")
 }
 autoplay = "pulsing_light"
-
-[node name="ArtNodes" parent="." instance=ExtResource("8_b4xsh")]
-position = Vector2(526, 318)

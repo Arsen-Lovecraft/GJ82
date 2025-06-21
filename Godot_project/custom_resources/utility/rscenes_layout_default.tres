@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_6qxil")
+first_level = "uid://dvt5jmc0sslnc"
 menu = "uid://ldg2jq7gg87x"
 last_scene = ""
 metadata/_custom_type_script = "uid://b8nuvgpe2yxff"

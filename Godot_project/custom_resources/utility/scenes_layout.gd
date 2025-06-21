@@ -1,7 +1,7 @@
 class_name RScenesLayout
 extends Resource
 
-
+@export var first_level: String
 @export var menu: String
 @export_storage var last_scene: String = ""
 

@@ -118,7 +118,7 @@ scale = Vector2(31.2977, 1)
 [node name="InteractiveDoor" parent="InteractiveEnvironment" instance=ExtResource("7_1cgim")]
 position = Vector2(576, 400)
 script = ExtResource("8_gsflg")
-level_to_load = "uid://dhjwktyk8cfq3"
+level_to_load = "res://scenes/levels/level_3_button.tscn"
 
 [node name="PointLight2D2" type="PointLight2D" parent="InteractiveEnvironment/InteractiveDoor"]
 scale = Vector2(1.66491, 3.06887)

@@ -101,6 +101,7 @@ seen_time = 3.5
 
 [node name="InteractiveDoor" parent="Interactive" instance=ExtResource("5_xn5eg")]
 position = Vector2(2151, 217)
+level_to_load = "uid://bdymevan0vj7i"
 
 [node name="InteractiveButton" parent="Interactive" node_paths=PackedStringArray("door") instance=ExtResource("6_b1rx1")]
 position = Vector2(-401, 741)

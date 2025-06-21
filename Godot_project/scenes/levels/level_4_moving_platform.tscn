@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b4xkcli5xagl0" path="res://scripts/level.gd" id="1_xlmpo"]
 [ext_resource type="PackedScene" uid="uid://d2bpvf7d0teg6" path="res://scenes/static_environment/art_nodes.tscn" id="2_aglk4"]
 [ext_resource type="Material" uid="uid://dseapks3kvvhm" path="res://assets/materials/no_light_unshaded.tres" id="3_0blna"]
-[ext_resource type="Theme" uid="uid://12mr6wnl67v2" path="res://globals/Theme/Global.tres" id="4_ova8e"]
+[ext_resource type="Theme" uid="uid://12mr6wnl67v2" path="res://globals/theme/global.tres" id="4_ova8e"]
 [ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="5_oyl4t"]
 [ext_resource type="PackedScene" uid="uid://i67ta36lf2qp" path="res://scenes/static_environment/static_environment.tscn" id="6_x7jjw"]
 [ext_resource type="PackedScene" uid="uid://dttyesoq8k3q8" path="res://scenes/static_environment/moving_platform.tscn" id="7_xlmpo"]
@@ -126,7 +126,7 @@ scale = Vector2(10.479, 1)
 
 [node name="door" parent="InteractiveEnvironment" instance=ExtResource("8_llfs5")]
 position = Vector2(237, 300)
-level_to_load = "uid://b1x1qu2t7td1d"
+level_to_load = "uid://p6mj8vfpvsuy"
 
 [node name="PointLight2D2" type="PointLight2D" parent="InteractiveEnvironment/door"]
 position = Vector2(-60, -17)
