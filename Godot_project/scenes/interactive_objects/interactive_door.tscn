@@ -97,6 +97,7 @@ monitorable = false
 script = ExtResource("1_a2c6x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 3
 shape = SubResource("CapsuleShape2D_jagx2")
 debug_color = Color(0.796078, 0.423529, 0, 0.419608)
 
