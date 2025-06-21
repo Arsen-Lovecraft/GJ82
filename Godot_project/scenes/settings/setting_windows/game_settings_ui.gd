@@ -35,10 +35,10 @@ func _on_start_game() -> void:
 		game_continued.emit()
 		return
 	##If last scene is menu then you loads level_1
-	if(Global.scenes_layout.last_scene != "uid://ldg2jq7gg87x" and Global.scenes_layout.last_scene != ""):
+	if(Global.scenes_layout.last_scene != Global.scenes_layout.menu and Global.scenes_layout.last_scene != ""):
 		SceneManager.load_scene(Global.scenes_layout.last_scene)
 	else:
-		SceneManager.load_scene("uid://dvt5jmc0sslnc")
+		SceneManager.load_scene(Global.scenes_layout.first_level)
 	
 func _on_end_game() -> void:
 	get_tree().quit()

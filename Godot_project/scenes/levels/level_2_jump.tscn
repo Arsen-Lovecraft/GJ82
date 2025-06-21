@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=3 uid="uid://b7nrihgdcmf1v"]
 
-[ext_resource type="Script" uid="uid://b4xkcli5xagl0" path="res://scripts/level.gd" id="1_8qukl"]
-[ext_resource type="Material" uid="uid://dseapks3kvvhm" path="res://assets/materials/no_light_unshaded.tres" id="2_3p04p"]
-[ext_resource type="Theme" uid="uid://12mr6wnl67v2" path="res://globals/theme/global.tres" id="3_qsp8v"]
-[ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="5_brxtv"]
-[ext_resource type="PackedScene" uid="uid://i67ta36lf2qp" path="res://scenes/static_environment/static_environment.tscn" id="6_tv7cl"]
-[ext_resource type="PackedScene" uid="uid://b76212mcar6o2" path="res://scenes/interactive_objects/interactive_door.tscn" id="7_r88tb"]
-[ext_resource type="Script" uid="uid://djclngq6m48tn" path="res://scenes/interactive_objects/interactive_door_level_1.gd" id="8_1yj8c"]
-[ext_resource type="PackedScene" uid="uid://d2bpvf7d0teg6" path="res://scenes/static_environment/art_nodes.tscn" id="8_8qukl"]
+[ext_resource type="Script" uid="uid://b4xkcli5xagl0" path="res://scripts/level.gd" id="1_7tvid"]
+[ext_resource type="PackedScene" uid="uid://d2bpvf7d0teg6" path="res://scenes/static_environment/art_nodes.tscn" id="2_ocudo"]
+[ext_resource type="Material" uid="uid://dseapks3kvvhm" path="res://assets/materials/no_light_unshaded.tres" id="3_m5y3g"]
+[ext_resource type="Theme" uid="uid://12mr6wnl67v2" path="res://globals/theme/global.tres" id="4_swlbk"]
+[ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="5_b1aiq"]
+[ext_resource type="PackedScene" uid="uid://i67ta36lf2qp" path="res://scenes/static_environment/static_environment.tscn" id="6_rtnx0"]
+[ext_resource type="PackedScene" uid="uid://b76212mcar6o2" path="res://scenes/interactive_objects/interactive_door.tscn" id="7_1cgim"]
+[ext_resource type="Script" uid="uid://djclngq6m48tn" path="res://scenes/interactive_objects/interactive_door_level_1.gd" id="8_gsflg"]
 
 [sub_resource type="Gradient" id="Gradient_oc4kc"]
 offsets = PackedFloat32Array(0, 0.577558, 1)
@@ -57,23 +57,25 @@ _data = {
 }
 
 [node name="Level_2" type="Node2D"]
-script = ExtResource("1_8qukl")
+script = ExtResource("1_7tvid")
 
-[node name="ArtNodes" parent="." instance=ExtResource("8_8qukl")]
-position = Vector2(571, 344)
+[node name="Tip" type="CanvasLayer" parent="."]
 
-[node name="Level2Label" type="Label" parent="."]
+[node name="Level2Label" type="Label" parent="Tip"]
 z_index = 1
-material = ExtResource("2_3p04p")
+material = ExtResource("3_m5y3g")
 offset_left = 150.0
 offset_top = 168.0
-offset_right = 339.0
+offset_right = 360.0
 offset_bottom = 202.0
-theme = ExtResource("3_qsp8v")
+theme = ExtResource("4_swlbk")
 theme_override_font_sizes/font_size = 32
 text = "SECOND_LEVEL_TIP"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ArtNodes" parent="." instance=ExtResource("2_ocudo")]
+position = Vector2(571, 344)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(0, -3.05176e-05)
@@ -83,40 +85,40 @@ color = Color(0, 0, 0, 1)
 position = Vector2(571, 314)
 zoom = Vector2(0.8, 0.8)
 
-[node name="Player" parent="." instance=ExtResource("5_brxtv")]
+[node name="Player" parent="." instance=ExtResource("5_b1aiq")]
 position = Vector2(571, 567)
 
 [node name="StaticEnvironment" type="Node" parent="."]
 
-[node name="StaticEnvironment" parent="StaticEnvironment" instance=ExtResource("6_tv7cl")]
+[node name="StaticEnvironment" parent="StaticEnvironment" instance=ExtResource("6_rtnx0")]
 position = Vector2(580, 626)
 scale = Vector2(63.3993, 0.883882)
 
-[node name="StaticEnvironment5" parent="StaticEnvironment" instance=ExtResource("6_tv7cl")]
+[node name="StaticEnvironment5" parent="StaticEnvironment" instance=ExtResource("6_rtnx0")]
 position = Vector2(571, 466)
 scale = Vector2(10.4793, 0.883882)
 
-[node name="StaticEnvironment2" parent="StaticEnvironment" instance=ExtResource("6_tv7cl")]
+[node name="StaticEnvironment2" parent="StaticEnvironment" instance=ExtResource("6_rtnx0")]
 position = Vector2(580, 0)
 rotation = 3.14159
 scale = Vector2(63.3993, 0.883882)
 
-[node name="StaticEnvironment3" parent="StaticEnvironment" instance=ExtResource("6_tv7cl")]
+[node name="StaticEnvironment3" parent="StaticEnvironment" instance=ExtResource("6_rtnx0")]
 position = Vector2(1165, 314)
 rotation = -1.5708
 scale = Vector2(31.2977, 1)
 
-[node name="StaticEnvironment4" parent="StaticEnvironment" instance=ExtResource("6_tv7cl")]
+[node name="StaticEnvironment4" parent="StaticEnvironment" instance=ExtResource("6_rtnx0")]
 position = Vector2(0, 314)
 rotation = 1.5708
 scale = Vector2(31.2977, 1)
 
 [node name="InteractiveEnvironment" type="Node" parent="."]
 
-[node name="InteractiveDoor" parent="InteractiveEnvironment" instance=ExtResource("7_r88tb")]
+[node name="InteractiveDoor" parent="InteractiveEnvironment" instance=ExtResource("7_1cgim")]
 position = Vector2(576, 400)
-script = ExtResource("8_1yj8c")
-level_to_load = "uid://dhjwktyk8cfq3"
+script = ExtResource("8_gsflg")
+level_to_load = "res://scenes/levels/level_3_button.tscn"
 
 [node name="PointLight2D2" type="PointLight2D" parent="InteractiveEnvironment/InteractiveDoor"]
 scale = Vector2(1.66491, 3.06887)

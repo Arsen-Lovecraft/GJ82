@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://ca5gokbym2sbx"]
+[gd_scene load_steps=51 format=3 uid="uid://ca5gokbym2sbx"]
 
 [ext_resource type="Script" uid="uid://dut1cbqn20u2r" path="res://scenes/player/player.gd" id="1_7obkq"]
 [ext_resource type="Texture2D" uid="uid://yrycqhlcaicd" path="res://assets/players/player1/death_0.png" id="1_wva7c"]
@@ -42,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://dqhj8e8o2v7hl" path="res://assets/players/player1/walk_7.png" id="39_7nf13"]
 [ext_resource type="AudioStream" uid="uid://co7fmgvqrg81" path="res://assets/sounds/colliding/collide.wav" id="41_vo27k"]
 [ext_resource type="AudioStream" uid="uid://yvd2pydnwov8" path="res://assets/sounds/colliding/footstep.wav" id="42_genst"]
+[ext_resource type="AudioStream" uid="uid://bu7sys7sts6ap" path="res://assets/sounds/ait_trail.wav" id="43_niom3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0y4ya"]
 animations = [{
@@ -224,12 +225,24 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.188034, 1)
 
+[sub_resource type="Gradient" id="Gradient_niom3"]
+offsets = PackedFloat32Array(0, 0.253333, 0.533333, 0.733333, 1)
+colors = PackedColorArray(0, 0.60966, 0.547789, 1, 0, 1, 0.9, 1, 0, 0.807843, 0.72549, 1, 0, 0.636379, 0.572532, 0.133333, 0, 0.61, 0.549, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ttakn"]
+gradient = SubResource("Gradient_niom3")
+width = 20
+height = 8
+fill = 1
+fill_from = Vector2(0.501832, 0.494505)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_7obkq")
 
 [node name="playerSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 scale = Vector2(0.128386, 0.133241)
 sprite_frames = SubResource("SpriteFrames_0y4ya")
 animation = &"fall"
@@ -256,6 +269,11 @@ bus = &"SFX"
 [node name="CollideWithWallsRoofsPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("41_vo27k")
+bus = &"SFX"
+
+[node name="AirTrailSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("43_niom3")
 bus = &"SFX"
 
 [node name="echoPos" type="Marker2D" parent="."]
@@ -286,3 +304,19 @@ position = Vector2(-28, -43)
 scale = Vector2(2.55792, 0.467742)
 energy = 4.0
 texture = SubResource("GradientTexture2D_niom3")
+
+[node name="AirTrailParticles" type="CPUParticles2D" parent="AirTrail"]
+unique_name_in_owner = true
+position = Vector2(1.17283, -6.41379)
+scale = Vector2(0.671893, 0.0548444)
+texture = SubResource("GradientTexture2D_ttakn")
+emission_shape = 1
+emission_sphere_radius = 33.74
+spread = 89.55
+gravity = Vector2(0, 0)
+initial_velocity_max = 100.0
+angular_velocity_min = -30.0
+angular_velocity_max = 30.0
+orbit_velocity_min = -12.0
+angle_min = -111.6
+angle_max = 100.5

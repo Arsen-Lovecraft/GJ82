@@ -1,22 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://i67ta36lf2qp"]
+[gd_scene load_steps=4 format=3 uid="uid://i67ta36lf2qp"]
+
+[ext_resource type="Script" uid="uid://rrctrfd55kiq" path="res://scenes/static_environment/static_environment.gd" id="1_ccwfb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_68vx8"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_68vx8"]
-polygon = PackedVector2Array(-10, -5, 10, -5, 10, 10, -10, 10)
+polygon = PackedVector2Array(-10, -2, 10, -2, 10, -1, -10, -1)
 
 [node name="StaticEnvironment" type="StaticBody2D"]
 collision_layer = 2
+script = ExtResource("1_ccwfb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_68vx8")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(0, 12)
 occluder = SubResource("OccluderPolygon2D_68vx8")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
 modulate = Color(0, 0.809439, 0.724058, 1)
-position = Vector2(0, 3)
+position = Vector2(0, 2.38419e-07)
+scale = Vector2(1, 1.48)
 amount = 800
 emission_shape = 3
 emission_rect_extents = Vector2(9.5, 7.5)
