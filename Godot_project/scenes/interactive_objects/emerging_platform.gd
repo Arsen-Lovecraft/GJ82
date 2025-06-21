@@ -12,6 +12,7 @@ extends StaticBody2D
 @onready var _cpu_particles_2d: CPUParticles2D = %CPUParticles2D
 
 
+
 var _emit_to_platform_verti_distances: Array
 var _emit_to_platform_verti_angles: Array
 var _sonar_scale : Vector2
@@ -126,6 +127,7 @@ func _disappear() -> void:
 	_emerged_sound = false
 	_emerge_success_sonar = false
 	_cpu_particles_2d.emitting = false
+	await get_tree().create_timer(1.0).timeout
 
 func _timer_stopped() -> void:
 	_disappear()
