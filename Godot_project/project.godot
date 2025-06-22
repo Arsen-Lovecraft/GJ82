@@ -39,7 +39,7 @@ gdscript/warnings/untyped_declaration=2
 window/size/resizable=false
 window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep_height"
 window/vsync/vsync_mode=0
 
 [editor]
@@ -53,7 +53,6 @@ enabled=PackedStringArray("res://addons/easy_audio/plugin.cfg")
 [gui]
 
 theme/custom="uid://12mr6wnl67v2"
-theme/custom_font="uid://c322bulsaw8fv"
 theme/default_font_multichannel_signed_distance_field=true
 theme/default_font_generate_mipmaps=true
 
@@ -110,6 +109,7 @@ sonar={
 locale/translation_remaps={}
 locale/translations=PackedStringArray("res://assets/localizations/translations.en.translation", "res://assets/localizations/translations.nm.translation", "res://assets/localizations/translations.nml.translation", "res://assets/localizations/translations.ru.translation")
 locale/translations_pot_files=PackedStringArray("res://scenes/settings/settings_ui.tscn", "res://scenes/settings/setting_windows/controls_settings_ui.tscn", "res://scenes/settings/setting_windows/game_settings_ui.tscn", "res://scenes/settings/setting_windows/graphic_settings_ui.tscn", "res://scenes/settings/setting_windows/sound_settings_ui.tscn")
+locale/include_text_server_data=true
 
 [layer_names]
 

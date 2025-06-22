@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://36o0p33tb04a"]
+[gd_scene load_steps=5 format=3 uid="uid://36o0p33tb04a"]
 
 [ext_resource type="Script" uid="uid://bps65iiavgos6" path="res://scenes/settings/setting_windows/game_settings_ui.gd" id="1_b0bv2"]
 [ext_resource type="PackedScene" uid="uid://ixyqor8lxi3x" path="res://scenes/settings/primitives/options_settings_ui.tscn" id="2_im2kc"]
 [ext_resource type="Theme" uid="uid://ckmc2uhafvgvk" path="res://assets/ui_resources/button/button.tres" id="3_apb86"]
+[ext_resource type="Theme" uid="uid://dq4nntds66bix" path="res://addons/limbo_console/res/default_theme.tres" id="4_fupsn"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -26,9 +27,12 @@ options_name = "LANGUAGE"
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.352
-anchor_right = 0.364
+anchor_top = 0.21
+anchor_right = 0.936
 anchor_bottom = 0.761
+offset_top = -0.0800018
+offset_right = -0.272095
+offset_bottom = 43.872
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 50
@@ -36,27 +40,49 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.35
 theme_override_constants/separation = 50
 
-[node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="StartGame" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_apb86")
 text = "START_GAME"
 
-[node name="GoToStart" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="GoToStart" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_apb86")
 text = "BACK_TO_START"
 
-[node name="EndGame" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="EndGame" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_apb86")
 text = "END_GAME"
+
+[node name="Space" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Credits" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_fupsn")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[color=blue][b]Arsen Lovecraft[/b][/color]  - Game Designer [i]and[/i] Programmer
+[color=green][b]Kalineo[/b][/color]         - Programmer [i]and[/i] Game Designer
+[color=blue][b]RaisinRiot[/b][/color]      - Music Composer [i]and[/i] Sound Designer
+[color=green][b]Jebus Crust[/b][/color]     - Artist [i]and[/i] Animator"
