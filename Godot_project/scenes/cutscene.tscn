@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxoqmdwb8f5h6"]
+
+[ext_resource type="Script" uid="uid://5kfuj3frvjks" path="res://scenes/cutscene.gd" id="1_2bm7f"]
+[ext_resource type="VideoStream" uid="uid://bumxgdvi2casw" path="res://assets/cutscene.ogv" id="2_a320b"]
+[ext_resource type="AudioStream" uid="uid://c34hdvpwqiq0u" path="res://assets/sounds/music/intensive_music.wav" id="3_0sipp"]
+[ext_resource type="Texture2D" uid="uid://cjycklk6swrgt" path="res://assets/play.png" id="4_2bm7f"]
+
+[node name="Cutscene" type="CanvasLayer"]
+script = ExtResource("1_2bm7f")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -493.0
+offset_top = -240.0
+offset_right = 493.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stream = ExtResource("2_a320b")
+autoplay = true
+bus = &"Music"
+
+[node name="CutsceneMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0sipp")
+autoplay = true
+
+[node name="SkipButton" type="Button" parent="."]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -52.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 42
+text = ">>>>"
+
+[node name="SkipTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 3.0
+
+[node name="FocusProvocator" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="FocusProvocator"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="FocusButton" type="TextureButton" parent="FocusProvocator"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_2bm7f")
+stretch_mode = 0
