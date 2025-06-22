@@ -11,7 +11,6 @@ var theme: Theme = preload("uid://12mr6wnl67v2")
 	"English" = "en", 
 	"Русский" = "ru",
 	"Pirate" = "nm",
-	"Nerd Mode Long" = "nml"
 	}:
 		get():
 			return LANGUAGES

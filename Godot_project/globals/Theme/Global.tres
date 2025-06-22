@@ -1,5 +1,8 @@
-[gd_resource type="Theme" format=3 uid="uid://12mr6wnl67v2"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://12mr6wnl67v2"]
+
+[ext_resource type="FontFile" uid="uid://c322bulsaw8fv" path="res://assets/fonts/pixel_game/pixel_game.otf" id="1_f7h0v"]
 
 [resource]
 default_font_size = 20
 Control/font_sizes/font_size = 35
+Control/fonts/font = ExtResource("1_f7h0v")

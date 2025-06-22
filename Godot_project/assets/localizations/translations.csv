@@ -19,9 +19,6 @@ CONTROLS,The Helm & Rudder,Controls,Управление,Because Mashing Keys Ra
 RESET_CONTROLS,Mutiny on the Buttons,Reset Controls,Сбросить Управление,Oops! Undo My Genius Layout ↩️🧠
 KEYS,Yer Secret Stash o' Commands,Key Configuration,Настройки Кнопок,The Button Buffet 🧂⌨️
 ENTER_NEW_KEY,Buried a New Treasure,Enter New Key,Нажмите Новую Кнопку,
-GANDU,X Marks the Spot o' Trouble,,,Launch the Chaos 🚀🎲
-Start_Game,Weigh Anchor!,,,Let It All Fade to Black 🎭🕳
-End_Game,Return to Port,,,
 ,,,,
 ,,,,
 ,,,,
@@ -48,7 +45,7 @@ JUMP,,Jump,Прыжок,
 INTERACT,,Press a button,Нажать на кнопку,
 SONAR,,Use sonar,Использовать сонар,
 ,,,,
-START_GAME,,Start Game,Начать игру,
-BACK_TO_START,,Back to Start,Назад к началу,
-END_GAME,,End Game,Выйти,
-CONTINUE,,Continue,Продолжить,
+START_GAME,Hoist the Sails!,Start Game,Начать игру,
+BACK_TO_START,Return to Port,Back to Start,Назад к началу,
+END_GAME,Walk the Plank!,End Game,Выйти,
+CONTINUE,The Journey Ain’t Over!,Continue,Продолжить,
