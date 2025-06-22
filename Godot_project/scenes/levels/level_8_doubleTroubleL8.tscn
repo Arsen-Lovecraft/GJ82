@@ -81,14 +81,17 @@ scale = Vector2(63.3993, 0.883882)
 [node name="platform" parent="StaticEnvironment" instance=ExtResource("6_f6egh")]
 position = Vector2(571, 466)
 scale = Vector2(10.4793, 0.883882)
+occluder_switch = false
 
 [node name="platform2" parent="StaticEnvironment" instance=ExtResource("6_f6egh")]
 position = Vector2(236, 363)
 scale = Vector2(10.4793, 0.883882)
+occluder_switch = false
 
 [node name="platform4" parent="StaticEnvironment" instance=ExtResource("6_f6egh")]
 position = Vector2(560, 198)
 scale = Vector2(10.4793, 0.883882)
+occluder_switch = false
 
 [node name="TopWall" parent="StaticEnvironment" instance=ExtResource("6_f6egh")]
 position = Vector2(580, 0)

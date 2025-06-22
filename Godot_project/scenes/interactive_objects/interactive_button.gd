@@ -18,6 +18,10 @@ func _ready() -> void:
 	_init_interactive_button()
 	_connect_signals()
 
+func _process(_delta: float) -> void:
+	if button != null and _button_timer.is_stopped():
+		button.close()
+
 func _init_interactive_button() -> void:
 	if(door == null and button == null):
 		printerr("Nothing is mapped. So button is useless")
@@ -60,6 +64,7 @@ func _on_button_timer_timeout() -> void:
 	else:
 		door.close()
 		EventBus.door_timer_ended.emit()
+		open()
 	_light_animation_player.play("light_scale_up_scale_down")
 	_button_tick_sound.play()
 	

@@ -39,21 +39,25 @@ position = Vector2(191, 551)
 [node name="StaticEnvironment" parent="StaticEnvironment" instance=ExtResource("3_3bb3f")]
 position = Vector2(580, 626)
 scale = Vector2(63.3993, 0.883882)
+occluder_switch = null
 
 [node name="StaticEnvironment2" parent="StaticEnvironment" instance=ExtResource("3_3bb3f")]
 position = Vector2(580, 0)
 rotation = 3.14159
 scale = Vector2(63.3993, 0.883882)
+occluder_switch = null
 
 [node name="StaticEnvironment3" parent="StaticEnvironment" instance=ExtResource("3_3bb3f")]
 position = Vector2(1165, 314)
 rotation = -1.5708
 scale = Vector2(31.2977, 1)
+occluder_switch = null
 
 [node name="StaticEnvironment4" parent="StaticEnvironment" instance=ExtResource("3_3bb3f")]
 position = Vector2(0, 314)
 rotation = 1.5708
 scale = Vector2(31.2977, 1)
+occluder_switch = null
 
 [node name="ArtNodes" parent="." instance=ExtResource("4_espnd")]
 position = Vector2(554, 357)

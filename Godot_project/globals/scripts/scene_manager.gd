@@ -7,16 +7,30 @@ var _loading_screen_scene : PackedScene = preload("uid://c2bqi4xuffjwt")
 var _load_scene:PackedScene
 var the_scene_path: String
 
+
 func load_scene(scene_path:String) -> void:
 	the_scene_path = scene_path
 	_start_load_scene()
 	
 func _start_load_scene()-> void:
 	if(loading_screen != null):
-		return
+		return	
 	loading_screen = _loading_screen_scene.instantiate() as LoadingScreen
-	get_tree().root.add_child(loading_screen)
+	
+	##Name in labels
+	var scene_name : PackedScene = load(the_scene_path) as PackedScene
+	var levels := scene_name.resource_path.get_file().get_basename()
+	var parts := levels.split("_")
+	
+	if(parts.size()>2):
+		loading_screen.title_text = parts[0]+parts[1]
+		loading_screen.description_text = parts[2]
+		
+	#printt(parts,loading_screen.title_text,loading_screen.description_text)
+	
+	get_tree().root.add_child(loading_screen)	
 	loading_screen.start_transition()
+	
 	if(!loading_screen.transition_in_ended.is_connected(_on_transition_in_ended)):
 		if loading_screen.transition_in_ended.connect(_on_transition_in_ended): printerr("Fail: ",get_path()) 
 	
