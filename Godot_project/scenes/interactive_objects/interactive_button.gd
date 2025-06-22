@@ -56,10 +56,10 @@ func close() -> void:
 func _on_button_timer_timeout() -> void:
 	if(door == null and button != null):
 		button.close()
+		open()
 	else:
 		door.close()
 		EventBus.door_timer_ended.emit()
-	open()
 	_light_animation_player.play("light_scale_up_scale_down")
 	_button_tick_sound.play()
 	
