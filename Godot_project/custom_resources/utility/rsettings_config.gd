@@ -3,6 +3,8 @@ extends Resource
 
 signal settings_changed()
 
+var theme: Theme = preload("uid://12mr6wnl67v2")
+
 ## Game
 
 @export_storage var LANGUAGES: Dictionary[String,String] = {
@@ -123,7 +125,14 @@ func set_language(lang: String) -> void:
 		is_first_launch = false
 	elif(LANGUAGES.find_key(lang) != null):
 		language = lang
+	if(language == "ru"):
+		theme.set_font("font","Button", load("uid://s2g1kvmkgw6x"))
+		theme.set_font("font","Label", load("uid://s2g1kvmkgw6x"))
+	else:
+		theme.set_font("font","Button", load("uid://c322bulsaw8fv"))
+		theme.set_font("font","Label", load("uid://c322bulsaw8fv"))
 	TranslationServer.set_locale(language)
+
 	settings_changed.emit()
 
 func change_action_map(action: String, event: InputEvent) -> void:
