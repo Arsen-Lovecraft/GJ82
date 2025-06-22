@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dttyesoq8k3q8"]
+[gd_scene load_steps=5 format=3 uid="uid://dttyesoq8k3q8"]
 
 [ext_resource type="Script" uid="uid://dkc36c38dj1qm" path="res://scenes/static_environment/moving_platform.gd" id="2_kdsnb"]
 
@@ -6,6 +6,9 @@
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_68vx8"]
 polygon = PackedVector2Array(-10, -5, 10, -5, 10, 10, -10, 10)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ck4gd"]
+light_mode = 1
 
 [node name="movingPlatform" type="CharacterBody2D"]
 collision_layer = 2
@@ -16,10 +19,24 @@ position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_68vx8")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 occluder = SubResource("OccluderPolygon2D_68vx8")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="particlesAlwaysVisible" type="CPUParticles2D" parent="."]
 modulate = Color(0, 1, 0, 1)
+z_index = 1
+material = SubResource("CanvasItemMaterial_ck4gd")
+position = Vector2(0, 3)
+amount = 100
+emission_shape = 3
+emission_rect_extents = Vector2(9.5, 7.5)
+gravity = Vector2(0, 0)
+angular_velocity_min = 58.91
+angular_velocity_max = 584.32
+
+[node name="particlesSonarVisible" type="CPUParticles2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+z_index = 1
 position = Vector2(0, 3)
 amount = 1000
 emission_shape = 3
