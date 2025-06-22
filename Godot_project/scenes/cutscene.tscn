@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://5kfuj3frvjks" path="res://scenes/cutscene.gd" id="1_2bm7f"]
 [ext_resource type="VideoStream" uid="uid://bumxgdvi2casw" path="res://assets/cutscene.ogv" id="2_a320b"]
-[ext_resource type="AudioStream" uid="uid://c34hdvpwqiq0u" path="res://assets/sounds/music/intensive_music.wav" id="3_0sipp"]
+[ext_resource type="AudioStream" uid="uid://baceialbn8fk0" path="res://assets/sounds/cutscene_music.wav" id="3_2bm7f"]
 [ext_resource type="Texture2D" uid="uid://cjycklk6swrgt" path="res://assets/play.png" id="4_2bm7f"]
 
 [node name="Cutscene" type="CanvasLayer"]
@@ -36,7 +36,7 @@ autoplay = true
 bus = &"Music"
 
 [node name="CutsceneMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_0sipp")
+stream = ExtResource("3_2bm7f")
 autoplay = true
 
 [node name="SkipButton" type="Button" parent="."]
