@@ -127,9 +127,11 @@ func set_language(lang: String) -> void:
 	if(language == "ru"):
 		theme.set_font("font","Button", load("uid://s2g1kvmkgw6x"))
 		theme.set_font("font","Label", load("uid://s2g1kvmkgw6x"))
+		theme.set_font("font","TabContainer", load("uid://s2g1kvmkgw6x"))
 	else:
 		theme.set_font("font","Button", load("uid://c322bulsaw8fv"))
 		theme.set_font("font","Label", load("uid://c322bulsaw8fv"))
+		theme.set_font("font","TabContainer", load("uid://c322bulsaw8fv"))
 	TranslationServer.set_locale(language)
 
 	settings_changed.emit()
