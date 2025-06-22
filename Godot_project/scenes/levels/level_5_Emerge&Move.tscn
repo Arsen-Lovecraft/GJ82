@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b4xkcli5xagl0" path="res://scripts/level.gd" id="1_3lca7"]
 [ext_resource type="PackedScene" uid="uid://d2bpvf7d0teg6" path="res://scenes/static_environment/art_nodes.tscn" id="2_bs74w"]
 [ext_resource type="Material" uid="uid://dseapks3kvvhm" path="res://assets/materials/no_light_unshaded.tres" id="3_ssmrx"]
-[ext_resource type="Theme" uid="uid://12mr6wnl67v2" path="res://globals/theme/global.tres" id="4_5hpmp"]
+[ext_resource type="Theme" uid="uid://12mr6wnl67v2" path="res://globals/Theme/Global.tres" id="4_5hpmp"]
 [ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="5_jd5yd"]
 [ext_resource type="PackedScene" uid="uid://i67ta36lf2qp" path="res://scenes/static_environment/static_environment.tscn" id="6_v7h5i"]
 [ext_resource type="PackedScene" uid="uid://d0d8qlhogli8h" path="res://scenes/interactive_objects/emerging_platform.tscn" id="8_bs74w"]
@@ -94,21 +94,25 @@ position = Vector2(214, 547)
 [node name="BotWall" parent="StaticEnvironment" instance=ExtResource("6_v7h5i")]
 position = Vector2(559, 631)
 scale = Vector2(70, 0.884)
+occluder_switch = true
 
 [node name="TopWall" parent="StaticEnvironment" instance=ExtResource("6_v7h5i")]
 position = Vector2(557, 2)
 rotation = 3.14159
 scale = Vector2(69.039, 0.884)
+occluder_switch = true
 
 [node name="RightWall" parent="StaticEnvironment" instance=ExtResource("6_v7h5i")]
 position = Vector2(1128, 328)
 rotation = -1.5708
 scale = Vector2(31.2977, 1)
+occluder_switch = true
 
 [node name="LeftWall" parent="StaticEnvironment" instance=ExtResource("6_v7h5i")]
 position = Vector2(30, 321)
 rotation = 1.5708
 scale = Vector2(31.2977, 1)
+occluder_switch = true
 
 [node name="EmergingPlatform" parent="StaticEnvironment" instance=ExtResource("8_bs74w")]
 position = Vector2(802, 208)

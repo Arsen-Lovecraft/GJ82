@@ -12,6 +12,7 @@
 script = ExtResource("1_poe42")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -70,17 +71,20 @@ amount_of_particles = 1400
 [node name="StaticEnvironment8" parent="StaticEnvironment" instance=ExtResource("4_xn5eg")]
 position = Vector2(-362, 889)
 scale = Vector2(22.3096, 4.86339)
+occluder_switch = false
 amount_of_particles = 1400
 
 [node name="StaticEnvironment9" parent="StaticEnvironment" instance=ExtResource("4_xn5eg")]
 position = Vector2(709, 681)
 scale = Vector2(22.3096, 3.06153)
+occluder_switch = false
 amount_of_particles = 1400
 
 [node name="StaticEnvironment10" parent="StaticEnvironment" instance=ExtResource("4_xn5eg")]
 position = Vector2(1300, 411)
 rotation = -0.261799
 scale = Vector2(32.7973, 3.06153)
+occluder_switch = false
 amount_of_particles = 1400
 
 [node name="Interactive" type="Node2D" parent="."]
