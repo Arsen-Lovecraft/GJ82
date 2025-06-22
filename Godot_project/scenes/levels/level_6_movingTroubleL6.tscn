@@ -98,10 +98,12 @@ scale = Vector2(63.3993, 0.883882)
 [node name="platform" parent="StaticEnvironment" instance=ExtResource("6_10doc")]
 position = Vector2(571, 466)
 scale = Vector2(10.4793, 0.883882)
+occluder_switch = false
 
 [node name="platform2" parent="StaticEnvironment" instance=ExtResource("6_10doc")]
 position = Vector2(236, 363)
 scale = Vector2(10.4793, 0.883882)
+occluder_switch = false
 
 [node name="TopWall" parent="StaticEnvironment" instance=ExtResource("6_10doc")]
 position = Vector2(580, 0)

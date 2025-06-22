@@ -94,21 +94,25 @@ position = Vector2(214, 547)
 [node name="BotWall" parent="StaticEnvironment" instance=ExtResource("6_e3m1w")]
 position = Vector2(559, 631)
 scale = Vector2(70, 0.884)
+occluder_switch = true
 
 [node name="TopWall" parent="StaticEnvironment" instance=ExtResource("6_e3m1w")]
 position = Vector2(557, 2)
 rotation = 3.14159
 scale = Vector2(69.039, 0.884)
+occluder_switch = true
 
 [node name="RightWall" parent="StaticEnvironment" instance=ExtResource("6_e3m1w")]
 position = Vector2(1128, 328)
 rotation = -1.5708
 scale = Vector2(31.2977, 1)
+occluder_switch = true
 
 [node name="LeftWall" parent="StaticEnvironment" instance=ExtResource("6_e3m1w")]
 position = Vector2(30, 321)
 rotation = 1.5708
 scale = Vector2(31.2977, 1)
+occluder_switch = true
 
 [node name="EmergingPlatform" parent="StaticEnvironment" instance=ExtResource("7_63k4q")]
 position = Vector2(802, 208)

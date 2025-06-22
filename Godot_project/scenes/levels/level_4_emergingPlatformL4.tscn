@@ -29,6 +29,7 @@ autowrap_mode = 3
 position = Vector2(554, 357)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -47,18 +48,22 @@ scale = Vector2(63.3993, 0.883882)
 [node name="StaticEnvironment5" parent="StaticEnvironment" instance=ExtResource("5_tnnsf")]
 position = Vector2(139, 435)
 scale = Vector2(12.4744, 2.20229)
+occluder_switch = false
 
 [node name="StaticEnvironment8" parent="StaticEnvironment" instance=ExtResource("5_tnnsf")]
 position = Vector2(985, 368)
 scale = Vector2(16.8926, 1.97303)
+occluder_switch = false
 
 [node name="StaticEnvironment6" parent="StaticEnvironment" instance=ExtResource("5_tnnsf")]
 position = Vector2(323, 480)
 scale = Vector2(5.60304, 2.15608)
+occluder_switch = false
 
 [node name="StaticEnvironment7" parent="StaticEnvironment" instance=ExtResource("5_tnnsf")]
 position = Vector2(449, 550)
 scale = Vector2(7.88358, 2.20229)
+occluder_switch = false
 
 [node name="StaticEnvironment2" parent="StaticEnvironment" instance=ExtResource("5_tnnsf")]
 position = Vector2(580, 0)
