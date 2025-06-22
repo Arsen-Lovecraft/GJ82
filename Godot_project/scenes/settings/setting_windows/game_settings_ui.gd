@@ -8,6 +8,7 @@ signal game_continued()
 @onready var start_game: Button = %StartGame
 @onready var end_game: Button = %EndGame
 @onready var go_to_start: Button = %GoToStart
+@onready var credits: RichTextLabel = %Credits
 
 
 func _ready() -> void:
@@ -16,6 +17,12 @@ func _ready() -> void:
 	if(Global.scenes_layout.last_scene != "uid://ldg2jq7gg87x" and Global.scenes_layout.last_scene != "" or \
 	get_tree().current_scene is Level):
 		start_game.text = "CONTINUE"
+
+func _process(_delta: float) -> void:
+	credits.text = "[color=blue][b]Arsen Lovecraft[/b][/color] 	- "+tr("Game Designer")+"[i] and [/i]"+tr("Programmer")+"
+[color=green][b]Kalineo[/b][/color]       	- "+tr("Programmer")+"[i] and [/i]"+tr("Game Designer")+"
+[color=blue][b]RaisinRiot[/b][/color]      	- "+tr("Music Composer")+"[i] and [/i]"+tr("Sound Designer")+"
+[color=green][b]Jebus Crust[/b][/color]     	- "+tr("Artist")+" [i] and [/i] "+tr("Animator")+""
 
 func _connect_signals() -> void:
 	if _options_settings_ui.new_value_selected.connect(_on_language_selected): printerr("Fail: ",get_stack()) 

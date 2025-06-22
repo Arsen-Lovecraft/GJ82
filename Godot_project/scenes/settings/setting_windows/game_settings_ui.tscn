@@ -77,12 +77,9 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.1
 
 [node name="Credits" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("4_fupsn")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[color=blue][b]Arsen Lovecraft[/b][/color]  - Game Designer [i]and[/i] Programmer
-[color=green][b]Kalineo[/b][/color]         - Programmer [i]and[/i] Game Designer
-[color=blue][b]RaisinRiot[/b][/color]      - Music Composer [i]and[/i] Sound Designer
-[color=green][b]Jebus Crust[/b][/color]     - Artist [i]and[/i] Animator"
