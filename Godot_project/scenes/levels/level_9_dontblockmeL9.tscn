@@ -1,0 +1,128 @@
+[gd_scene load_steps=8 format=3 uid="uid://dyjuwmqsr4d41"]
+
+[ext_resource type="Script" uid="uid://b4xkcli5xagl0" path="res://scripts/level.gd" id="1_pgoos"]
+[ext_resource type="PackedScene" uid="uid://d2bpvf7d0teg6" path="res://scenes/static_environment/art_nodes.tscn" id="2_vbugr"]
+[ext_resource type="PackedScene" uid="uid://i67ta36lf2qp" path="res://scenes/static_environment/static_environment.tscn" id="3_cvhpb"]
+[ext_resource type="PackedScene" uid="uid://d0d8qlhogli8h" path="res://scenes/interactive_objects/emerging_platform.tscn" id="4_8655f"]
+[ext_resource type="PackedScene" uid="uid://b76212mcar6o2" path="res://scenes/interactive_objects/interactive_door.tscn" id="5_g6d7e"]
+[ext_resource type="PackedScene" uid="uid://dfqjxthp6ml5d" path="res://scenes/interactive_objects/interactive_button.tscn" id="6_g4xrd"]
+[ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="7_18kfh"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_pgoos")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(592, 339)
+scale = Vector2(0.771846, 7.18442)
+zoom = Vector2(0.5, 0.42)
+
+[node name="ArtNodes" parent="." instance=ExtResource("2_vbugr")]
+position = Vector2(794, 357)
+scale = Vector2(2.08635, 1.77552)
+
+[node name="StaticEnvironment" type="Node" parent="."]
+
+[node name="Walls" type="Node2D" parent="StaticEnvironment"]
+position = Vector2(240, 0)
+
+[node name="StaticEnvironment" parent="StaticEnvironment/Walls" instance=ExtResource("3_cvhpb")]
+position = Vector2(530, 971)
+scale = Vector2(119.489, 0.883882)
+amount_of_particles = 1400
+
+[node name="StaticEnvironment2" parent="StaticEnvironment/Walls" instance=ExtResource("3_cvhpb")]
+position = Vector2(544, -84)
+rotation = -3.14159
+scale = Vector2(119.489, 0.883882)
+amount_of_particles = 1400
+
+[node name="StaticEnvironment3" parent="StaticEnvironment/Walls" instance=ExtResource("3_cvhpb")]
+position = Vector2(1285, 344)
+rotation = -1.5708
+scale = Vector2(69, 4.183)
+amount_of_particles = 1400
+
+[node name="StaticEnvironment4" parent="StaticEnvironment/Walls" instance=ExtResource("3_cvhpb")]
+position = Vector2(-650, 314)
+rotation = 1.5708
+scale = Vector2(65.945, 1)
+amount_of_particles = 1400
+
+[node name="StaticEnvironment8" parent="StaticEnvironment" instance=ExtResource("3_cvhpb")]
+position = Vector2(-122, 889)
+scale = Vector2(22.3096, 4.86339)
+occluder_switch = false
+amount_of_particles = 1400
+
+[node name="StaticEnvironment7" parent="StaticEnvironment" instance=ExtResource("3_cvhpb")]
+position = Vector2(477, 283)
+rotation = 3.14159
+scale = Vector2(33.1896, 1.90339)
+occluder_switch = false
+amount_of_particles = 1400
+
+[node name="StaticEnvironment5" parent="StaticEnvironment" instance=ExtResource("3_cvhpb")]
+position = Vector2(1152, 578)
+scale = Vector2(33.1896, 4.86339)
+occluder_switch = false
+amount_of_particles = 1400
+
+[node name="StaticEnvironment9" parent="StaticEnvironment" instance=ExtResource("3_cvhpb")]
+position = Vector2(612, 739)
+rotation = -0.261799
+scale = Vector2(22.3096, 4.86339)
+occluder_switch = false
+amount_of_particles = 1400
+
+[node name="StaticEnvironment10" parent="StaticEnvironment" instance=ExtResource("3_cvhpb")]
+position = Vector2(612, 739)
+rotation = -0.261799
+scale = Vector2(22.3096, 4.86339)
+occluder_switch = false
+amount_of_particles = 1400
+
+[node name="Interactive" type="Node2D" parent="."]
+position = Vector2(240, 0)
+
+[node name="EmergingPlatform3" parent="Interactive" instance=ExtResource("4_8655f")]
+position = Vector2(-8, 805)
+scale = Vector2(3.56, 1)
+seen_time = 3.5
+
+[node name="EmergingPlatform9" parent="Interactive" instance=ExtResource("4_8655f")]
+position = Vector2(109, 622)
+rotation = -1.57079
+scale = Vector2(3.56, 1)
+seen_time = 5.0
+
+[node name="EmergingPlatform4" parent="Interactive" instance=ExtResource("4_8655f")]
+position = Vector2(991, 438)
+scale = Vector2(3.56, 1)
+seen_time = 2.8
+
+[node name="EmergingPlatform5" parent="Interactive" instance=ExtResource("4_8655f")]
+position = Vector2(703, 332)
+rotation = -6.28318
+scale = Vector2(3.56, 1)
+seen_time = 4.0
+
+[node name="EmergingPlatform6" parent="Interactive" instance=ExtResource("4_8655f")]
+position = Vector2(632, 158)
+rotation = -4.18878
+scale = Vector2(3.56, 1)
+seen_time = 7.0
+
+[node name="InteractiveDoor" parent="Interactive" instance=ExtResource("5_g6d7e")]
+position = Vector2(-59, 206)
+level_to_load = "uid://cektbubxgxja8"
+
+[node name="InteractiveButton" parent="Interactive" node_paths=PackedStringArray("door") instance=ExtResource("6_g4xrd")]
+position = Vector2(-401, 741)
+time_of_active_state = 15.0
+door = NodePath("../InteractiveDoor")
+
+[node name="Player" parent="." instance=ExtResource("7_18kfh")]
+position = Vector2(805, 885)
