@@ -15,6 +15,7 @@ config/version="0.0.1"
 run/main_scene="uid://ldg2jq7gg87x"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/image="uid://celhauthido0h"
 config/icon="uid://celhauthido0h"
 
 [audio]
