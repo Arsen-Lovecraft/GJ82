@@ -1,14 +1,14 @@
 [gd_scene load_steps=15 format=3 uid="uid://ddoaje2jla0md"]
 
-[ext_resource type="Script" uid="uid://b4xkcli5xagl0" path="res://scripts/level.gd" id="1_xlmpo"]
-[ext_resource type="PackedScene" uid="uid://d2bpvf7d0teg6" path="res://scenes/static_environment/art_nodes.tscn" id="2_aglk4"]
-[ext_resource type="Material" uid="uid://dseapks3kvvhm" path="res://assets/materials/no_light_unshaded.tres" id="3_0blna"]
-[ext_resource type="Theme" uid="uid://12mr6wnl67v2" path="res://globals/theme/global.tres" id="4_ova8e"]
-[ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="5_oyl4t"]
-[ext_resource type="PackedScene" uid="uid://i67ta36lf2qp" path="res://scenes/static_environment/static_environment.tscn" id="6_x7jjw"]
-[ext_resource type="PackedScene" uid="uid://dttyesoq8k3q8" path="res://scenes/static_environment/moving_platform.tscn" id="7_xlmpo"]
-[ext_resource type="PackedScene" uid="uid://b76212mcar6o2" path="res://scenes/interactive_objects/interactive_door.tscn" id="8_llfs5"]
-[ext_resource type="PackedScene" uid="uid://dfqjxthp6ml5d" path="res://scenes/interactive_objects/interactive_button.tscn" id="9_pko7s"]
+[ext_resource type="Script" uid="uid://b4xkcli5xagl0" path="res://scripts/level.gd" id="1_1o4u3"]
+[ext_resource type="PackedScene" uid="uid://d2bpvf7d0teg6" path="res://scenes/static_environment/art_nodes.tscn" id="2_ku5rd"]
+[ext_resource type="Material" uid="uid://dseapks3kvvhm" path="res://assets/materials/no_light_unshaded.tres" id="3_fslsn"]
+[ext_resource type="Theme" uid="uid://12mr6wnl67v2" path="res://globals/Theme/Global.tres" id="4_crhbg"]
+[ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="5_c4qr2"]
+[ext_resource type="PackedScene" uid="uid://i67ta36lf2qp" path="res://scenes/static_environment/static_environment.tscn" id="6_10doc"]
+[ext_resource type="PackedScene" uid="uid://dttyesoq8k3q8" path="res://scenes/static_environment/moving_platform.tscn" id="7_hg2uy"]
+[ext_resource type="PackedScene" uid="uid://b76212mcar6o2" path="res://scenes/interactive_objects/interactive_door.tscn" id="8_oabnj"]
+[ext_resource type="PackedScene" uid="uid://dfqjxthp6ml5d" path="res://scenes/interactive_objects/interactive_button.tscn" id="9_087g8"]
 
 [sub_resource type="Gradient" id="Gradient_oc4kc"]
 offsets = PackedFloat32Array(0, 0.577558, 1)
@@ -58,21 +58,21 @@ _data = {
 }
 
 [node name="Level_4_moving_platform" type="Node2D"]
-script = ExtResource("1_xlmpo")
+script = ExtResource("1_1o4u3")
 
-[node name="ArtNodes" parent="." instance=ExtResource("2_aglk4")]
+[node name="ArtNodes" parent="." instance=ExtResource("2_ku5rd")]
 position = Vector2(528, 376)
 metadata/_edit_lock_ = true
 
 [node name="Level1Label" type="Label" parent="."]
 visible = false
 z_index = 1
-material = ExtResource("3_0blna")
+material = ExtResource("3_fslsn")
 offset_left = 150.0
 offset_top = 168.0
 offset_right = 339.0
 offset_bottom = 202.0
-theme = ExtResource("4_ova8e")
+theme = ExtResource("4_crhbg")
 theme_override_font_sizes/font_size = 32
 text = "SECOND_LEVEL_TIP"
 horizontal_alignment = 1
@@ -86,45 +86,45 @@ color = Color(0, 0, 0, 1)
 position = Vector2(571, 314)
 zoom = Vector2(0.8, 0.8)
 
-[node name="Player" parent="." instance=ExtResource("5_oyl4t")]
+[node name="Player" parent="." instance=ExtResource("5_c4qr2")]
 position = Vector2(92, 530)
 
 [node name="StaticEnvironment" type="Node" parent="."]
 
-[node name="BotWall" parent="StaticEnvironment" instance=ExtResource("6_x7jjw")]
+[node name="BotWall" parent="StaticEnvironment" instance=ExtResource("6_10doc")]
 position = Vector2(580, 626)
 scale = Vector2(63.3993, 0.883882)
 
-[node name="platform" parent="StaticEnvironment" instance=ExtResource("6_x7jjw")]
+[node name="platform" parent="StaticEnvironment" instance=ExtResource("6_10doc")]
 position = Vector2(571, 466)
 scale = Vector2(10.4793, 0.883882)
 
-[node name="platform2" parent="StaticEnvironment" instance=ExtResource("6_x7jjw")]
+[node name="platform2" parent="StaticEnvironment" instance=ExtResource("6_10doc")]
 position = Vector2(236, 363)
 scale = Vector2(10.4793, 0.883882)
 
-[node name="TopWall" parent="StaticEnvironment" instance=ExtResource("6_x7jjw")]
+[node name="TopWall" parent="StaticEnvironment" instance=ExtResource("6_10doc")]
 position = Vector2(580, 0)
 rotation = 3.14159
 scale = Vector2(63.3993, 0.883882)
 
-[node name="RightWall" parent="StaticEnvironment" instance=ExtResource("6_x7jjw")]
+[node name="RightWall" parent="StaticEnvironment" instance=ExtResource("6_10doc")]
 position = Vector2(1165, 314)
 rotation = -1.5708
 scale = Vector2(31.2977, 1)
 
-[node name="LeftWall" parent="StaticEnvironment" instance=ExtResource("6_x7jjw")]
+[node name="LeftWall" parent="StaticEnvironment" instance=ExtResource("6_10doc")]
 position = Vector2(0, 314)
 rotation = 1.5708
 scale = Vector2(31.2977, 1)
 
-[node name="movingPlatform" parent="StaticEnvironment" instance=ExtResource("7_xlmpo")]
+[node name="movingPlatform" parent="StaticEnvironment" instance=ExtResource("7_hg2uy")]
 position = Vector2(826, 324)
 scale = Vector2(10.479, 1)
 
 [node name="InteractiveEnvironment" type="Node" parent="."]
 
-[node name="door" parent="InteractiveEnvironment" instance=ExtResource("8_llfs5")]
+[node name="door" parent="InteractiveEnvironment" instance=ExtResource("8_oabnj")]
 position = Vector2(237, 300)
 level_to_load = "uid://p6mj8vfpvsuy"
 
@@ -139,10 +139,10 @@ libraries = {
 }
 autoplay = "pulsing_light"
 
-[node name="buttonToDoor" parent="InteractiveEnvironment" node_paths=PackedStringArray("door") instance=ExtResource("9_pko7s")]
+[node name="buttonToDoor" parent="InteractiveEnvironment" node_paths=PackedStringArray("door") instance=ExtResource("9_087g8")]
 position = Vector2(578, 140)
 door = NodePath("../door")
 
-[node name="buttonTobutton" parent="InteractiveEnvironment" node_paths=PackedStringArray("button") instance=ExtResource("9_pko7s")]
+[node name="buttonTobutton" parent="InteractiveEnvironment" node_paths=PackedStringArray("button") instance=ExtResource("9_087g8")]
 position = Vector2(1047, 531)
 button = NodePath("../buttonToDoor")

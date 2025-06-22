@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxacbtd0sd2q1"]
+
+[ext_resource type="Script" uid="uid://b4xkcli5xagl0" path="res://scripts/level.gd" id="1_vlokq"]
+[ext_resource type="Material" uid="uid://dseapks3kvvhm" path="res://assets/materials/no_light_unshaded.tres" id="2_1styu"]
+[ext_resource type="PackedScene" uid="uid://d2bpvf7d0teg6" path="res://scenes/static_environment/art_nodes.tscn" id="3_764cj"]
+[ext_resource type="PackedScene" uid="uid://ca5gokbym2sbx" path="res://scenes/player/player.tscn" id="4_kj15e"]
+[ext_resource type="PackedScene" uid="uid://i67ta36lf2qp" path="res://scenes/static_environment/static_environment.tscn" id="5_tnnsf"]
+[ext_resource type="PackedScene" uid="uid://b76212mcar6o2" path="res://scenes/interactive_objects/interactive_door.tscn" id="6_pvrh3"]
+[ext_resource type="Script" uid="uid://djclngq6m48tn" path="res://scenes/interactive_objects/interactive_door_level_1.gd" id="7_tk034"]
+[ext_resource type="PackedScene" uid="uid://d0d8qlhogli8h" path="res://scenes/interactive_objects/emerging_platform.tscn" id="8_rs2tu"]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_vlokq")
+
+[node name="Tip" type="CanvasLayer" parent="."]
+
+[node name="LevelXLabel" type="Label" parent="Tip"]
+z_index = 1
+material = ExtResource("2_1styu")
+offset_left = 175.0
+offset_top = 88.0
+offset_right = 1018.0
+offset_bottom = 109.0
+text = "FOURTH_LEVEL_TIP"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ArtNodes" parent="." instance=ExtResource("3_764cj")]
+position = Vector2(554, 357)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(571, 314)
+zoom = Vector2(0.8, 0.8)
+
+[node name="Player" parent="." instance=ExtResource("4_kj15e")]
+position = Vector2(147, 344)
+
+[node name="StaticEnvironment" type="Node" parent="."]
+
+[node name="StaticEnvironment" parent="StaticEnvironment" instance=ExtResource("5_tnnsf")]
+position = Vector2(580, 626)
+scale = Vector2(63.3993, 0.883882)
+
+[node name="StaticEnvironment5" parent="StaticEnvironment" instance=ExtResource("5_tnnsf")]
+position = Vector2(139, 435)
+scale = Vector2(12.4744, 2.20229)
+
+[node name="StaticEnvironment8" parent="StaticEnvironment" instance=ExtResource("5_tnnsf")]
+position = Vector2(985, 368)
+scale = Vector2(16.8926, 1.97303)
+
+[node name="StaticEnvironment6" parent="StaticEnvironment" instance=ExtResource("5_tnnsf")]
+position = Vector2(323, 480)
+scale = Vector2(5.60304, 2.15608)
+
+[node name="StaticEnvironment7" parent="StaticEnvironment" instance=ExtResource("5_tnnsf")]
+position = Vector2(449, 550)
+scale = Vector2(7.88358, 2.20229)
+
+[node name="StaticEnvironment2" parent="StaticEnvironment" instance=ExtResource("5_tnnsf")]
+position = Vector2(580, 0)
+rotation = 3.14159
+scale = Vector2(63.3993, 0.883882)
+
+[node name="StaticEnvironment3" parent="StaticEnvironment" instance=ExtResource("5_tnnsf")]
+position = Vector2(1165, 314)
+rotation = -1.5708
+scale = Vector2(31.2977, 1)
+
+[node name="StaticEnvironment4" parent="StaticEnvironment" instance=ExtResource("5_tnnsf")]
+position = Vector2(0, 314)
+rotation = 1.5708
+scale = Vector2(31.2977, 1)
+
+[node name="InteractiveEnv" type="Node2D" parent="."]
+
+[node name="InteractiveDoor" parent="InteractiveEnv" instance=ExtResource("6_pvrh3")]
+position = Vector2(1057, 290)
+script = ExtResource("7_tk034")
+level_to_load = "uid://b1x1qu2t7td1d"
+
+[node name="EmergingPlatform" parent="InteractiveEnv" instance=ExtResource("8_rs2tu")]
+position = Vector2(572, 385)
+scale = Vector2(3.84, 1)
