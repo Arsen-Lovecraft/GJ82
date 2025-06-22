@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://ceck1ngxmpfyv"
+
+[deps]
+
+files=["res://assets/localizations/translations.nm.translation", "res://assets/localizations/translations.en.translation", "res://assets/localizations/translations.ru.translation", "res://assets/localizations/translations.nml.translation"]
+
+source_file="res://assets/localizations/translations.csv"
+dest_files=["res://assets/localizations/translations.nm.translation", "res://assets/localizations/translations.en.translation", "res://assets/localizations/translations.ru.translation", "res://assets/localizations/translations.nml.translation"]
+
+[params]
+
+compress=true
+delimiter=0

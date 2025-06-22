@@ -17,11 +17,13 @@ script = ExtResource("1_0g0lc")
 [node name="LevelXLabel" type="Label" parent="Tip"]
 z_index = 1
 material = ExtResource("7_qxyid")
-offset_left = 191.0
-offset_top = 141.0
-offset_right = 323.0
-offset_bottom = 162.0
+offset_left = 175.0
+offset_top = 88.0
+offset_right = 1018.0
+offset_bottom = 109.0
 text = "FOURTH_LEVEL_TIP"
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="ArtNodes" parent="." instance=ExtResource("4_xg2el")]
 position = Vector2(554, 357)
