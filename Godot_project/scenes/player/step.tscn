@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://boxukbufy1aj7"]
+[gd_scene load_steps=11 format=3 uid="uid://boxukbufy1aj7"]
 
 [ext_resource type="Script" uid="uid://cicoqapjbes4h" path="res://scenes/player/step.gd" id="2_ord2v"]
 
@@ -66,6 +66,17 @@ _data = {
 &"vanish": SubResource("Animation_x5vyo")
 }
 
+[sub_resource type="Gradient" id="Gradient_niom3"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.938072, 0.471043, 0.543618, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yoece"]
+gradient = SubResource("Gradient_niom3")
+width = 1
+height = 1
+fill = 1
+fill_from = Vector2(0.501832, 0.494505)
+
 [node name="Step" type="PointLight2D"]
 top_level = true
 material = SubResource("ShaderMaterial_nps6e")
@@ -81,3 +92,17 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_7g2g2")
 }
+
+[node name="StepTrailParticles" type="CPUParticles2D" parent="."]
+position = Vector2(4.26484, -23.3229)
+scale = Vector2(2.44325, 0.199434)
+amount = 100
+texture = SubResource("GradientTexture2D_yoece")
+lifetime = 0.3
+emission_shape = 1
+emission_sphere_radius = 33.74
+gravity = Vector2(0, 0)
+initial_velocity_max = 100.0
+angular_velocity_max = 30.0
+angle_min = -111.6
+angle_max = 100.5
