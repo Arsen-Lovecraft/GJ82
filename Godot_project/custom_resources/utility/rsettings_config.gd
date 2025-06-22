@@ -154,7 +154,7 @@ func _db_to_volume(db: float) -> float:
 func _get_user_defined_actions() -> Dictionary[String,InputEvent]:
 	var out: Dictionary[String,InputEvent]
 	for action: String in InputMap.get_actions():
-		if(action.substr(0,2) != "ui"):
+		if(action.substr(0,2) != "ui" and action.substr(0,5) != "limbo"):
 			out.set(action, InputMap.action_get_events(action)[0])
 	return out
 
@@ -170,7 +170,7 @@ func _init_input_map() -> void:
 			InputMap.action_erase_events(action)
 			InputMap.action_add_event(action,action_map[action])
 		for action: String in InputMap.get_actions():
-			if(!action_map.has(action) and action.substr(0,2) != "ui"):
+			if(!action_map.has(action) and action.substr(0,2) != "ui" and action.substr(0,5) != "limbo"):
 				action_map.set(action,InputMap.action_get_events(action)[0])
 				default_action_map.set(action,InputMap.action_get_events(action)[0])
 	#__print_mappings()
@@ -186,5 +186,5 @@ func __print_mappings() -> void:
 	print("----------------")
 	print("InputMap")
 	for action: String in InputMap.get_actions():
-		if(action.substr(0,2) != "ui"):
+		if(action.substr(0,2) != "ui" and action.substr(0,5) != "limbo"):
 			print(action + " is " + InputMap.action_get_events(action)[0].as_text())

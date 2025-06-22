@@ -2,7 +2,7 @@ extends Node
 
 
 ## Whether additional debug messages are enabled or not.
-const DEBUG_LOG: bool = true
+const DEBUG_LOG: bool = false
 
 
 ## This dictionary stores all [AudioStreamPlayer]s that are already loaded. [br]

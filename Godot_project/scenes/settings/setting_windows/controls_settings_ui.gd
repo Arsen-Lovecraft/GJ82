@@ -9,7 +9,7 @@ extends Control
 
 func  _ready() -> void:
 	for action: String in InputMap.get_actions():
-		if(action.substr(0,2) != "ui"):
+		if(action.substr(0,2) != "ui" and action.substr(0,5) != "limbo"):
 			var action_button: ActionButtonUI = _action_button_ps.instantiate()
 			_actions_list.add_child(action_button)
 			action_button.set_action_button(action, settings.action_map[action])

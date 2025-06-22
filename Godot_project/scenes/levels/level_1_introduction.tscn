@@ -67,15 +67,16 @@ position = Vector2(526, 318)
 [node name="Level1Label" type="Label" parent="Tip"]
 z_index = 1
 material = ExtResource("2_32gig")
-offset_left = 150.0
-offset_top = 168.0
-offset_right = 339.0
-offset_bottom = 202.0
+offset_left = 145.0
+offset_top = 63.0
+offset_right = 1033.0
+offset_bottom = 97.0
 theme = ExtResource("3_iuhpg")
 theme_override_font_sizes/font_size = 32
 text = "FIRST_LEVEL_TIP"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(0, -3.05176e-05)
